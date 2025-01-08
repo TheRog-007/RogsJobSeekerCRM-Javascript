@@ -1,0 +1,133 @@
+/* :root
+{
+    --varButtonHeight                   : 50px;
+    --varButtonWidth_Ok                 : 80px;
+    --varButtonWidth_Close              : 90px;
+    --varDialogShadowColour             : aqua; 
+} */
+
+body {
+    background-color                    :darkolivegreen;
+}
+
+main {
+    display: grid;
+    grid-template-areas: 
+    "banner banner"
+    "ani content"
+    "sidebar content"
+    "footer footer";
+    grid-template-columns: 10px 1fr;
+    grid-template-rows: auto 200px 300px auto;
+}
+
+header { grid-area: banner;}
+aside { grid-area:  sidebar;}
+#divBannerSub { grid-area: ani;}
+#secTab { grid-area: content;}
+footer { grid-area: footer;}
+
+#hdrHeader {
+  text-align: center;
+  position: relative;
+}
+#imgBanner {
+    height: 120px;
+}
+#divBannerSub{
+    /* display: block;
+    flex-direction: column;  */
+    margin-top: 10px;
+
+
+    height: 180px;
+    animation-name: bannerFadeInOut;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-duration: 10s;
+    animation-direction: alternate;
+}
+@keyframes bannerFadeInOut {
+    0% {
+        background-image: url("./images/banner_sub1.png");
+        width: 185px;
+    }
+    45% {
+        background-image: url("./images/banner_sub1.png");
+        width: 185px;
+    }
+    55% {
+        background-image: url("./images/banner_sub2.png");
+        width: 138px;
+    }
+    100% {
+        background-image: url("./images/banner_sub2.png");
+        width: 138px;
+    }
+}
+  #divBannerSub img {
+    position: relative;
+    left: 0;  
+}
+
+#asiMainMenu {
+    display                             : flex;
+    flex-direction                      : column;
+    position                            : relative;
+    float:left;
+    border                              : solid;
+    border-width                        : 1px;
+    border-radius                       : 5px;
+    border-color                        : beige;
+    height                              : 260px;
+    width                               : 260px;
+    padding-left                        : 10px;
+    /* padding-top                         : 6px; */
+    /* top                                 : 40px; */
+    color                               :wheat;
+    font-weight                         : 600;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
+    
+    
+}
+.clhMenuControl {
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top:  5px;
+  }
+/* formatting for all buttons */
+button {
+    margin-right                        : 40px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size                           : 18px;
+    height                              : 40px;
+    width                               : 80px;
+    border-radius                       : 5px;
+    border-color                        : none;
+    background-color                    : dimgrey;
+    color                               : white;
+}
+button:hover {
+  background-color                      : gray;
+} 
+/* formatting for all buttons */
+select {
+    margin-right                        : 40px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size                           : 14px;
+    height                              : 40px;
+    width                               : 230px;
+    border-radius                       : 5px;
+    border-color                        : none;
+    background-color                    :darkgreen;
+    color                               : white;
+}
+select:hover {
+  background-color                      :seagreen;
+} 
+
+#btnClose {
+    position: absolute;
+    top:95%;
+    left:1%;
+}

@@ -1,0 +1,70 @@
+:root
+{
+    --varActiveTabButtonColour             : #e69434;
+    --varInActiveTabButtonColour           : #deb687;
+    /* --varTabButtonContainerBorder-Radius   : 2%; */
+    --varTabWidth                          : 100px;
+    --varTabHeight                         : 100px;
+    --varTabButtonHeight                   : 20px;
+    --varTabButtonTop                      : 0px;
+    /* --varTabButtonBorder-Radius            : 12%; */
+    --varTabFrameWidth                     : 150px;
+    --varTabFrameHeight                    : 100px;
+    --varTabFrameBorder-Radius             : 0.5%;
+
+}    
+
+#divTab
+{
+    position:          relative;
+    width:             1000px;
+    height:            760px;
+    /* height:            var(--varTabHeight); */
+    border-style:      solid;
+    /* display:           inline; */
+    margin-left:       280px;
+    /* margin-left:       0px; */
+    border:            none;
+    /* left:              0px; */
+    
+}
+#divButtons {
+    display:           inline-block;
+    position:          relative;
+    border:            none;  
+    /* border: solid;
+    border-radius:     var(--varTabButtonContainerBorder-Radius);
+    border-color:     var(--varInActiveTabButtonColour); */
+    height:20px;
+}
+.btnTab {
+    background-color:  var(--varInActiveTabButtonColour);
+    position:          relative;
+    padding-right:     5px;
+    border:            none;
+    padding-top:       5px;           
+    /* border-radius:     var(--varTabButtonBorder-Radius); */
+    float:left;
+    font-family:       sans-serif;
+    font-size:         18px;
+ }
+ .imgTab {
+    float:             right;
+    margin-top:        0px;
+    padding-top:       0px;
+ }
+.fraTabFrame
+{
+     margin-top:       0px;
+     /* margin-left:      280px; */
+     /* width:            var(--varTabFrameWidth);  */
+     width:            995px;
+     height:           730px;
+     /* height:           var(--varTabFrameHeight); */
+     position:         absolute;
+     /* left:             0px; */
+     border-style:     solid;
+     border-radius:    var(--varTabFrameBorder-Radius);
+     border-color:     var(--varInActiveTabButtonColour);
+;
+}

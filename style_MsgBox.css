@@ -1,0 +1,65 @@
+:root
+{
+    --varButtonHeight                   : 50px;
+    --varButtonWidth_Ok                 : 80px;
+    --varButtonWidth_Close              : 90px;
+    --varButtonLeft_Ok                  : 0px;  
+    --varDialogShadowColour             : aqua; 
+}
+#dlgMessage {
+    position: absolute;
+    height: 215px;
+    width: 350px;
+    border-radius: 10px;
+    /*
+      DO NOT USE
+       display: flex;
+    
+      as stops dialog from closing!
+    */
+    border-color: none;
+    box-shadow: 2px 2px 5px 5px var(--varDialogShadowColour);
+    justify-content: space-between;
+}
+#imgMessage {
+    position:sticky;
+    margin-top: 0px;
+}
+#pMessage {
+  position: relative;
+  margin-top: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  font-size: 90%;
+}
+#btnMsgBox_Ok {
+    margin-top: 80px; 
+    height: var(--varButtonHeight);
+    width: var(--varButtonWidth_Ok);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
+    font-size: 14px;
+    left: var(--varButtonLeft_Ok);
+    background-color: black;
+    font-weight: 800;;
+}
+#btnMsgBox_Ok:hover {
+    background-color:darkslategray;  
+}
+#btnMsgBox_Cancel {
+    position: absolute;
+    margin-top: 80px;
+    left: 275px;
+    height: var(--varButtonHeight);
+    width: var(--varButtonWidth_Close);
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;  
+    font-size: 80%;
+    background-color: black;
+    font-weight: 800;;
+}
+#btnMsgBox_Cancel:hover {
+background-color:darkslategray;  
+}
+#txtHidden {
+    width: 1px;
+    background-color: darkolivegreen;
+    border:none;
+}

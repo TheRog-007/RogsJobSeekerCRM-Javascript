@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rog's JobSeeker CRM - JavaScript Edition</title>
+    <link type="text/css" link rel="stylesheet" href="./style.css"></link>
+    <link type="text/css" link rel="stylesheet" href="./style_MsgBox.css"></link>
+    <link type="text/css" link rel="stylesheet" href="./style_tab.css"></link>
+</head>
+<body>
+    <main>
+      <header id="hdrHeader">
+        <img id="imgBanner" src="./images/Banner.png" alt="Image Missing">
+      </header>
+
+      <div id="divBannerSub"></div>
+
+        <section id="secTab">
+          <div id="divTab">
+            <div id="divButtons"></div>
+            <div id="divFrame"></div>
+          </div> 
+       </section>
+
+      
+       <aside id="asiMainMenu">
+         Main Screens<br>
+         <select class="clhMenuControl" id="cmbMainScreens">
+              <option value="none" selected disabled hidden>Select
+              <option value="CV-TemplateCreator.html">CV - Template Creator</option>
+              <option value="JobsAppliedFor.html">Jobs Applied For</option>
+              <option value="MailShotCreator.html">MailShot Creator</option>
+         </select>
+         <br>
+         Reports<br>
+         <select class="clhMenuControl" id="cmbReports">
+              <option value="none" selected disabled hidden>Select
+              <option value="JobListingReport.html">Job Listing Report</option>
+              <option value="MailShot Summary Report.html">MailShot Summary Report</option>
+         </select>
+         <br>
+         Data Maintenance<br>
+         <select class="clhMenuControl" id="cmbMaintenance">
+            <optgroup id="grpCVDataMaintenance" label="CV Data Maintenance">
+              <option value="none" selected disabled hidden>Select
+              <option value="CV-ContactMaintenance.html">CV - Contact Maintenance</option>
+              <option value="CV-CurrentFocusMaintenance.html">CV - Current Focus Maintenance</option>
+              <option value="CV-EducationMaintenance.html">CV - Education Maintenance</option>
+              <option value="CV-ExperiencesMaintenance.html">CV - Experience Maintenance</option>
+              <option value="CV-HighlightsMaintenance.html">CV - Highlights Maintenance</option>
+              <option value="CV-InterestsMaintenance.html">CV - Interests Maintenance</option>
+              <option value="CV-Other InformationMaintenance.html">CV - Other Information Maintenance</option>
+              <option value="CV-Personal InformationMaintenance.html">CV - Personal Information Maintenance</option>
+              <option value="CV-PersonalityMaintenance.html">CV - Personality Maintenance</option>
+              <option value="CV-RolessMaintenance.html">CV - Roles Maintenance</option>
+              <option value="CV-SkillsMaintenance.html">CV -  Skills Maintenance</option>
+            </optgroup>  
+            <optgroup id="grpOtherMaintenance" label="Other Maintenance">
+                <option value="ContractTypeWorkTypeMaintenance.html">Contract Type/Work Type Maintenance</option>
+                <option value="CV-CurrentFocusMaintenance.html">CV - Current Focus Maintenance</option>
+                <option value="HoursMaintenance.html">Hours Maintenance</option>
+                <option value="JobStatusMaintenance.html">Job Status Maintenance</option>
+                <option value="WorkFromMaintenance.html">Work From Maintenance</option>
+              </optgroup> 
+         </select>
+       </aside>
+ 
+       <footer>
+        <button id="btnClose">Close</button>
+      </footer>
+    </main>
+
+    <section>
+      <input type="text" id="txtHidden"/>
+       <dialog id="dlgMessage">
+          <div id="divMessage">
+             <img src="" id="imgMessage"/>
+             <p id="pMessage"></p>
+             <button id="btnMsgBox_Ok" hidden></button>
+             <button id="btnMsgBox_Cancel" hidden></button> 
+         </div>
+       </dialog>
+    </section>
+
+
+<script src="./modules/controller.js" type="module" defer></script>
+<script src="./modules/model.js" type="module" defer></script>
+<script src="./modules/view.js" type="module" defer></script>
+<script src="./modules/messageBox.js" type="module" defer></script>
+</body>
+
+</html>

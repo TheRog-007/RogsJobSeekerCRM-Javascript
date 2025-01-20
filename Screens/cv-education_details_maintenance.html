@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_screens.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_cv-education_details_maintenance.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_MsgBox.css"></link>
+</head>
+<body>
+    <main>
+            <!-- uses table: CV_Education -->
+         <section id="secMain-CV-EducationDetailsMaintenance" >    
+            <label for="cmbID" id="lblID">Education ID:</label>    
+            <select id="cmbID" tabindex="1">
+               <option value="none" selected disabled hidden>Select ID
+               <option value="1">MailShot Summary Report</option>
+           </select>
+
+         <button id="btnNew" tabindex="2">New</button> 
+
+         <label for="dteCVED_YearStarted" id="lblCVED_YearStarted">Year Started (if Known):</label>
+         <input type="date" id="dteCVED_YearStarted" tabindex="3"/>
+
+         <label for="dteCVED_YearEnded" id="lblCVED_YearEnded">Year Ended (if Known):</label>
+         <input type="date" id="dteCVED_YearEnded" tabindex="4"/>
+
+         <label for="txtCVED_Where" id="lblCVED_Where">Where It  Occurred (School etc.):</label>
+         <input type="text" maxlength="255" id="txtCVED_Where" tabindex="5"/>
+
+         <label for="txtCVED_What" id="lblCVED_What">What Was  Studied:</label>
+         <input type="text" maxlength="50" id="txtCVED_What" tabindex="6"/>
+         <label for="txtCVED_Grade" id="lblCVED_Grade">What Grade Attained:</label>
+         <input type="text" maxlength="30" id="txtCVED_Grade" tabindex="7"/>
+        
+    </section>
+    <footer>
+        <button id="btnSave" class="clhFormbutton" tabindex="8">Save</button>
+        <button id="btnUndo" class="clhFormbutton" tabindex="9">Undo</button>
+        <button id="btnDelete" class="clhFormbutton" tabindex="10">Delete</button>
+    </footer>
+
+    <section>
+        <input type="text" id="txtHidden"/>
+         <dialog id="dlgMessage">
+            <div id="divMessage">
+               <img src="" id="imgMessage"/>
+               <p id="pMessage"></p>
+               <button id="btnMsgBox_Ok" hidden></button>
+               <button id="btnMsgBox_Cancel" hidden></button> 
+           </div>
+         </dialog>
+    </section>
+
+    <script src="/modules/cveducationdetailsmaintenance/controller.js" type="module" defer></script>
+    <script src="/modules/cveducationdetailsmaintenance/model.js" type="module" defer></script>
+    <script src="/modules/cveducationdetailsmaintenance/view.js" type="module" defer></script>
+    <script src="/modules/messageBox.js" type="module" defer></script> 
+    <script src="/modules/schema.js" type="module" defer></script>
+
+</body>
+</html>

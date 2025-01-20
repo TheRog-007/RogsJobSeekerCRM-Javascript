@@ -1,0 +1,128 @@
+#secMain-jobsappliedforlisting_report {
+    width                            : 500px;
+    
+}
+#lblID {
+    left                             : 10px;
+}
+#cmbID {
+    left                             : 200px;
+    width                            : 80px;
+}
+#btnNew {
+    left                             : 280px;
+    top                              : 15px;
+}
+#btnPrint, #btnPreview {
+    top                              : 280px;
+}
+/* #txtHidden {
+    background-color                      :darkslategrey;
+    color                                 :darkslategrey;
+    position                              : absolute;
+    left                                  : 0px;
+    top                                   : 0px;
+    height                                : 2px; 
+    font-size                             : 2px;    
+} */
+
+#lblJobTitle {
+    left                             : 10px;
+    top                              : 50px;
+}
+#cmbJobTitle {
+    left                             : 200px;
+    top                              : 50px;
+    width                            : 300px;
+}
+#chkAllJobTitle {
+    left                             : 510px;
+    top                              : 64px;
+}
+#lblAllJobTitle {
+    left                             : 540px;
+    top                              : 50px;
+}
+.clhLine {
+    top                              : 100px; 
+}
+#lblDateAppliedFrom {
+    left                             : 10px;
+    top                              : 100px;
+}
+#cmbDateAppliedFrom {
+    left                             : 200px;
+    top                              : 100px;
+}
+#lblDateAppliedTo {
+    left                             : 400px;
+    top                              : 100px;
+}
+#cmbDateAppliedTo {
+    left                             : 530px;
+    top                              : 100px;
+}
+#chkAllDateApplied {
+    left                             : 720px;
+    top                              : 112px;
+}
+#lblAllDateApplied {
+    left                             : 740px;
+    top                              : 100px;
+}
+#lblDateExpiredFrom {
+    left                             : 10px;
+    top                              : 140px;
+}
+#cmbDateExpiredFrom {
+    left                             : 200px;
+    top                              : 140px;
+}
+#lblDateExpiredTo {
+    left                             : 400px;
+    top                              : 140px;
+}
+#cmbDateExpiredTo {
+    left                             : 530px;
+    top                              : 140px;
+}
+#lblAllDateExpired {
+    left                             : 740px;
+    top                              : 140px;
+}
+#chkAllDateExpired {
+    left                             : 720px;
+    top                              : 152px;
+}
+#lblStatus {
+    left                             : 10px;
+    top                              : 180px;
+}
+#cmbStatus {
+    left                             : 200px;
+    top                              : 180px;
+}
+#lblAllStatus {
+    left                             : 420px;
+    top                              : 180px;
+}
+#chkAllStatus {
+    left                             : 394px;
+    top                              : 194px;
+}
+#lblSector {
+    left                             : 10px;
+    top                              : 220px;
+}
+#cmbSector {
+    left                             : 200px;
+    top                              : 220px;
+}
+#lblAllSectors {
+    left                             : 420px;
+    top                              : 220px;
+}
+#chkAllSectors {
+    left                             : 394px;
+    top                              : 234px;
+}

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_screens.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_jobs_applied_for.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_MsgBox.css"></link>
+</head>
+<body>
+    <main>
+        <!-- uses table: Seekers_Jobs -->
+        <section id="secMain-JobsAppliedFor">    
+            <label for="cmbID" id="lblID">Job ID:</label>    
+            <select id="cmbID" tabindex="1">
+               <option value="none" selected disabled hidden>Select ID
+               <option value="1">MailShot Summary Report</option>
+           </select>
+
+         <button id="btnNew" tabindex="2">New</button> 
+
+         <label for="dteJOB_DateApplied" id="lblJOB_DateApplied">Date Applied:</label>
+         <input type="date" id="dteJOB_DateApplied" tabindex="3"/>
+         <label for="dteJOB_DateExpires" id="lblJOB_DateExpires">Date Job Expires (If Known):</label>
+         <input type="date" id="dteJOB_DateExpires" tabindex="4"/>
+          
+         <label for="txtJOB_Company" id="lblJOB_Company">Company:</label>
+         <!-- <select id="cmbJOB_Company"  tabindex="5">
+            <option value="none" selected disabled hidden>Select Company:
+            <option value="1">MailShot Summary Report</option>
+        </select> -->
+        <input type="text" maxlength="50" id="txtJOB_Company" tabindex="5"/>
+        <label for="txtJOB_TownCity" id="lblJOB_TownCity">Town/City:</label>
+         <!-- <select id="cmbJOB_TownCity" tabindex="6">
+            <option value="none" selected disabled hidden>Select Town/City
+            <option value="1">MailShot Summary Report</option>
+        </select> -->
+        <input type="text" maxlength="30" id="txtJOB_TownCity" tabindex="6"/>
+
+        <div id="divLine" class="clhLine"></div>
+
+        <label for="txtJOB_Salary" id="lblJOB_Salary">Salary Per Year e.g. £10K:</label>
+        <!-- <select id="cmbJOB_Salary"  tabindex="7">
+           <option value="none" selected disabled hidden>Select Salary
+           <option value="1">MailShot Summary Report</option>
+       </select> -->
+       <input type="text" maxlength="10" id="txtJOB_Salary" tabindex="7"/>
+
+       <label for="txtJOB_Sector" id="lblJOB_Sector">What Job Sector?:</label>
+       <!-- <select id="cmbJOB_Sector"  tabindex="8">
+          <option value="none" selected disabled hidden>Select Sector
+          <option value="1">MailShot Summary Report</option>
+      </select> -->
+      <input type="text" maxlength="50" id="txtJOB_Sector" tabindex="8"/>
+
+      <label for="txtJOB_Title" id="lblJOB_Title">Job Title:</label>
+      <input type="text" maxlength="50" id="txtJOB_Title" tabindex="9"/>
+
+      <label for="txtJOB_Type" id="lblJOB_Type">Contract/Permanent etc.:</label>
+      <!-- <select id="cmbJOB_Type"  tabindex="10">
+         <option value="none" selected disabled hidden>Select Contract Type
+         <option value="1">MailShot Summary Report</option>
+      </select> -->
+      <input type="text" maxlength="30" id="txtJOB_Type" tabindex="10"/>
+      
+     <label for="txtJOB_Hours" id="lblJOB_Hours">Full Time/Part Time:</label>
+     <!-- <select id="cmbJOB_Hours"  tabindex="11">
+        <option value="none" selected disabled hidden>Select Hours
+        <option value="1">MailShot Summary Report</option>
+    </select> -->
+    <input type="text" maxlength="30" id="txtJOB_Hours" tabindex="11"/>
+
+    <label for="txtJOB_Where" id="lblJOB_Where">On-Site/Hybrid etc.:</label>
+    <!-- <select id="cmbJOB_Where"  tabindex="12">
+       <option value="none" selected disabled hidden>Select Where
+       <option value="1">MailShot Summary Report</option>
+   </select> -->
+   <input type="text" maxlength="255" id="txtJOB_Where" tabindex="12"/>
+
+   <label for="txtJOB_Details" id="lblJOB_Details">Details About Position - Either Type It In Or Copy/Paste From Website Job Advertised:</label>
+   <input type="textarea" maxlength="4096" id="txtJOB_Details" tabindex="13"/>
+        
+   <label for="txtJOB_PhoneNumber" id="lblJOB_PhoneNumber">Phone Number (If Known):</label>
+   <input type="text" maxlength="20" id="txtJOB_PhoneNumber" tabindex="14"/>
+
+   <label for="txtJOB_Status" id="lblJOB_Status">Status: Applied, Response etc.:</label>
+   <!-- <select id="cmbJOB_Status"  tabindex="15">
+      <option value="none" selected disabled hidden>Select Status
+      <option value="1">MailShot Summary Report</option>
+   </select> -->
+   <input type="text" maxlength="20" id="txtJOB_Status" tabindex="15"/>
+
+   <label for="txtJOB_ContactName" id="lblJOB_ContactName">Contact Name (If Known):</label>
+   <input type="text" maxlength="30" id="txtJOB_ContactName" tabindex="16"/>
+
+   <label for="chkJOB_Direct" id="lblJOB_Direct">Advertised By Company</label>
+   <input type="checkbox" id="chkJOB_Direct" tabindex="17"/>
+
+    </section>
+    <footer>
+        <button id="btnSave" class="clhFormbutton" tabindex="18">Save</button>
+        <button id="btnUndo" class="clhFormbutton" tabindex="19">Undo</button>
+        <button id="btnDelete" class="clhFormbutton" tabindex="20">Delete</button>
+    </footer>
+
+    <section>
+        <input type="text" id="txtHidden"/>
+         <dialog id="dlgMessage">
+            <div id="divMessage">
+               <img src="" id="imgMessage"/>
+               <p id="pMessage"></p>
+               <button id="btnMsgBox_Ok" hidden></button>
+               <button id="btnMsgBox_Cancel" hidden></button> 
+           </div>
+         </dialog>
+    </section>
+
+    <script src="/modules/jobsappliedfor/controller.js" type="module" defer></script>
+    <script src="/modules/jobsappliedfor/model.js" type="module" defer></script>
+    <script src="/modules/jobsappliedfor/view.js" type="module" defer></script>
+    <script src="/modules/messageBox.js" type="module" defer></script> 
+    <script src="/modules/schema.js" type="module" defer></script>
+
+</body>
+</html>

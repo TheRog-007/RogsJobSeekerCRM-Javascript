@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_screens.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_cv-interests_maintenance.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_MsgBox.css"></link>
+</head>
+<body>
+    <main>
+            <!-- uses table: CV_Interests -->
+        <section id="secMain-CV-InterestsMaintenance">    
+            <label for="cmbID" id="lblID">Experience ID:</label>    
+            <select id="cmbID" tabindex="1">
+               <option value="none" selected disabled hidden>Select ID
+               <option value="1">MailShot Summary Report</option>
+           </select>
+
+         <button id="btnNew" tabindex="2">New</button> 
+
+    
+       <label for="txtCVI_Name" id="lblCVI_Name">Name Of Interest:</label>
+       <input type="text" maxlength="50" id="txtCVI_Name" tabindex="3"/>
+
+       <label for="txtCVI_Details" id="lblCVI_Details">Details Of The Interest:</label>
+       <input type="textarea" maxlength="4096" id="txtCVI_Details" tabindex="4"/>
+       
+    </section>
+    <footer>
+        <button id="btnSave" class="clhFormbutton" tabindex="5">Save</button>
+        <button id="btnUndo" class="clhFormbutton" tabindex="6">Undo</button>
+        <button id="btnDelete" class="clhFormbutton" tabindex="7">Delete</button>
+    </footer>
+
+    <section>
+        <input type="text" id="txtHidden"/>
+         <dialog id="dlgMessage">
+            <div id="divMessage">
+               <img src="" id="imgMessage"/>
+               <p id="pMessage"></p>
+               <button id="btnMsgBox_Ok" hidden></button>
+               <button id="btnMsgBox_Cancel" hidden></button> 
+           </div>
+         </dialog>
+    </section>
+
+    <script src="/modules/cvinterestsmaintenance/controller.js" type="module" defer></script>
+    <script src="/modules/cvinterestsmaintenance/model.js" type="module" defer></script>
+    <script src="/modules/cvinterestsmaintenance/view.js" type="module" defer></script>
+    <script src="/modules/messageBox.js" type="module" defer></script> 
+    <script src="/modules/schema.js" type="module" defer></script>
+
+</body>
+</html>

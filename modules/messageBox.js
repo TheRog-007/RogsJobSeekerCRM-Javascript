@@ -77,6 +77,7 @@ export const objButtons = {
   close: 4,
   no: 5,
   cancel: 6,
+  none: -1,
 };
 
 export const objIcons = {
@@ -111,6 +112,7 @@ export const funcMessageBox = (
   strFocusTo = ""       set focus to a control AFTER txtHidden gets focus
                         REQUIRED 
   */
+  let elTemp;
 
   switch (intIcon) {
     case 1:
@@ -151,7 +153,11 @@ export const funcMessageBox = (
       break;
   }
 
+  //set caption
   pMessage.innerText = strText;
+  //hide cancel button
+  btnMsgBox_Cancel.hidden = true;
+
   //show buttons and set handlers
   if (intButton1 != -1) {
     btnMsgBox_Ok.hidden = false;
@@ -162,7 +168,8 @@ export const funcMessageBox = (
 
     //if no button 2 centre
     if (intButton2 === -1) {
-      btnMsgBox_Ok.style.setProperty("--varButtonLeft_Ok", "140px");
+      // btnMsgBox_Ok.style.setProperty("--varButtonLeft_Ok", "140px");
+      btnMsgBox_Ok.style.left = "150px";
     }
     //set click handler
     btnMsgBox_Ok.addEventListener("click", funcMessageBoxClick_Ok);
@@ -182,6 +189,9 @@ export const funcMessageBox = (
   strFocus = strFocusTo;
   //set context for txtHidden handler to act upon
   strContext = strMsgContext;
+  //"disable" page
+  elTemp = document.getElementsByTagName("html");
+  elTemp[0].style.opacity = "0.3";
   //show message
   dlgMessage.showModal();
 };

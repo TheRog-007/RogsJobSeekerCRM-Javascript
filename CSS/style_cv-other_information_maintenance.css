@@ -1,0 +1,47 @@
+#secMain-cv-otherinformationmaintenance {
+    width                            : 500px;
+    
+}
+#lblID {
+    left                             : 10px;
+}
+#cmbID {
+    left                             : 220px;
+    width                            : 80px;
+}
+#btnNew {
+    left                             : 310px;
+    top                              : 15px;
+}
+#lblCVO_Name {
+    left                             : 10px;
+    top                              : 50px;
+}
+#txtCVO_Name {
+    left                             : 220px;
+    top                              : 60px; 
+}
+#lblCVO_WebLink {
+    left                             : 10px;
+    top                              : 90px;
+}
+#txtCVO_WebLink {
+    left                             : 220px;
+    top                              : 100px;
+    width                            : 97ch;
+    height                           : 100px
+
+}
+#lblCVO_Details {
+    left                             : 10px;
+    top                              : 190px;
+}
+#txtCVO_Details {
+    left                             : 10px;
+    top                              : 240px;
+    width                            : 124ch;
+    height                           : 200px;
+}
+#btnSave, #btnUndo, #btnDelete {
+    top                              : 460px;
+}

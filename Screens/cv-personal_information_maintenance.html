@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_screens.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_cv-personal_information_maintenance.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_MsgBox.css"></link>
+</head>
+<body>
+    <main>
+        <!-- uses table: CV_PersonalInfo -->
+        <section id="secMain-CV-PersonalInformationMaintenance">    
+            <label for="cmbID" id="lblID">ID:</label>    
+            <select id="cmbID" tabindex="1">
+               <option value="none" selected disabled hidden>Select ID
+               <option value="1">MailShot Summary Report</option>
+           </select>
+
+         <button id="btnNew" tabindex="2">New</button> 
+
+         <label for="txtCVP_Name" id="lblCVP_Name">Your Name:</label>
+         <input type="text" maxlength="255" id="txtCVP_Name" tabindex="3"/>
+         
+         <label for="txtCVP_Nationality" id="lblCVP_Nationality">Nationality:</label>
+         <input type="text" maxlength="30" id="txtCVP_Nationality" tabindex="4"/>
+
+         <label for="dteCVP_DOB" id="lblCVP_DOB">Date Of Birth:</label>
+         <input type="date" id="dteCVP_DOB" tabindex="5"/>
+
+         <label for="txtCVP_SalaryRange" id="lblCVP_SalaryRange">Salary Range e.g. £20K-£25K:</label>
+         <input type="text" maxlength="10" id="txtCVP_SalaryRange" tabindex="6"/>
+
+         <label for="txtCVP_Image" id="lblCVP_Image">Photo Of You Location:</label>
+         <input type="text" maxlength="4096" id="txtCVP_Image" tabindex="7"/>
+        
+         <img id="imgImage" src="/images/search.png"/> 
+    </section>
+    <footer>
+        <button id="btnSave" class="clhFormbutton" tabindex="8">Save</button>
+        <button id="btnUndo" class="clhFormbutton" tabindex="9">Undo</button>
+        <button id="btnDelete" class="clhFormbutton" tabindex="10">Delete</button>
+    </footer>
+
+    <section>
+        <input type="text" id="txtHidden"/>
+         <dialog id="dlgMessage">
+            <div id="divMessage">
+               <img src="" id="imgMessage"/>
+               <p id="pMessage"></p>
+               <button id="btnMsgBox_Ok" hidden></button>
+               <button id="btnMsgBox_Cancel" hidden></button> 
+           </div>
+         </dialog>
+    </section>
+
+    <script src="/modules/cvpersonalinformationmaintenance/controller.js" type="module" defer></script>
+    <script src="/modules/cvpersonalinformationmaintenance/model.js" type="module" defer></script>
+    <script src="/modules/cvpersonalinformationmaintenance/view.js" type="module" defer></script>
+    <script src="/modules/messageBox.js" type="module" defer></script> 
+    <script src="/modules/schema.js" type="module" defer></script>
+
+</body>
+</html>

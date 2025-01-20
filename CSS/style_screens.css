@@ -1,0 +1,132 @@
+/*
+ Created 09/01/2025 By Roger Williams
+
+ CSS for screens e.g. jobs_applied_for.html 
+
+*/
+
+main, html {
+    background-color                    : darkslategrey;
+    color                               : beige;
+    font-size                           : 16px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+/* formatting for all buttons */
+button {
+    /* margin-right                        : 40px; */
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size                           : 16px;
+    font-weight                         : 600;
+    height                              : 40px;
+    width                               : 80px;
+    border-radius                       : 5px;
+    border-color                        : none;
+    background-color                    : dimgrey;
+    color                               : white;
+    position                            : absolute;
+}
+button:hover {
+  background-color                      : gray;
+} 
+/* formatting for all comboboxes */
+select {
+    margin-top                          : 10px;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size                           : 14px;
+    font-weight                         : 16px;
+    height                              : 34px;
+    border-radius                       : 5px;
+    border-color                        : none;
+    background-color                    :rgb(77, 22, 22);
+    color                               :white;
+    position                            : absolute;    
+}
+select:hover {
+  background-color                      :rgb(109, 32, 32);
+} 
+select option {
+  background-color                      :rgb(109, 32, 32);
+}
+input {
+    background-color                    :darkslategrey;
+    height                              : 25px;
+    color                               :rgb(253, 253, 5);
+    font-size                           : 14px;
+    position                            : absolute;    
+}
+label {
+    background-color                    : darkslategrey;
+    margin-top                          : 20px;
+    margin-right                        : 10px;
+    position                            : absolute;    
+}
+div {
+    position                            : absolute; 
+}
+ul {
+      list-style                       : none;
+      /* position                         : absolute;  */
+}
+
+.clhFormbutton {
+    background-color                    :rgb(2, 85, 2);
+    border-color                        :rgb(2, 85, 2); 
+}
+.clhFormbutton:hover {
+    background-color:rgb(3, 100, 3);
+}
+.clhCheckBox {
+  background-color                      :darkslategrey;  
+}
+.clhCheckBox:hover {
+  box-shadow                            : 0px 0px 1px 1px white;
+
+}
+/*
+  every form that edits/prints data has some of these buttons
+*/
+#btnSave, #btnPrint {
+  margin-top                            : 10px;
+  left                                  : 10px;
+}
+#btnUndo, #btnPreview {
+  margin-top                            : 10px;
+  left                                  : 100px;
+}
+#btnDelete {
+  margin-top                            : 10px;
+  left                                  : 200px;
+}
+#btnNew {
+  background-color                      :darkgreen;
+  height                                : 30px;
+  width                                 : 50px;
+  font-size                             : 13px;
+}
+#btnNew:hover {
+  background-color:rgb(8, 131, 8);
+}
+.clhLine {
+  background-color                      : black;
+  width                                 : 978px;
+  height                                : 2px;
+}
+#txtHidden {
+  background-color                      :darkslategrey;
+  color                                 :darkslategrey;
+  position                              : absolute;
+  left                                  : 0px;
+  top                                   : 0px;
+  height                                : 2px; 
+  font-size                             : 2px;
+}
+
+/*
+  CSS specific to particular screens
+
+  The main "form" with the data controls is always contained in a section
+  each section has a unique name which contains teh screen name
+  e.g.: secMain-ContractTypes
+
+*/

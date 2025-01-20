@@ -52,7 +52,7 @@ const constButtonFontSize = "10px";
 //Note: frame width is always 100px smaller than tab control
 //      frame height is always 60px smaller than tab control
 
-const constTab1HTML = "./instructions.html";
+const constTab1HTML = "/Screens/instructions.html";
 
 //holds each tab button and frame name
 const objButtonandFrame = {
@@ -249,8 +249,8 @@ const funcResetTabColour = () => {
 
 //create initial tab
 const funcCreateFirstTab = function (
-  strTitle = "Tab",
-  strPage = "./index.html"
+  strTitle = "Instructions",
+  strPage = constTab1HTML
 ) {
   //create button
   let ndeTemp = document.createElement("span");
@@ -278,8 +278,8 @@ const funcCreateFirstTab = function (
 };
 
 export const funcAddTab = (
-  strTitle = "Tab",
-  strPage = "./instructions.html"
+  strTitle = "Instructions",
+  strPage = constTab1HTML
 ) => {
   /*
     Creates a new tab, this consists of:
@@ -363,7 +363,7 @@ export function funcInit() {
     */
   funcInitCSS();
   //create first tab
-  funcCreateFirstTab("Tab1", constTab1HTML);
+  funcCreateFirstTab("Instructions", constTab1HTML);
 }
 
 //************event handlers***********

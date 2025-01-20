@@ -1,0 +1,35 @@
+#secMain-ContractTypesMaintenance {
+    width                                  : 500px;
+}
+
+#lblID {
+    left                                   : 10px;
+}
+#cmbID {
+    left                                   : 260px;
+    width                                  : 80px;
+}
+
+#btnNew2 {
+    left                                   : 350px;
+    top                                    : 15px;
+    background-color                       :darkgreen;
+    height                                 : 30px;
+    width                                  : 50px;
+    font-size                              : 13px;    
+}
+
+#lblTYP_Type { 
+    top                                    : 50px;
+    left                                   : 10px;
+}
+#txtTYP_Type {
+    left                                   : 260px;
+    top                                    : 60px;
+    width                                  : 30ch; 
+}
+#btnSave, #btnUndo, #btnDelete {
+    top                                    : 120px;
+}
+
+

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_screens.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_cv-contact_details_maintenance.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_MsgBox.css"></link>
+</head>
+<body>
+    <main>
+        <!-- uses table: CV_Contact -->        
+         <section id="secMain-CV-ContactDetailsMaintenance" >    
+            <label for="cmbID" id="lblID">Contact ID:</label>    
+            <select id="cmbID" required tabindex="1">
+               <option value="none" selected disabled hidden>Select ID
+               <option value="1">MailShot Summary Report</option>
+           </select>
+
+         <button id="btnNew" tabindex="2">New</button>
+	
+         <label for="txtCVC_Address1" id="lblCVC_Address1" required>Address Line 1:</label>
+         <input type="text" id="txtCVC_Address1" maxlength="255" tabindex="3"/>
+         <label for="txtCVC_Address2" id="lblCVC_Address2">Address Line 2:</label>
+         <input type="text" maxlength="255" id="txtCVC_Address2" tabindex="4"/>        
+         <label for="txtCVC_Address3" id="lblCVC_Address3">Address Line 3:</label>
+         <input type="text" maxlength="255"id="txtCVC_Address3" tabindex="5"/>         
+
+         <label for="txtCVC_TownCity" id="lblCVC_TownCity">Town/City:</label>
+         <input type="text" maxlength="30"id="txtCVC_TownCity" tabindex="6"/>
+         <label for="txtCVC_Postcode" id="lblCVC_Postcode">Postcode:</label>
+         <input type="text" maxlength="15"id="txtCVC_Postcode" tabindex="7"/>
+
+        <label for="txtCVC_Landline" id="lblCVC_Landline">Land Line Number:</label>
+        <input type="text" id="txtCVC_Landline" maxlength="15" tabindex="8"/> 
+  
+        <label for="txtCVC_CellPhone" id="lblCVC_CellPhone">Cell Phone Number:</label>
+        <input type="text" id="txtCVC_CellPhone" maxlength="15" tabindex="9"/>
+ 
+        <label for="txtCVC_Email" id="lblCVC_Email" required>E-mail Address:</label>
+        <input type="text" id="txtCVC_Email" maxlength="255" tabindex="10"/>
+
+        <button id="btnSave" class="clhFormbutton" tabindex="11">Save</button>
+        <button id="btnUndo" class="clhFormbutton" tabindex="12">Undo</button>
+        <button id="btnDelete" class="clhFormbutton" tabindex="13">Delete</button>
+
+    </section>
+
+    <section>
+        <input type="text" id="txtHidden"/>
+         <dialog id="dlgMessage">
+            <div id="divMessage">
+               <img src="" id="imgMessage"/>
+               <p id="pMessage"></p>
+               <button id="btnMsgBox_Ok" hidden></button>
+               <button id="btnMsgBox_Cancel" hidden></button> 
+           </div>
+         </dialog>
+    </section>
+
+    <script src="/modules/cvcontactdetailsmaintenance/controller.js" type="module" defer></script>
+    <script src="/modules/cvcontactdetailsmaintenance/model.js" type="module" defer></script>
+    <script src="/modules/cvcontactdetailsmaintenance/view.js" type="module" defer></script>
+    <script src="/modules/messageBox.js" type="module" defer></script> 
+    <script src="/modules/schema.js" type="module" defer></script>
+
+</body>
+</html>

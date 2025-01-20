@@ -37,9 +37,11 @@
     width: var(--varButtonWidth_Ok);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; 
     font-size: 14px;
-    left: var(--varButtonLeft_Ok);
+    /* left: var(--varButtonLeft_Ok); */
     background-color: black;
-    font-weight: 800;;
+    font-weight: 800;
+    position: absolute;
+    margin-left: 4x;
 }
 #btnMsgBox_Ok:hover {
     background-color:darkslategray;  

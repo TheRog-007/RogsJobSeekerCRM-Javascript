@@ -3,13 +3,13 @@
     --varActiveTabButtonColour             : #e69434;
     --varInActiveTabButtonColour           : #deb687;
     /* --varTabButtonContainerBorder-Radius   : 2%; */
-    --varTabWidth                          : 100px;
-    --varTabHeight                         : 100px;
+    /* --varTabWidth                          : 100px;
+    --varTabHeight                         : 100px; */
     --varTabButtonHeight                   : 20px;
     --varTabButtonTop                      : 0px;
     /* --varTabButtonBorder-Radius            : 12%; */
-    --varTabFrameWidth                     : 150px;
-    --varTabFrameHeight                    : 100px;
+    /* --varTabFrameWidth                     : 150px;
+    --varTabFrameHeight                    : 100px; */
     --varTabFrameBorder-Radius             : 0.5%;
 
 }    
@@ -35,14 +35,13 @@
     /* border: solid;
     border-radius:     var(--varTabButtonContainerBorder-Radius);
     border-color:     var(--varInActiveTabButtonColour); */
-    height:20px;
+    height:20px;   
 }
 .btnTab {
     background-color:  var(--varInActiveTabButtonColour);
     position:          relative;
-    padding-right:     5px;
+    padding: 2px 5px;
     border:            none;
-    padding-top:       5px;           
     /* border-radius:     var(--varTabButtonBorder-Radius); */
     float:left;
     font-family:       sans-serif;

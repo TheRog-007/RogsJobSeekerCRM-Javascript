@@ -1,13 +1,12 @@
 "use strict";
 
-import * as modSchema from "./schema.js";
-import * as modMessageBox from "./messageBox.js";
-//exports
+import * as modSchema from "../schema.js";
+import * as modMessageBox from "../messageBox.js";
+import * as modTab from "../tab.js";
 
 //local
 
 //db var
-let dbJobSeekerCRM;
 const txtHidden = document.getElementById("txtHidden");
 const btnClose = document.getElementById("btnClose");
 const cmbMaintenance = document.getElementById("cmbMaintenance");
@@ -26,6 +25,10 @@ const cmbReports = document.getElementById("cmbReports");
   can be checked to see the result
 */
 const funcHiddenTextBoxHandler = (event) => {
+  let elTemp;
+  //"restore" page
+  elTemp = document.getElementsByTagName("html");
+  elTemp[0].style.opacity = "1";
   //show which button clicked true = ok false = cancel
   if (modMessageBox.blnOk) {
     if (modMessageBox.strContext === "close") {
@@ -34,7 +37,29 @@ const funcHiddenTextBoxHandler = (event) => {
   }
 };
 
+const funcCreateTab = (strPage) => {
+  /*
+    Creates tab for menu item to open
+
+    To create title strips strpage of .html then replaces
+    _ with space
+
+    
+  */
+
+  let strChoice = strPage;
+  //strip /screens/
+  strChoice = strChoice.substring(9, strChoice.length);
+  //strip .html
+  strChoice = strChoice.substring(0, strChoice.indexOf("."));
+  //replace _ with space Note: .replace only replaces FIRST occurrance
+  //hence using split/join to replace ALL
+  strChoice = strChoice.split("_").join(" ");
+  modTab.funcAddTab(strChoice, strPage);
+};
+
 const funcCloseClick = (event) => {
+  btnClose.preventDefault();
   modMessageBox.funcMessageBox(
     "Close Application?",
     modMessageBox.objIcons.question,
@@ -54,7 +79,7 @@ const funccmbMaintenanceClick = (event) => {
 
   if (event.target.value != "none") {
     //show form
-    alert(event.target.value);
+    funcCreateTab(event.target.value);
     cmbMaintenance.value = "none";
   }
 };
@@ -66,7 +91,7 @@ const funccmbMainScreensClick = (event) => {
 
   if (event.target.value != "none") {
     //show form
-    alert(event.target.value);
+    funcCreateTab(event.target.value);
     cmbMainScreens.value = "none";
   }
 };
@@ -78,36 +103,9 @@ const funccmbReportsClick = (event) => {
 
   if (event.target.value != "none") {
     //show form
-    alert(event.target.value);
+    funcCreateTab(event.target.value);
     cmbReports.value = "none";
   }
-};
-
-const funcCreateFromSchema = (event) => {
-  // const objectStore = db.createObjectStore("name", { keyPath: "myKey" });
-  // let index = books.createIndex('price_idx', 'price');
-  let fldCreate;
-
-  dbJobSeekerCRM = event.target.result;
-
-  modSchema.aryTables.forEach((objTable) => {
-    //create table
-
-    //create primary key
-    fldCreate = dbJobSeekerCRM.createObjectStore(objTable.tblName, {
-      keypath: objTable.aryFields[0].fieldName,
-      autoIncrement: true,
-    });
-    //create rest of fields as indexes
-    objTable.aryFields.forEach((objField) => {
-      //dont duplicate the primary key!
-      if (objField.fieldName != objTable.aryFields[0].fieldName) {
-        fldCreate.createIndex("idx" + objField.fieldName, objField.fieldName, {
-          unique: false,
-        });
-      }
-    });
-  });
 };
 
 // let transaction = db.transaction("books", "readwrite"); // (1)
@@ -186,40 +184,16 @@ const funcCreateFromSchema = (event) => {
 //   btnLogin.addEventListener("click", funcbtnLoginClick);
 // }
 
-export function funcOpenDatabase() {
-  let dbopenRequest = indexedDB.open("RogsJobSeekerCRM", 1);
-
-  dbopenRequest.onupgradeneeded = (event) => {
-    //if no database create it from the schema file
-    funcCreateFromSchema(event);
-  };
-
-  dbopenRequest.onerror = () => {
-    alert(`Error Accessing Database ${dbopenRequest.error}`);
-  };
-
-  dbopenRequest.onsuccess = () => {
-    dbJobSeekerCRM = dbopenRequest.result;
-    //work with database
-
-    dbJobSeekerCRM.onversionchange = () => {
-      dbJobSeekerCRM.close();
-      alert("Database Version Is Outdated Please Reload Page");
-    };
-  };
-}
-
-export function funcIndexedDBSupport() {
-  return "indexedDB" in window;
-}
-
 export function funcCreateMessageBoxResultHandler() {
   txtHidden.addEventListener("focus", funcHiddenTextBoxHandler);
 }
 
+function funcDeleteDB_Click() {
+  modSchema.funcDeleteDatabase();
+}
 export function funcInitHandlers() {
   /*
-   Creates handlers for the detail "treeviews" and print/preview buttons
+   Creates handlers for the comboboxes and close buttons
    
   */
 
@@ -227,4 +201,9 @@ export function funcInitHandlers() {
   cmbMainScreens.addEventListener("click", funccmbMainScreensClick);
   cmbReports.addEventListener("click", funccmbReportsClick);
   btnClose.addEventListener("click", funcCloseClick);
+
+  //temp handlers
+  document
+    .getElementById("btnDeleteDB")
+    .addEventListener("click", funcDeleteDB_Click);
 }

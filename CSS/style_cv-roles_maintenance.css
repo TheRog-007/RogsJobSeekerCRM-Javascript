@@ -1,0 +1,104 @@
+#secMain-cv-rolesmaintenance {
+    width                            : 500px;
+    
+}
+#lblID {
+    left                             : 10px;
+}
+#cmbID {
+    left                             : 200px;
+    width                            : 80px;
+}
+#btnNew {
+    left                             : 290px;
+    top                              : 15px;
+}
+#btnSave, #btnUndo, #btnDelete {
+    top                              : 660px;
+}
+
+#lblCVR_Name {
+    left                             : 10px;
+    top                              : 50px;
+}
+#txtCVR_Name {
+    left                             : 200px;
+    top                              : 60px;
+    width                            : 50ch;
+}
+.clhLine {
+    top                              : 100px; 
+}
+#lblResponsibilities {
+    left                             : 10px;
+    top                              : 90px;
+}
+#divRoles {
+    position                         : absolute;
+    left                             : 10px;
+    top                              : 140px; 
+    border                           : solid;
+    border-color                     :green;
+    width                            : 960px;
+    height                           : 200px;
+    display                          : grid;
+    grid-template-areas              : "name details";
+    grid-template                    : 400px 400px / 300px 400px ; 
+    scroll-behavior                  : auto;
+}
+#ulName {
+    grid-area                        : name;
+    /* top                              : 2px;
+    left                             : 2px;
+    width                            : 200px; */
+}
+#ulDetails {
+    grid-area                        : details;
+    /* top                              : 2px;
+    left                             : 220px;  */
+}
+
+#lblCVRR_Name {
+    left                             : 10px;
+    top                              : 345px;
+}
+#txtCVRR_Name {
+    left                             : 200px;
+    top                              : 355px;
+    width                            : 50ch;
+}
+#lblCVRR_Details {
+    left                             : 10px;
+    top                              : 380px;
+}
+#txtCVRR_Details {
+    left                             : 10px;
+    top                              : 430px;
+    width                            : 124ch;
+    height                           : 140px;
+}
+#divResponsibilities {
+    border                           : solid;
+    border-color                     : white;
+    border-radius                    : 2px;
+    top                              : 590px;
+    height                           : 40px;
+    width                            : 830px;
+    padding                          : 10px;
+}
+#btnNewResponsibility {
+    left                             : 10px;
+    width                            : 220px;
+}
+#btnSaveResponsibility {
+    left                             : 240px;
+    width                            : 230px;   
+}
+#btnDeleteResponsibility {
+    left                             : 480px;
+    width                            : 240px;
+}
+#btnClear {
+    left                             : 730px;
+    width                            : 110px;
+}

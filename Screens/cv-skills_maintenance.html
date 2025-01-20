@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_screens.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_cv-skills_maintenance.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_MsgBox.css"></link>
+</head>
+<body>
+    <main>
+        <!-- uses table: CV_Skills -->
+        <section id="secMain-CV-SkillsMaintenance">    
+            <label for="cmbID" id="lblID">Skill ID:</label>    
+            <select id="cmbID" tabindex="1">
+               <option value="none" selected disabled hidden>Select ID
+               <option value="1">MailShot Summary Report</option>
+           </select>
+
+         <button id="btnNew" tabindex="2">New</button> 
+
+         <label for="txtCVS_Name" id="lblCVS_Name">Skill Name:</label>
+         <!-- <select id="cmbCVS_Name"  tabindex="3">
+            <option value="none" selected disabled hidden>Select Skill
+            <option value="1">MailShot Summary Report</option>
+        </select> -->
+        <input type="text" maxlength="50" id="txtCVS_Name" tabindex="3"/>
+        <label for="txtCVS_Details" id="lblCVS_Details">Details:</label>
+        <input type="textarea" maxlength="4096" id="txtCVS_Details" tabindex="4"/>
+  
+    </section>
+    <footer>
+        <button id="btnSave" class="clhFormbutton" tabindex="5">Save</button>
+        <button id="btnUndo" class="clhFormbutton" tabindex="6">Undo</button>
+        <button id="btnDelete" class="clhFormbutton" tabindex="7">Delete</button>
+    </footer>
+
+    <section>
+        <input type="text" id="txtHidden"/>
+         <dialog id="dlgMessage">
+            <div id="divMessage">
+               <img src="" id="imgMessage"/>
+               <p id="pMessage"></p>
+               <button id="btnMsgBox_Ok" hidden></button>
+               <button id="btnMsgBox_Cancel" hidden></button> 
+           </div>
+         </dialog>
+    </section>
+
+    <script src="/modules/cvskillsmaintenance/controller.js" type="module" defer></script>
+    <script src="/modules/cvskillsmaintenance/model.js" type="module" defer></script>
+    <script src="/modules/cvskillsmaintenance/view.js" type="module" defer></script>
+    <script src="/modules/messageBox.js" type="module" defer></script> 
+    <script src="/modules/schema.js" type="module" defer></script>
+
+</body>
+</html>

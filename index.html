@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rog's JobSeeker CRM - JavaScript Edition</title>
-    <link type="text/css" link rel="stylesheet" href="./style.css"></link>
-    <link type="text/css" link rel="stylesheet" href="./style_MsgBox.css"></link>
-    <link type="text/css" link rel="stylesheet" href="./style_tab.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_MsgBox.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_tab.css"></link>
 </head>
 <body>
     <main>
@@ -28,46 +28,46 @@
          Main Screens<br>
          <select class="clhMenuControl" id="cmbMainScreens">
               <option value="none" selected disabled hidden>Select
-              <option value="CV-TemplateCreator.html">CV - Template Creator</option>
-              <option value="JobsAppliedFor.html">Jobs Applied For</option>
-              <option value="MailShotCreator.html">MailShot Creator</option>
+              <option value="/Screens/CV-Template_Maintenance.html">CV - Template Maintenance</option>
+              <option value="/Screens/Jobs_Applied_For.html">Jobs Applied For</option>
+              <option value="/Screens/MailShots_Creator.html">MailShot Creator</option>
          </select>
          <br>
          Reports<br>
          <select class="clhMenuControl" id="cmbReports">
               <option value="none" selected disabled hidden>Select
-              <option value="JobListingReport.html">Job Listing Report</option>
-              <option value="MailShot Summary Report.html">MailShot Summary Report</option>
+              <option value="/Screens/Jobs_Applied_For_Listing_Report.html">Job Listing Report</option>
+              <option value="/Screens/MailShot_Listing_Report.html">MailShot Listing Report</option>
          </select>
          <br>
          Data Maintenance<br>
          <select class="clhMenuControl" id="cmbMaintenance">
             <optgroup id="grpCVDataMaintenance" label="CV Data Maintenance">
               <option value="none" selected disabled hidden>Select
-              <option value="CV-ContactMaintenance.html">CV - Contact Maintenance</option>
-              <option value="CV-CurrentFocusMaintenance.html">CV - Current Focus Maintenance</option>
-              <option value="CV-EducationMaintenance.html">CV - Education Maintenance</option>
-              <option value="CV-ExperiencesMaintenance.html">CV - Experience Maintenance</option>
-              <option value="CV-HighlightsMaintenance.html">CV - Highlights Maintenance</option>
-              <option value="CV-InterestsMaintenance.html">CV - Interests Maintenance</option>
-              <option value="CV-Other InformationMaintenance.html">CV - Other Information Maintenance</option>
-              <option value="CV-Personal InformationMaintenance.html">CV - Personal Information Maintenance</option>
-              <option value="CV-PersonalityMaintenance.html">CV - Personality Maintenance</option>
-              <option value="CV-RolessMaintenance.html">CV - Roles Maintenance</option>
-              <option value="CV-SkillsMaintenance.html">CV -  Skills Maintenance</option>
+              <option value="/Screens/CV-Contact_Details_Maintenance.html">CV - Contact Details Maintenance</option>
+              <option value="/Screens/CV-Current_Focus_Maintenance.html">CV - Current Focus Maintenance</option>
+              <option value="/Screens/CV-Education_Details_Maintenance.html">CV - Education Maintenance</option>
+              <option value="/Screens/CV-Experience_Maintenance.html">CV - Experience Maintenance</option>
+              <option value="/Screens/CV-Highlights_Maintenance.html">CV - Highlights Maintenance</option>
+              <option value="/Screens/CV-Interests_Maintenance.html">CV - Interests Maintenance</option>
+              <option value="/Screens/CV-Other_Information_Maintenance.html">CV - Other Information Maintenance</option>
+              <option value="/Screens/CV-Personal_Information_Maintenance.html">CV - Personal Information Maintenance</option>
+              <option value="/Screens/CV-Personality_Maintenance.html">CV - Personality Maintenance</option>
+              <option value="/Screens/CV-Roles_Maintenance.html">CV - Roles Maintenance</option>
+              <option value="/Screens/CV-Skills_Maintenance.html">CV -  Skills Maintenance</option>
             </optgroup>  
             <optgroup id="grpOtherMaintenance" label="Other Maintenance">
-                <option value="ContractTypeWorkTypeMaintenance.html">Contract Type/Work Type Maintenance</option>
-                <option value="CV-CurrentFocusMaintenance.html">CV - Current Focus Maintenance</option>
-                <option value="HoursMaintenance.html">Hours Maintenance</option>
-                <option value="JobStatusMaintenance.html">Job Status Maintenance</option>
-                <option value="WorkFromMaintenance.html">Work From Maintenance</option>
+                <option value="/Screens/Contract_Types_Maintenance.html">Contract Types Maintenance</option>
+                <option value="/Screens/Hours_Maintenance.html">Hours Maintenance</option>
+                <option value="/Screens/Job_Status_Maintenance.html">Job Status Maintenance</option>
+                <option value="/Screens/Work_From_Maintenance.html">Work From Maintenance</option>
               </optgroup> 
          </select>
        </aside>
  
        <footer>
         <button id="btnClose">Close</button>
+        <button id="btnDeleteDB">Delete DB</button>
       </footer>
     </main>
 
@@ -84,10 +84,11 @@
     </section>
 
 
-<script src="./modules/controller.js" type="module" defer></script>
-<script src="./modules/model.js" type="module" defer></script>
-<script src="./modules/view.js" type="module" defer></script>
+<script src="./modules/main/controller.js" type="module" defer></script>
+<script src="./modules/main/model.js" type="module" defer></script>
+<script src="./modules/main/view.js" type="module" defer></script>
 <script src="./modules/messageBox.js" type="module" defer></script>
+<script src="./modules/schema.js" type="module" defer></script>
 </body>
 
 </html>

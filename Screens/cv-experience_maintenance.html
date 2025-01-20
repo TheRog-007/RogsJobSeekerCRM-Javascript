@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_screens.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_cv-experience_maintenance.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_MsgBox.css"></link>
+</head>
+<body>
+    <main>
+            <!-- uses table: CV_Experience -->
+        <section id="secMain-CV-ExperienceMaintenance">    
+            <label for="cmbID" id="lblID">Experience ID:</label>    
+            <select id="cmbID" tabindex="1">
+               <option value="none" selected disabled hidden>Select ID
+               <option value="1">MailShot Summary Report</option>
+           </select>
+
+         <button id="btnNew" tabindex="2">New</button> 
+
+         <label for="dteCVE_YearStarted" id="lblCVE_YearStarted">Year Started:</label>
+         <input type="date" id="dteCVE_YearStarted" tabindex="3"/>
+
+        <label for="dteCVE_YearEnded" id="lblCVE_YearEnded">Year Ended:</label>
+        <input type="date" id="dteCVE_YearEnded" tabindex="4"/>
+
+       <label for="txtCVE_Where" id="lblCVE_Where">Where It Occurred (Business Name):</label>
+       <input type="text" maxlength="255" id="txtCVE_Where" tabindex="5"/>
+      <!-- uses CV_Roles as recordsource -->
+       <label for="cmbCVE_Role" id="lblCVE_Role">Role:</label>
+       <select id="cmbCVE_Role" tabindex="6">
+          <option value="none" selected disabled hidden>Select Role
+          <option value="1">MailShot Summary Report</option>
+      </select>
+        
+    </section>
+    <footer>
+        <button id="btnSave" class="clhFormbutton" tabindex="7">Save</button>
+        <button id="btnUndo" class="clhFormbutton" tabindex="8">Undo</button>
+        <button id="btnDelete" class="clhFormbutton" tabindex="9">Delete</button>
+    </footer>
+
+    <section>
+        <input type="text" id="txtHidden"/>
+         <dialog id="dlgMessage">
+            <div id="divMessage">
+               <img src="" id="imgMessage"/>
+               <p id="pMessage"></p>
+               <button id="btnMsgBox_Ok" hidden></button>
+               <button id="btnMsgBox_Cancel" hidden></button> 
+           </div>
+         </dialog>
+    </section>
+
+    <script src="/modules/cvexperiencemaintenance/controller.js" type="module" defer></script>
+    <script src="/modules/cvexperiencemaintenance/model.js" type="module" defer></script>
+    <script src="/modules/cvexperiencemaintenance/view.js" type="module" defer></script>
+    <script src="/modules/messageBox.js" type="module" defer></script> 
+    <script src="/modules/schema.js" type="module" defer></script>
+
+</body>
+</html>

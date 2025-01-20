@@ -1,0 +1,26 @@
+#secMain-workfrommaintenance {
+    width                            : 500px;
+    
+}
+#lblID {
+    left                             : 10px;
+}
+#cmbID {
+    left                             : 200px;
+    width                            : 80px;
+}
+#btnNew {
+    left                             : 290px;
+    top                              : 15px;
+}
+#btnSave, #btnUndo, #btnDelete {
+    top                              : 120px;
+}
+#lblWHR_Where {
+    left                             : 10px;
+    top                              : 50px;                     
+}
+#txtWHR_Where {
+    left                             : 200px;
+    top                              : 60px; 
+}

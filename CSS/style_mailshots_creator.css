@@ -1,0 +1,211 @@
+#secMain-mailshotscreator {
+    width                            : 500px;
+    
+}
+#lblID {
+    left                             : 10px;
+}
+#cmbID {
+    left                             : 140px;
+    width                            : 80px;
+}
+#btnNew {
+    left                             : 230px;
+    top                              : 15px;
+}
+#btnSave, #btnUndo, #btnDelete {
+    top                              : 670px;
+}
+#lblMSH_MailshotName {
+    left                                  : 10px;
+    top                                   : 50px;
+}
+#txtMSH_MailshotName {
+    left                                  : 140px;
+    top                                   : 60px;
+    width                                 : 50ch; 
+}
+#lblMSH_CVPath {
+    left                                  : 10px;
+    top                                   : 90px;
+}
+#txtMSH_CVPath {
+    left                                  : 180px;
+    top                                   : 100px;
+    width                                 : 102ch;
+}
+#imgCV {
+    position                              : absolute;
+    left                                  : 140px;
+    top                                   : 110px;
+    height                                : 20px;
+    width                                 : 20px;        
+    background-color                      : transparent;
+    mix-blend-mode                        : screen;   
+}
+#lblMSH_PrintedDate {
+    left                                  : 560px;
+    top                                   : 50px;
+}
+#dteMSH_PrintedDate {
+    left                                  : 700px;
+    top                                   : 65px; 
+}
+#lblMSH_LetterPath {
+    left                                  : 10px;
+    top                                   : 130px;
+}
+#txtMSH_LetterPath {
+    left                                  : 180px;
+    top                                   : 140px;
+    width                                 : 102ch;
+}
+#imgLetter {
+    position                              : absolute;
+    left                                  : 140px;
+    top                                   : 150px;
+    height                                : 20px;
+    width                                 : 20px;        
+    background-color                      : transparent;
+    mix-blend-mode                        : screen;   
+}
+.clhLine {
+    top                                   : 180px;
+}
+#divMailshotAddresses {
+     position                             : absolute;
+     left                                 : 10px;
+     top                                  : 190px; 
+     border                               : solid;
+     border-color                         :green;
+     border-width                         : 1px;
+     width                                : 970px;
+     height                               : 200px;
+     display                              : grid;
+     grid-template-areas                  : "contact company address1 address2 address3 towncity postcode";
+     
+     grid-template-columns                : repeat (7, auto);
+     column-gap                           : 5px ;
+     scroll-behavior                      : auto;
+}
+#ulContact {
+    grid-area                             : contact;
+}
+#ulCompany {
+    grid-area                             : company;
+}
+#ulAddress1 {
+    grid-area                             : address1;
+}
+#ulAddress2 {
+    grid-area                             : address2;
+}
+#ulAddress3 {
+    grid-area                             : address3;
+}
+#ulTownCity {
+    grid-area                             : towncity;
+}
+#ulPostcode {
+    grid-area                             : postcode;
+}
+#lblMSL_Contact {
+    left                                  : 10px;
+    top                                   : 400px 
+}
+#txtMSL_Contact {
+    left                                  : 100px;
+    top                                   : 410px;
+    width                                 : 30ch;
+}
+#lblMSL_CompanyName {
+    left                                  : 360px;
+    top                                   : 400px;
+}
+#txtMSL_CompanyName {
+    left                                  : 450px;
+    top                                   : 410px;
+    width                                 : 50ch;    
+}
+#lblMSL_Address1 {
+    left                                  : 10px;
+    top                                   : 440px;
+}
+#txtMSL_Address1 {
+    left                                  : 100px;
+    top                                   : 450px;
+    width                                 : 50ch; 
+}
+#lblMSL_Address2 {
+    left                                  : 10px;
+    top                                   : 480px;
+}
+#txtMSL_Address2 {
+    left                                  : 100px;
+    top                                   : 490px; 
+    width                                 : 50ch;
+}
+#lblMSL_Address3 {
+    left                                  : 10px;
+    top                                   : 520px;
+}
+#txtMSL_Address3 {
+    left                                  : 100px;
+    top                                   : 530px;
+    width                                 : 50ch; 
+}
+#lblMSL_TownCity {
+    left                                  : 10px;
+    top                                   : 560px;
+}
+#txtMSL_TownCity {
+    left                                  : 100px;
+    top                                   : 570px;
+    width                                 : 30ch;
+}
+#lblMSL_Postcode {
+    left                                  : 360px;
+    top                                   : 560px;
+}
+#txtMSL_Postcode {
+    left                                  : 440px;
+    top                                   : 570px;
+    width                                 : 15ch; 
+}
+#lblMSH_PrintContact {
+    left                                  : 40px;
+    top                                   : 600px;
+}
+#chkMSH_PrintContact {
+    left                                  : 10px;
+    top                                   : 618px;
+}
+#divAddress {
+    left                                  : 760px;
+    top                                   : 460px;
+    border                                : solid;
+    border-color                          : white;
+    height                                : 160px;
+    width                                 : 200px;
+    padding-left                          : 10px;
+    padding-top                           : 10px;
+}
+#btnNewAddress {
+    width                                 : 190px;
+    height                                : 30px;
+}
+#btnSaveAddress {
+    width                                 : 190px;
+    height                                : 30px;
+    top                                   : 50px;
+}
+#btnClearAddress {
+    width                                 : 190px;
+    height                                : 30px;
+    top                                   : 90px; 
+}
+#btnDeleteAddress {
+    width                                 : 190px;
+    height                                : 30px;
+    top                                   : 130px;
+}

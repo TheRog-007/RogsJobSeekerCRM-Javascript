@@ -1,0 +1,155 @@
+#secMain-jobsappliedfor {
+    width                            : 500px;
+    
+}
+#lblID {
+    left                             : 10px;
+}
+#cmbID {
+    left                             : 200px;
+    width                            : 80px;
+}
+#btnNew {
+    left                             : 280px;
+    top                              : 15px;
+}
+#btnSave, #btnUndo, #btnDelete {
+    top                              : 670px;
+}
+
+#lblJOB_DateApplied {
+    left                                  : 10px;
+    top                                   : 50px;
+}
+#dteJOB_DateApplied {
+    left                                  : 200px;
+    top                                   : 60px;
+}
+#lblJOB_DateExpires {
+    left                                  : 400px;
+    top                                   : 50px;
+}
+#dteJOB_DateExpires {
+    left                                  : 616px;
+    top                                   : 60px;
+}
+#lblJOB_Company {
+    left                                  : 10px;
+    top                                   : 90px
+}
+#txtJOB_Company {
+    left                                  : 200px;
+    top                                   : 100px; 
+    width                                 : 50ch;
+}
+#lblJOB_TownCity {
+    left                                  : 10px;
+    top                                   : 130px;
+    width                                 : 30ch;
+}
+#txtJOB_TownCity {
+    left                                  : 200px;
+    top                                   : 140px;
+}
+.clhLine {
+    top                                   : 184px;
+}
+#lblJOB_Salary {
+    left                                  : 10px;
+    top                                   : 190px;
+}
+#txtJOB_Salary {
+    left                                  : 200px;
+    top                                   : 200px;
+    width                                 : 10ch;
+}
+#lblJOB_Sector {
+    left                                  : 400px;
+    top                                   : 190px; 
+}
+#txtJOB_Sector {
+    left                                  : 550px;
+    top                                   : 200px;
+    width                                 : 50ch; 
+}
+#lblJOB_Title {
+    left                                  : 10px;
+    top                                   : 230px; 
+}
+#txtJOB_Title {
+    left                                  : 200px;
+    top                                   : 240px;  
+    width                                 : 50ch;
+}
+#lblJOB_Type {
+    left                                  : 10px;
+    top                                   : 270px;
+}
+#txtJOB_Type {
+    left                                  : 200px;
+    top                                   : 280px;
+    width                                 : 30ch;
+}
+#lblJOB_Hours {
+    left                                  : 10px;
+    top                                   : 310px;
+}
+#txtJOB_Hours {
+    left                                  : 200px;
+    top                                   : 320px; 
+    width                                 : 30ch;
+}
+#lblJOB_Where {
+    left                                  : 460px;
+    top                                   : 310px;
+}
+#txtJOB_Where {
+    left                                  : 630px;
+    top                                   : 320px; 
+    width                                 : 30ch;
+}
+#lblJOB_Details {
+    left                                  : 10px;
+    top                                   : 350px;
+}
+#txtJOB_Details {
+    left                                  : 10px;
+    top                                   : 400px;
+    width                                 : 124ch;
+    height                                : 200px;
+}
+#lblJOB_PhoneNumber {
+    left                                  : 10px;
+    top                                   : 598px; 
+}
+#txtJOB_PhoneNumber {
+    left                                  : 210px;
+    top                                   : 608px;
+    width                                 : 20ch;
+}
+#lblJOB_Status {
+    left                                  : 400px;
+    top                                   : 598px;
+}
+#txtJOB_Status {
+    left                                  : 650px;
+    top                                   : 608px; 
+    width                                 : 20ch;
+}
+#lblJOB_ContactName {
+    left                                  : 10px;
+    top                                   : 630px;
+}
+#txtJOB_ContactName {
+    left                                  : 210px;
+    top                                   : 640px;
+    width                                 : 30ch;
+}
+#chkJOB_Direct {
+    left                                  : 455px;
+    top                                   : 644px;
+}
+#lblJOB_Direct {
+    left                                  : 480px;
+    top                                   : 630px; 
+}

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_screens.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_cv-roles_maintenance.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_MsgBox.css"></link>
+</head>
+<body>
+    <main>
+        <!-- 
+          This form uses TWO tables:
+
+            CV_Responsibilities
+            CV_Roles
+
+            CV_Responsibilkities is linked to CV_Roles via CVR_ID
+         
+            CV_Roles record needs to exist in order to get CVR_ID to write in
+            CV_Responsibilkities->CVR_ID
+        -->
+
+        <!-- below writes to CV_Roles-->
+        <section id="secMain-CV-RolesMaintenance">    
+            <label for="cmbID" id="lblRoles">Roles ID:</label>    
+            <select id="cmbID" tabindex="1">
+               <option value="none" selected disabled hidden>Select ID
+               <option value="1">MailShot Summary Report</option>
+           </select>
+
+         <button id="btnNew" tabindex="2">New</button> 
+         <label for="txtCVR_Name" id="lblCVR_Name">Name Of Role:</label>
+         <input type="text" maxlength="30" id="txtCVR_Name" tabindex="3"/>
+
+         <div class="clhLine"></div>
+          <!-- below list of CV_Responsibilities linked to CV_Role->CVR_ID -->
+         <label for="cmbResponsibilities" id="lblResponsibilities">Role Responsibilities:</label>
+         <!-- <select id="cmbResponsibilities"  tabindex="4">
+            <option value="none" selected disabled hidden>Select Responsibility
+            <option value="1">MailShot Summary Report</option>
+         </select> -->
+
+         <!-- 
+            multi column listbox  
+           
+            columns:
+
+            name
+            details
+
+
+            as HTML does not support this will use TWO unordered
+            lists one for the name one for the details!
+          -->
+
+         <div id="divRoles"> 
+           <ul id="ulRole_Name" tabindex="4">
+              <li>Name</li>
+           </ul>
+           <ul id="ulRole_Details">
+             <li>Details</li>
+           </ul>
+        </div>
+
+
+        <!-- below writes to CV_Responsibilities-->
+        <label for="txtCVRR_Name" id="lblCVRR_Name">Name Of Responsibility:</label>
+        <input type="text" maxlength="50" id="txtCVRR_Name" tabindex="5"/>
+
+        <label for="txtCVRR_Details" id="lblCVRR_Details">Details:</label>
+        <input type="=textarea" maxlength="4096" id="txtCVRR_Details" tabindex="6"/>
+        <!-- stores role id in CV_Resposibilities-->
+        <input type="=text" id="txtCVR_ID" hidden/>    
+
+        <div id="divResponsibilities">
+          <button id="btnNewResponsibility" tabindex="7">New Responsibility Record</button>
+          <button id="btnSaveResponsibility" tabindex="8">Save Responsibility Record</button>
+          <button id="btnDeleteResponsibility" tabindex="9">Delete Responsibility Record</button>
+          <button id="btnClear" tabindex="9">Clear Values</button>
+        </div>
+
+       <div class="clhLine"></div>
+    </section>
+    <footer>
+        <button id="btnSave" class="clhFormbutton" tabindex="10">Save</button>
+        <button id="btnUndo" class="clhFormbutton" tabindex="11">Undo</button>
+        <button id="btnDelete" class="clhFormbutton" tabindex="12">Delete</button>
+    </footer>
+
+    <section>
+        <input type="text" id="txtHidden"/>
+         <dialog id="dlgMessage">
+            <div id="divMessage">
+               <img src="" id="imgMessage"/>
+               <p id="pMessage"></p>
+               <button id="btnMsgBox_Ok" hidden></button>
+               <button id="btnMsgBox_Cancel" hidden></button> 
+           </div>
+         </dialog>
+    </section>
+
+    <script src="/modules/cvrolesmaintenance/controller.js" type="module" defer></script>
+    <script src="/modules/cvrolesmaintenance/model.js" type="module" defer></script>
+    <script src="/modules/cvrolesmaintenance/view.js" type="module" defer></script>
+    <script src="/modules/messageBox.js" type="module" defer></script> 
+    <script src="/modules/schema.js" type="module" defer></script>
+
+</body>
+</html>

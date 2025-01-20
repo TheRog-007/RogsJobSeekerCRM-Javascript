@@ -1,0 +1,52 @@
+#secMain-mailshotlisting_report {
+    width                            : 500px;
+    
+}
+#lblID {
+    left                             : 10px;
+}
+#cmbID {
+    left                             : 200px;
+    width                            : 80px;
+}
+#btnNew {
+    left                             : 280px;
+    top                              : 15px;
+}
+#btnPrint, #btnPreview {
+    top                              : 120px;
+}
+#lblAllMailshots {
+    left                             : 320px; 
+}
+#chkAllMailshots {
+    position                         : absolute; 
+    left                             : 290px;
+    top                              : 22px;
+}
+#lblDateFrom {
+    left                             : 8px;
+    top                              : 50px;
+}
+#cmbDateFrom {
+    left                             : 200px;
+    top                              : 50px;
+}
+#lblDateTo {
+    left                             : 400px;
+    top                              : 50px;
+}
+#cmbDateTo {
+    Left                             : 440px;
+    top                              : 50px;
+}
+#chkAllDates {
+    left                             : 640px;
+    top                              : 68px;
+}
+#lblAllDates {
+    left                             : 670px;
+    top                              : 50px;
+}
+
+

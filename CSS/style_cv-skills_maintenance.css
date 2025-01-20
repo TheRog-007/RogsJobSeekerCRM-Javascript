@@ -1,0 +1,38 @@
+#secMain-cv-skillsmaintenance {
+    width                            : 500px;
+    
+}
+#lblID {
+    left                             : 10px;
+}
+#cmbID {
+    left                             : 200px;
+    width                            : 80px;
+}
+#btnNew {
+    left                             : 290px;
+    top                              : 15px;
+}
+#btnSave, #btnUndo, #btnDelete {
+    top                              : 340px;
+}
+
+#lblCVS_Name {
+    left                             : 10px;
+    top                              : 50px;
+}
+#txtCVS_Name {
+    left                             : 200px;
+    top                              : 60px;
+    width                            : 50ch;
+}
+#lblCVS_Details {
+    left                             : 10px;
+    top                              : 80px;
+}
+#txtCVS_Details {
+    left                             : 10px;
+    top                              : 130px;
+    width                            : 124ch;
+    height                           : 200px;
+}

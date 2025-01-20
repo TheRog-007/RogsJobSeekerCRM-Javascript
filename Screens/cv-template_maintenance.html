@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_screens.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_cv-template_maintenance.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_MsgBox.css"></link>
+</head>
+<body>
+    <main>
+         <section id="secMain-JobsAppliedForListing">    
+            <label for="cmbID">Job ID:</label>    
+            <select id="cmbID" tabindex="1">
+               <option value="none" selected disabled hidden>Select ID
+               <option value="1">MailShot Summary Report</option>
+           </select>
+         <label for="chkAllJobID">All</label>  
+         <input type="checkbox" class="clhCheckBox" id="chkAllJobID"  tabindex="2" checked/>  
+         <label for="cmbJobTitle" id="lblJobTitle">Job Title:</label>
+         <select id="cmbJobTitle"  tabindex="3">
+            <option value="none" selected disabled hidden>Select Job Title
+            <option value="1">MailShot Summary Report</option>
+        </select>
+         <label for="chkAllJobTitle">All</label>  
+         <input type="checkbox" id="chkAllJobTitle" class="clhCheckBox"  tabindex="4" checked/>  
+  
+         <label for="cmbDateAppliedFrom" id="lblDateAppliedFrom">Date Applied From:</label>
+         <select id="cmbDateAppliedFrom" tabindex="5">
+            <option value="none" selected disabled hidden>Select Date
+            <option value="1">MailShot Summary Report</option>
+        </select>        
+        <label for="cmbDateAppliedTo" id="lblDateAppliedFrom">Date Applied To:</label>
+        <select id="cmbDateAppliedTo"  tabindex="6">
+           <option value="none" selected disabled hidden>Select Date
+           <option value="1">MailShot Summary Report</option>
+       </select>        
+       <label for="chkAllDateApplied">All</label>  
+       <input type="checkbox" id="chkAllDateApplied" class="clhCheckBox"  tabindex="7" checked/>  
+
+  
+       <label for="cmbDateExpiresFrom" id="lblDateExpiredFrom">Date Expired From:</label>
+       <select id="cmbDateExpiredFrom"  tabindex="8">
+          <option value="none" selected disabled hidden>Select Date
+          <option value="1">MailShot Summary Report</option>
+      </select>        
+      <label for="cmbDateExpiredTo" id="lblDateExpiredFrom">Date Expired To:</label>
+      <select id="cmbDateExpiredTo"  tabindex="9">
+         <option value="none" selected disabled hidden>Select Date
+         <option value="1">MailShot Summary Report</option>
+     </select>        
+     <label for="chkAllDateExpired">All</label>  
+     <input type="checkbox" id="chkAllDateExpired" class="clhCheckBox" tabindex="10" checked/>  
+
+     <label for="cmbStatus" id="lblStatus">Status:</label>
+     <select id="cmbStatus"  tabindex="11">
+        <option value="none" selected disabled hidden>Select Date
+        <option value="1">MailShot Summary Report</option>
+    </select>        
+    <label for="chkAllStatus">All</label>  
+    <input type="checkbox" id="chkAllStatus" class="clhCheckBox" tabindex="5" tabindex="12" checked/>  
+
+    <label for="cmbSector" id="lblStatus">Sector:</label>
+    <select id="cmbSector" tabindex="13">
+       <option value="none" selected disabled hidden>Select Date
+       <option value="1">MailShot Summary Report</option>
+   </select>        
+   <label for="chkSector">All</label>  
+   <input type="checkbox" id="chkSector" class="clhCheckBox" tabindex="14" checked/>  
+
+    </section>
+    <footer>
+        <button id="btnPrint" class="clhFormbutton" tabindex="15">Print</button>
+        <button id="btnPreview" class="clhFormbutton" tabindex="16">Preview</button>
+    </footer>
+
+    <section>
+        <input type="text" id="txtHidden"/>
+         <dialog id="dlgMessage">
+            <div id="divMessage">
+               <img src="" id="imgMessage"/>
+               <p id="pMessage"></p>
+               <button id="btnMsgBox_Ok" hidden></button>
+               <button id="btnMsgBox_Cancel" hidden></button> 
+           </div>
+         </dialog>
+    </section>
+
+    <script src="/modules/contracttypesmaintenance/controller.js" type="module" defer></script>
+    <script src="/modules/contracttypesmaintenance/model.js" type="module" defer></script>
+    <script src="/modules/contracttypesmaintenance/view.js" type="module" defer></script>
+    <script src="/modules/messageBox.js" type="module" defer></script> 
+    <script src="/modules/schema.js" type="module" defer></script>
+
+</body>
+</html>

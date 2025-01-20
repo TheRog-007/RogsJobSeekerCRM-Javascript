@@ -1,0 +1,28 @@
+#secMain-cv-personalitymaintenance {
+    width                            : 500px;
+    
+}
+#lblID {
+    left                             : 10px;
+}
+#cmbID {
+    left                             : 140px;
+    width                            : 80px;
+}
+#btnNew {
+    left                             : 230px;
+    top                              : 15px;
+}
+#lblCVPP_Personality {
+    left                             : 10px;
+    top                              : 50px; 
+}
+#txtCVPP_Personality {
+    left                             : 10px;
+    top                              : 100px;
+    width                            : 124ch;
+    height                           : 200px;
+}
+#btnSave, #btnUndo, #btnDelete {
+    top                              : 320px;
+}

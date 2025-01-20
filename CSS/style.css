@@ -32,14 +32,13 @@ footer { grid-area: footer;}
   position: relative;
 }
 #imgBanner {
-    height: 120px;
+    height: 100px;
 }
 #divBannerSub{
     /* display: block;
     flex-direction: column;  */
     margin-top: 10px;
-
-
+    margin-left: 40px;
     height: 180px;
     animation-name: bannerFadeInOut;
     animation-timing-function: ease-in-out;
@@ -49,25 +48,24 @@ footer { grid-area: footer;}
 }
 @keyframes bannerFadeInOut {
     0% {
-        background-image: url("./images/banner_sub1.png");
+        background-image: url( "/images/banner_sub1.png");
         width: 185px;
     }
     45% {
-        background-image: url("./images/banner_sub1.png");
+        background-image: url("/images/banner_sub1.png");
         width: 185px;
     }
     55% {
-        background-image: url("./images/banner_sub2.png");
+        background-image: url("/images/banner_sub2.png");
         width: 138px;
     }
     100% {
-        background-image: url("./images/banner_sub2.png");
+        background-image: url("/images/banner_sub2.png");
         width: 138px;
     }
 }
-  #divBannerSub img {
-    position: relative;
-    left: 0;  
+#divBannerSub img {
+    position: relative; 
 }
 
 #asiMainMenu {
@@ -87,9 +85,9 @@ footer { grid-area: footer;}
     color                               :wheat;
     font-weight                         : 600;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;  
-    
-    
+       
 }
+
 .clhMenuControl {
     margin-left: 10px;
     margin-right: 10px;
@@ -110,7 +108,7 @@ button {
 button:hover {
   background-color                      : gray;
 } 
-/* formatting for all buttons */
+/* formatting for all comboboxes */
 select {
     margin-right                        : 40px;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -125,6 +123,9 @@ select {
 select:hover {
   background-color                      :seagreen;
 } 
+select option {
+  background-color                      :seagreen;
+}
 
 #btnClose {
     position: absolute;

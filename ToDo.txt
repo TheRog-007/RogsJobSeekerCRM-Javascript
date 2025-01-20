@@ -1,0 +1,10 @@
+What Is It?
+===========
+ToDo list for the project
+
+- test delete 
+- test update
+- test undo
+- create auto number system for ID fields
+- create reports (HTML/CSS)
+ 

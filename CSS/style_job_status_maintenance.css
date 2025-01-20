@@ -1,0 +1,36 @@
+#secMain-Jobsstatusmaintenance {
+    width                            : 500px;
+    
+}
+#lblID {
+    left                             : 10px;
+}
+#cmbID {
+    left                             : 220px;
+    width                            : 80px;
+}
+#btnNew {
+    left                             : 310px;
+    top                              : 15px;
+}
+#btnSave, #btnUndo, #btnDelete {
+    top                              : 120px;
+}
+#txtHidden {
+    background-color                      :darkslategrey;
+    color                                 :darkslategrey;
+    position                              : absolute;
+    left                                  : 0px;
+    top                                   : 0px;
+    height                                : 2px; 
+    font-size                             : 2px;    
+}
+#lblSTA_Status {
+    left                                  : 10px;
+    top                                   : 50px;
+}
+#txtSTA_Status {
+    left                                  : 220px;
+    top                                   : 60px;
+    width                                 : 30ch;
+}

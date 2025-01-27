@@ -47,15 +47,15 @@ import * as modSchema from "../schema.js";
 
 //   modModel.txtHidden.style.backgroundColor = "darkslategrey";
 // };
-export function funcShowFirstRecord() {
-  /*
-   Created 19/01/2025 By Roger Williams
+// export function funcShowFirstRecord() {
+//   /*
+//    Created 19/01/2025 By Roger Williams
 
-   gets first record data and displays in form
+//    gets first record data and displays in form
 
-  */
-  const objData = modSchema.funcGetFirstRecord();
-}
+//   */
+//   const objData = modSchema.funcGetFirstRecord();
+// }
 export function funcInitView() {
   let intNum = 0;
   let strName = "";
@@ -95,6 +95,8 @@ export const funcLoadData = () => {
    Created 20/01/2025 By Roger Williams
 
    loads record selected from combobox
+   ALSO loads data into objTable -> the table schema
+   THIS IS USED FOR UNDO
 
 */
   const trnTemp = modModel.dbJobSeekerCRM.transaction(
@@ -102,18 +104,30 @@ export const funcLoadData = () => {
     "readonly"
   );
   const objTemp = trnTemp.objectStore(modSchema.constSeekers_Types);
-  console.log(objTemp);
-  const objData = objTemp.get(modModel.cmbID.value);
+  //find record by key: modModel.cmbID.value
+  //Note: have to convert to number as get() does not convert string!
+  const objData = objTemp.get(Number(modModel.cmbID.value));
 
   objData.onsuccess = () => {
     const objFound = objData.result;
-    console.table(objFound);
+    //load data!
     modModel.txtTYP_Type.value = objFound.TYP_Type;
-    //reset combobox
-    modModel.cmbID.value = "none";
+    //store in objTable in order they are in schema
+    modModel.objTable.aryFields[0].fieldValue = modModel.cmbID.value;
+    modModel.objTable.aryFields[1].fieldValue = objFound.TYP_Type;
+    //reset new indicator
+    modModel.funcResetblnNew(false);
   };
 
   objData.onerror = (error) => {
-    alert(error);
+    modMessageBox.funcMessageBox(
+      "Error Loading Data",
+      modMessageBox.objIcons.error,
+      modMessageBox.objButtons.ok,
+      -1,
+      "none",
+      1,
+      "btnNew"
+    );
   };
 };

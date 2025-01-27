@@ -31,7 +31,7 @@ export let objTable;
 let blnNew = false;
 
 //event handlers
-const funccmbIDClick = (event) => {
+const funccmbIDSelect = (event) => {
   /*
    Created 08/01/2025 By Roger Williams
 
@@ -40,11 +40,19 @@ const funccmbIDClick = (event) => {
 */
 
   if (event.target.value != "none") {
-    //populate form
-    alert(event.target.value);
-
-    //load data into form
-    modView.funcLoadData();
+    if (blnNew) {
+      modMessageBox.funcMessageBox(
+        "Record Not Saved, Save?",
+        modMessageBox.objIcons.exclamation,
+        modMessageBox.objButtons.yes,
+        modMessageBox.objButtons.no,
+        "load",
+        1,
+        "txtTYP_Type"
+      );
+    } else {
+      modView.funcLoadData();
+    }
   }
 };
 
@@ -91,21 +99,69 @@ const functextboxKeyDown = (event) => {
   }
 };
 
-// const funcPopulateobjData = () => {
-//   /*
-//   Created 19/01/2025 By Roger Williams
+export function funcPopulateCombobox() {
+  /*
+   Created 09/01/2025 By Roger Williams
 
-//   puts form data into objData
-//   */
-// };
-const funcbtnSaveClick = () => {
+   Creates combobox items from db
+
+   fields:
+
+   TYP_ID    - autonumber
+   TYP_Type  - string
+
+  */
+  let elFirst;
+  let intNum = 0;
+
+  function funcCreateItems() {
+    //Creates combobox items from db
+    let elTemp;
+    const trnTemp = dbJobSeekerCRM.transaction(
+      modSchema.constSeekers_Types,
+      "readonly"
+    );
+    const objTemp = trnTemp.objectStore(modSchema.constSeekers_Types);
+    const qryTemp = objTemp.openCursor();
+
+    qryTemp.onsuccess = (event) => {
+      const curTemp = event.target.result;
+
+      if (curTemp) {
+        //create new option element inside the combobox
+        // console.log(curTemp.value);
+        //<option value="1">MailShot Summary Report</option>
+        elTemp = document.createElement("option");
+        elTemp.value = curTemp.key;
+        elTemp.innerText = curTemp.value.TYP_Type;
+        cmbID.appendChild(elTemp);
+        curTemp.continue();
+      }
+    };
+  }
+
+  //first clear any existing items
+  if (cmbID.length > 0) {
+    while (cmbID.length > 0) {
+      cmbID.remove(cmbID.length - 1);
+    }
+  }
+  // create first item
+  // <option value="none" selected disabled hidden>Select ID</option>
+  elFirst = document.createElement("option");
+  elFirst.value = "none";
+  elFirst.innerText = "Select ID";
+  cmbID.appendChild(elFirst);
+  //populate from db
+  funcCreateItems();
+}
+const funcSaveData = () => {
   /*
   Created 08/01/2025 By Roger Williams
   
    processes save
 
 */
-
   let dbUpdate;
   //check all required fields filled
   const aryErrors = modSchema.funcValidateForm(
@@ -115,7 +171,15 @@ const funcbtnSaveClick = () => {
 
   //see if returned errors object is empty
   if (!aryErrors) {
-    alert("Please Enter Data In Required Fields");
+    modMessageBox.funcMessageBox(
+      "Please Enter Data In All Required Fields",
+      modMessageBox.objIcons.error,
+      modMessageBox.objButtons.ok,
+      -1,
+      "none",
+      1,
+      "btnNew"
+    );
     return;
   }
 
@@ -124,7 +188,15 @@ const funcbtnSaveClick = () => {
     "readwrite"
   );
   dbRequest.onerror = (event) => {
-    alert("error accessing table");
+    modMessageBox.funcMessageBox(
+      "Error Accessing Table",
+      modMessageBox.objIcons.error,
+      modMessageBox.objButtons.ok,
+      -1,
+      "none",
+      1,
+      "btnNew"
+    );
   };
 
   const objTemp = dbRequest.objectStore(modSchema.constSeekers_Types);
@@ -133,35 +205,93 @@ const funcbtnSaveClick = () => {
     dbUpdate = objTemp.add({ TYP_Type: txtTYP_Type.value });
 
     dbUpdate.onsuccess = (event) => {
+      //reset new indicator
       blnNew = false;
-      alert("saved!");
+      //clear form
+      funcResetForm();
+      //reload combobox with new values
+      funcPopulateCombobox();
+      modMessageBox.funcMessageBox(
+        "Record Saved",
+        modMessageBox.objIcons.information,
+        modMessageBox.objButtons.ok,
+        -1,
+        "none",
+        1,
+        "btnNew"
+      );
     };
 
     dbUpdate.onerror = (event) => {
-      alert("error updating table");
+      modMessageBox.funcMessageBox(
+        "Error Saving Record",
+        modMessageBox.objIcons.error,
+        modMessageBox.objButtons.ok,
+        -1,
+        "none",
+        1,
+        "btnNew"
+      );
     };
   } else {
     //update data
-    const dbQuery = objTemp.get(cmbID.value);
+    //find record by key: modModel.cmbID.value
+    //Note: have to convert to number as get() does not convert string!
+    const dbQuery = objTemp.get(Number(cmbID.value));
 
     dbQuery.onsuccess = () => {
       const dbData = dbQuery.result;
 
       //edit
-      dbData.TYP_Type = cmbID.innerText;
+      dbData.TYP_Type = txtTYP_Type.value;
 
       //update
-      const dbUpdate = objTable.dbUpdate(dbData);
+      const dbUpdate = objTemp.put(dbData);
 
       dbUpdate.onsuccess = () => {
         blnNew = false;
-        alert("saved!");
+        funcPopulateCombobox();
+        //clear form
+        funcResetForm();
+        modMessageBox.funcMessageBox(
+          "Record Saved",
+          modMessageBox.objIcons.information,
+          modMessageBox.objButtons.ok,
+          -1,
+          "none",
+          1,
+          "btnNew"
+        );
       };
 
       dbUpdate.onerror = (event) => {
-        alert("error updating table");
+        modMessageBox.funcMessageBox(
+          "Error Updating Record",
+          modMessageBox.objIcons.error,
+          modMessageBox.objButtons.ok,
+          -1,
+          "none",
+          1,
+          "btnNew"
+        );
       };
     };
+  }
+};
+const funcbtnSaveClick = () => {
+  /*
+  Created 08/01/2025 By Roger Williams
+  
+   checks if anything changes if not returns
+   else saves
+
+*/
+  if (!blnNew) {
+    if (objTable.aryFields[0].fieldValue) {
+      funcSaveData();
+    }
+  } else {
+    funcSaveData();
   }
 };
 
@@ -186,19 +316,45 @@ const funcbtnSaveClick = () => {
 // request.onsuccess = function() { // (4)
 // console.log("Book added to the store", request.result);
 // };
-
-const funcbtnUndoClick = (event) => {
+export function funcUndoChanges() {
   /*
   Created 08/01/2025 By Roger Williams
   
    processes undo
 
-*/
+   if not new record simply populates the form from objTable!
 
-  const trnTemp = dbJobSeekerCRM.transaction(constSeekers_Types, "readonly");
-  const objTemp = trnTemp.objectStore(constSeekers_Types);
+*/
+  blnNew = false;
+
+  if (blnNew) {
+    //reset form
+    funcResetForm();
+    blnNew = false;
+  } else {
+    //restore from objTable
+    cmbID.value = objTable.aryFields[0].fieldValue;
+    txtTYP_Type.value = objTable.aryFields[1].fieldValue;
+  }
+}
+const funcbtnUndoClick = (event) => {
+  /*
+   asks user if wants to undo
+   txtHidden handles response
+
+*/
+  modMessageBox.funcMessageBox(
+    "Undo Changes",
+    modMessageBox.objIcons.question,
+    modMessageBox.objButtons.yes,
+    modMessageBox.objButtons.no,
+    "undo",
+    2,
+    "btnNew"
+  );
 };
-const funcbtnDeleteClick = (event) => {
+
+export function funcDeleteRecord() {
   /*
    proceses delete
 
@@ -209,16 +365,12 @@ const funcbtnDeleteClick = (event) => {
   );
   const objTemp = dbRequest.objectStore(modSchema.constSeekers_Types);
 
-  let dbQuery = objTemp.delete(cmbID.value);
+  let dbQuery = objTemp.delete(Number(cmbID.value));
 
   dbQuery.onerror = (event) => {
-    alert("error accessing table");
-  };
-
-  dbQuery.onsuccess = (event) => {
     modMessageBox.funcMessageBox(
-      "Saved!",
-      modMessageBox.objIcons.information,
+      "Error Accessing Table",
+      modMessageBox.objIcons.error,
       modMessageBox.objButtons.ok,
       -1,
       "none",
@@ -226,8 +378,51 @@ const funcbtnDeleteClick = (event) => {
       "btnNew"
     );
   };
+
+  dbQuery.onsuccess = (event) => {
+    modMessageBox.funcMessageBox(
+      "Record Deleted",
+      modMessageBox.objIcons.information,
+      modMessageBox.objButtons.ok,
+      -1,
+      "none",
+      1,
+      "btnNew"
+    );
+
+    //update combobox
+    funcPopulateCombobox();
+    //clear form
+    funcResetForm();
+  };
+}
+const funcbtnDeleteClick = (event) => {
+  /*
+   asks user if wants to delete
+   txtHidden handles response
+
+*/
+  modMessageBox.funcMessageBox(
+    "Delete Record?",
+    modMessageBox.objIcons.question,
+    modMessageBox.objButtons.yes,
+    modMessageBox.objButtons.no,
+    "delete",
+    2,
+    "btnNew"
+  );
 };
 
+const funcResetForm = () => {
+  /*
+ Created 20/01/2025 By Roger Williams
+ 
+ Resets the form
+*/
+
+  txtTYP_Type.value = "";
+  txtTYP_Type.focus();
+};
 const funcbtnNewClick = () => {
   /*
   Created 20/01/2025 By Roger Williams
@@ -247,52 +442,23 @@ const funcbtnNewClick = () => {
       1,
       "txtTYP_Type"
     );
-
-    return;
+  } else {
+    blnNew = true;
+    funcResetForm();
   }
-
-  blnNew = true;
-  txtTYP_Type.value = "";
-  txtTYP_Type.focus();
 };
 
 //other funcs
-
-export function funcPopulateCombobox() {
+export function funcResetblnNew(blnValue = false) {
   /*
-   Created 09/01/2025 By Roger Williams
+   Created 21/01/2025 By Roger Williams
 
-  fields:
-
-  TYP_ID    - autonumber
-  TYP_Type  - string
-
+   allows other modules to reset blnNew current modView needs this
+   when cmbID is changed to an existing record
   */
-  let elTemp;
 
-  const trnTemp = dbJobSeekerCRM.transaction(
-    modSchema.constSeekers_Types,
-    "readonly"
-  );
-  const objTemp = trnTemp.objectStore(modSchema.constSeekers_Types);
-  const qryTemp = objTemp.openCursor();
-
-  qryTemp.onsuccess = (event) => {
-    const curTemp = event.target.result;
-
-    if (curTemp) {
-      //create new option element inside the combobox
-      // console.log(curTemp.value);
-      //<option value="1">MailShot Summary Report</option>
-      elTemp = document.createElement("option");
-      elTemp.value = curTemp.key;
-      elTemp.innerText = curTemp.value.TYP_Type;
-      cmbID.appendChild(elTemp);
-      curTemp.continue();
-    }
-  };
+  blnNew = blnValue;
 }
-
 /*
   event handler for "hidden" textbox whoes focus event tells the 
   program a messagebox button has been clicked so modMessageBox.blnOk
@@ -308,10 +474,39 @@ const funcHiddenTextBoxHandler = (event) => {
   if (modMessageBox.blnOk) {
     if (modMessageBox.strContext === "close") {
       window.close();
-
-      if (modMessageBox.strContext === "save") {
-        funcbtnSaveClick();
-      }
+    }
+    if (modMessageBox.strContext === "save") {
+      funcbtnSaveClick();
+    }
+    if (modMessageBox.strContext === "load") {
+      funcbtnSaveClick();
+      //load data into form
+      modView.funcLoadData();
+    }
+    if (modMessageBox.strContext === "new") {
+      blnNew = true;
+      funcResetForm();
+    }
+    if (modMessageBox.strContext === "delete") {
+      blnNew = false;
+      funcDeleteRecord();
+    }
+    if (modMessageBox.strContext === "undo") {
+      funcUndoChanges();
+    }
+  }
+  //handle if not blnOk and save is context
+  else {
+    if (
+      modMessageBox.strContext === "save" ||
+      modMessageBox.strContext === "new"
+    ) {
+      blnNew = false;
+    }
+    if (modMessageBox.strContext === "load") {
+      blnNew = false;
+      //load data into form
+      modView.funcLoadData();
     }
   }
 };
@@ -322,11 +517,27 @@ function funcOpenDatabase() {
   dbopenRequest.onupgradeneeded = (event) => {
     //if no database create it from the schema file
     funcCreateFromSchema(event);
-    alert("Created");
+    modMessageBox.funcMessageBox(
+      "Database Created",
+      modMessageBox.objIcons.information,
+      modMessageBox.objButtons.ok,
+      -1,
+      "none",
+      1,
+      "btnNew"
+    );
   };
 
   dbopenRequest.onerror = () => {
-    alert(`Error Accessing Database ${dbopenRequest.error}`);
+    modMessageBox.funcMessageBox(
+      `Error Accessing Database ${dbopenRequest.error}`,
+      modMessageBox.objIcons.error,
+      modMessageBox.objButtons.ok,
+      -1,
+      "none",
+      1,
+      "btnNew"
+    );
   };
 
   dbopenRequest.onsuccess = () => {
@@ -335,7 +546,15 @@ function funcOpenDatabase() {
 
     dbJobSeekerCRM.onversionchange = () => {
       dbJobSeekerCRM.close();
-      alert("Database Version Is Outdated Please Reload Page");
+      modMessageBox.funcMessageBox(
+        "Database Version Out of Date Reload Page",
+        modMessageBox.objIcons.information,
+        modMessageBox.objButtons.ok,
+        -1,
+        "none",
+        1,
+        "btnNew"
+      );
     };
 
     //activate "action" buttons
@@ -343,7 +562,7 @@ function funcOpenDatabase() {
     btnUndo.style.display = "block";
     btnDelete.style.display = "block";
     btnNew.style.display = "block";
-    //populate comboboxc
+    //populate combobox
     funcPopulateCombobox();
   };
 }
@@ -479,7 +698,7 @@ export function funcInitHandlers() {
    
   */
 
-  cmbID.addEventListener("click", funccmbIDClick);
+  cmbID.addEventListener("change", funccmbIDSelect);
   txtTYP_Type.addEventListener("keydown", functextboxKeyDown);
   btnSave.addEventListener("click", funcbtnSaveClick);
   btnUndo.addEventListener("click", funcbtnUndoClick);

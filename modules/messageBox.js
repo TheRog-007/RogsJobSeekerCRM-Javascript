@@ -170,6 +170,8 @@ export const funcMessageBox = (
     if (intButton2 === -1) {
       // btnMsgBox_Ok.style.setProperty("--varButtonLeft_Ok", "140px");
       btnMsgBox_Ok.style.left = "150px";
+    } else {
+      btnMsgBox_Ok.style.left = "10px";
     }
     //set click handler
     btnMsgBox_Ok.addEventListener("click", funcMessageBoxClick_Ok);

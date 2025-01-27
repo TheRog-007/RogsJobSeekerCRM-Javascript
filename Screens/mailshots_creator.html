@@ -19,24 +19,22 @@
          <section id="secMain-MailshotsCreator" tabindex="1">    
             <label for="cmbID" id="lblID">Mailshot ID:</label>    
             <select id="cmbID">
-               <option value="none" selected disabled hidden>Select ID
-               <option value="1">MailShot Summary Report</option>
            </select>
        
-           <label for="txtMSH_MailshotName" id="lblMSH_MailshotName">Mailshot Name:</label>
-           <input type="text" maxlength="50" id="txtMSH_MailshotName" tabindex="2"/>
-
            <button id="btnNew" tabindex="2">New</button> 
 
+           <label for="txtMSH_MailshotName" id="lblMSH_MailshotName">Mailshot Name:</label>
+           <input type="text" maxlength="50" id="txtMSH_MailshotName" tabindex="3"/>
+
            <label for="txtMSH_CVPath" id="lblMSH_CVPath">CV To Print:</label>
-           <input type="text" maxlength="4096" id="txtMSH_CVPath" tabindex="3"/>
-           <img id="imgCV" src="/images/search.png"/> 
+           <textarea maxlength="4096" id="txtMSH_CVPath" tabindex="4"></textarea>
+           <!-- <img id="imgCV" src="/images/search.png"/>  -->
 
            <label for="dteMSH_PrintedDate" id="lblMSH_PrintedDate">Date Last Printed:</label>
-           <input type="date" id="dteMSH_PrintedDate" disabled tabindex="4"/>
+           <input type="date" id="dteMSH_PrintedDate" disabled tabindex="5"/>
            <label for="txtMSH_LetterPath" id="lblMSH_LetterPath">Letter To Print:</label>
-           <input type="text" maxlength="4096" id="txtMSH_LetterPath" tabindex="4"/>
-           <img id="imgLetter" src="/images/search.png"/> 
+           <textarea maxlength="4096" id="txtMSH_LetterPath" tabindex="6"></textarea>
+           <!-- <img id="imgLetter" src="/images/search.png"/>  -->
 
            <div class="clhLine"></div> 
 
@@ -55,27 +53,22 @@
              postcode
           -->
           <div id="divMailshotAddresses">
-             <ul id="ulContact" tabindex="5">
-                <li>Contact</li>
-             </ul>
-             <ul id="ulCompany">
-                <li>Company</li>
-             </ul>
-             <ul id="ulAddress1">
-                <li>Address1</li>
-             </ul>
-             <ul id="ulAddress2">
-                <li>Address2</li>
-             </ul>
-             <ul id="ulAddress3">
-                <li>Address3</li>
-             </ul>
-             <ul id="ulTownCity">
-                <li>Town/City</li>
-             </ul>
-             <ul id="ulPostcode">
-                <li>Postcode</li>
-             </ul>
+               <!-- <button id="btnSelect1">Select</button>
+               <div id="divTableItem1"></div>
+               <div id="divTableItem1"></div>
+               <div id="divTableItem1"></div>
+               <div id="divTableItem1"></div>
+               <div id="divTableItem1"></div>
+               <div id="divTableItem1"></div>
+               <div id="divTableItem1"></div>
+               <div id="divTableItem1"></div>
+               <div id="divTableItem1"></div> -->
+
+            <!-- <table id="tblData">
+               <tbody>
+                   
+               </tbody>
+           </table> -->
           </div>
 
            <!-- <select id="cmbAddresses"  tabindex="5">
@@ -85,30 +78,30 @@
 
           <!-- Seekers_Maiilshot_Lines --> 
           <label for="txtMSL_Contact" id="lblMSL_Contact">Contact:</label>
-          <input type="text" maxlength="30" id="txtMSL_Contact" tabindex="6"/>
+          <input type="text" maxlength="30" id="txtMSL_Contact" tabindex="7"/>
           <label for="txtMSL_CompanyName" id="lblMSL_CompanyName">Company:</label>
-          <input type="text" maxlength="50" id="txtMSL_CompanyName" tabindex="7"/>
+          <input type="text" maxlength="50" id="txtMSL_CompanyName" tabindex="8"/>
           <label for="txtMSL_Address1" id="lblMSL_Address1">Address 1:</label>
-          <input type="text" maxlength="255" id="txtMSL_Address1" tabindex="8"/>
+          <input type="text" maxlength="255" id="txtMSL_Address1" tabindex="9"/>
           <label for="txtMSL_Address2" id="lblMSL_Address2">Address 2:</label>
-          <input type="text" maxlength="255" id="txtMSL_Address2" tabindex="9"/>
+          <input type="text" maxlength="255" id="txtMSL_Address2" tabindex="10"/>
           <label for="txtMSL_Address3" id="lblMSL_Address3">Address 3:</label>
-          <input type="text" maxlength="255" id="txtMSL_Address3" tabindex="10"/>
+          <input type="text" maxlength="255" id="txtMSL_Address3" tabindex="11"/>
           <label for="txtMSL_TownCity" id="lblMSL_TownCity">Town/City:</label>
-          <input type="text" maxlength="30" id="txtMSL_TownCity" tabindex="11"/>
+          <input type="text" maxlength="30" id="txtMSL_TownCity" tabindex="12"/>
           <label for="txtMSL_Postcode" id="lblMSL_Postcode">Postcode:</label>
-          <input type="text" maxlength="15" id="txtMSL_Postcode" tabindex="12"/>
+          <input type="text" maxlength="15" id="txtMSL_Postcode" tabindex="13"/>
  
           <div id="divAddress">
-            <button id="btnNewAddress" tabindex="13">New Address Record</button>
-            <button id="btnSaveAddress" tabindex="14">Save Address Record</button>
-            <button id="btnClearAddress" tabindex="15">Clear Address Controls</button>
-            <button id="btnDeleteAddress" tabindex="16">Delete Address Record</button>
+            <button id="btnNewAddress" tabindex="14">New Address Record</button>
+            <button id="btnSaveAddress" tabindex="15">Save Address Record</button>
+            <button id="btnClearAddress" tabindex="16">Clear Address Controls</button>
+            <button id="btnDeleteAddress" tabindex="17">Delete Address Record</button>
           </div>
 
           <!-- Seekers_Mailshot_Header-->
           <label for="chkMSH_PrintContact" id="lblMSH_PrintContact">Print FAO Contact/HR On Envelope</label>  
-         <input type="checkbox" id="chkMSH_PrintContact" class="clhCheckBox"  tabindex="17"/>  
+         <input type="checkbox" id="chkMSH_PrintContact" class="clhCheckBox" checked="false" tabindex="17"/>  
    
         </section>
     <footer>

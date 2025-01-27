@@ -8,40 +8,158 @@ import * as modSchema from "../schema.js";
 
   Visual handling
 
+  Note: Due to an unfixable bug btnNew is renamed btnNew2
+        leaving as btnNew means button cannot be repositioned!
+
 */
 
-export const funcSetupScreen = () => {
+//config validation/max chars allowed etc
+// intSize = modSchema.funcGetFieldSize("CV_PersonalInfo", "CVP_Nationality");
+// export const funcSetupScreen = () => {
+//   /*
+//   Created 08/01/2025 By Roger Williams
+
+//   positions buttons etc where we need them for this screen
+
+//   228px = 30 chars
+// */
+
+//   modModel.btnNew.style.top = "10px";
+//   modModel.btnNew.style.marginTop = "10px";
+//   modModel.btnNew.style.left = "250px";
+//   modModel.btnNew.style.height = "35px";
+//   modModel.btnNew.style.width = "60px";
+
+//   modModel.txtCVP_Nationality.style.marginTop = "10px";
+//   modModel.txtCVP_Nationality.style.width = "228px";
+//   modModel.txtCVP_Nationality.attributes.required = true;
+//   modModel.txtCVP_Nationality.setAttribute(
+//     "maxLength",
+//     modSchema.funcGetFieldSize("CV_PersonalInfo", "CVP_Nationality")
+//   );
+//   modModel.btnSave.style.marginTop = "20px";
+
+//   modModel.btnUndo.style.marginTop = "20px";
+//   modModel.btnUndo.style.left = "100px";
+
+//   modModel.btnDelete.style.marginTop = "20px";
+//   modModel.btnDelete.style.left = "200px";
+
+//   modModel.txtHidden.style.backgroundColor = "darkslategrey";
+// };
+// export function funcShowFirstRecord() {
+//   /*
+//    Created 19/01/2025 By Roger Williams
+
+//    gets first record data and displays in form
+
+//   */
+//   const objData = modSchema.funcGetFirstRecord();
+// }
+export function funcInitView() {
+  let intNum = 0;
+  let strName = "";
+  //disable "action" buttons opendb activates them
+  modModel.btnSave.style.display = "none";
+  modModel.btnUndo.style.display = "none";
+  modModel.btnDelete.style.display = "none";
+  modModel.btnNew.style.display = "none";
+
+  //set label font colour to RED if required field for each
+  //textarea control
+  let aryElements = document.getElementsByTagName("textarea");
+
+  for (intNum = 0; intNum < aryElements.length; intNum++) {
+    //get field name
+    strName = aryElements[intNum].id.substring(
+      3,
+      aryElements[intNum].id.length
+    );
+
+    //see if required
+    const aryResult = modModel.objTable.aryFields.find((objTemp) => {
+      if (objTemp.fieldName === strName) {
+        return objTemp.requiredField;
+      }
+    });
+
+    if (aryResult?.requiredField) {
+      //set label colour to red
+      document.getElementById("lbl" + strName).style.color = "red";
+    }
+  }
+  //set label font colour to RED if required field for each
+  //text control
+  aryElements = document.getElementsByTagName("input");
+
+  for (intNum = 0; intNum < aryElements.length; intNum++) {
+    //get field name
+    strName = aryElements[intNum].id.substring(
+      3,
+      aryElements[intNum].id.length
+    );
+
+    //see if required
+    const aryResult = modModel.objTable.aryFields.find((objTemp) => {
+      if (objTemp.fieldName === strName) {
+        return objTemp.requiredField;
+      }
+    });
+
+    if (aryResult?.requiredField) {
+      //set label colour to red
+      document.getElementById("lbl" + strName).style.color = "red";
+    }
+  }
+}
+
+export const funcLoadData = () => {
   /*
-  Created 08/01/2025 By Roger Williams
+   Created 20/01/2025 By Roger Williams
 
-  positions buttons etc where we need them for this screen
+   loads record selected from combobox
+   ALSO loads data into objTable -> the table schema
+   THIS IS USED FOR UNDO
 
-  228px = 30 chars
 */
-
-  modModel.btnNew.style.top = "10px";
-  modModel.btnNew.style.marginTop = "10px";
-  modModel.btnNew.style.left = "250px";
-  modModel.btnNew.style.height = "35px";
-  modModel.btnNew.style.width = "60px";
-
-  modModel.txtTYP_Type.style.marginTop = "10px";
-  modModel.txtTYP_Type.style.width = "228px";
-  modModel.txtTYP_Type.attributes.required = true;
-  modModel.txtTYP_Type.setAttribute(
-    "maxLength",
-    modSchema.funcGetFieldSize("Seekers_Types", "TYP_Type")
+  const trnTemp = modModel.dbJobSeekerCRM.transaction(
+    modSchema.constCV_PersonalInfo,
+    "readonly"
   );
-  modModel.btnSave.style.marginTop = "20px";
+  const objTemp = trnTemp.objectStore(modSchema.constCV_PersonalInfo);
+  //find record by key: modModel.cmbID.value
+  //Note: have to convert to number as get() does not convert string!
+  const objData = objTemp.get(Number(modModel.cmbID.value));
 
-  modModel.btnUndo.style.marginTop = "20px";
-  modModel.btnUndo.style.left = "100px";
+  objData.onsuccess = () => {
+    const objFound = objData.result;
+    //load data!
+    modModel.txtCVP_Name.value = objFound.CVP_Name;
+    modModel.txtCVP_Nationality.value = objFound.CVP_Nationality;
+    modModel.dteCVP_DOB.value = objFound.CVP_DOB;
+    modModel.txtCVP_SalaryRange.value = objFound.CVP_SalaryRange;
+    modModel.txtCVP_Image.value = objFound.CVP_Image;
 
-  modModel.btnDelete.style.marginTop = "20px";
-  modModel.btnDelete.style.left = "200px";
+    //store in objTable in order they are in schema
+    modModel.objTable.aryFields[0].fieldValue = modModel.cmbID.value;
+    modModel.objTable.aryFields[1].fieldValue = objFound.CVP_Name;
+    modModel.objTable.aryFields[2].fieldValue = objFound.CVP_Nationality;
+    modModel.objTable.aryFields[3].fieldValue = objFound.CVP_DOB;
+    modModel.objTable.aryFields[4].fieldValue = objFound.CVP_SalaryRange;
+    modModel.objTable.aryFields[5].fieldValue = objFound.CVP_Image;
+    //reset new indicator
+    modModel.funcResetblnNew(false);
+  };
 
-  modModel.txtHidden.style.backgroundColor = "darkslategrey";
-
-  //config validation/max chars allowed etc
-  // intSize = modSchema.funcGetFieldSize("Seekers_Types", "TYP_Type");
+  objData.onerror = (error) => {
+    modMessageBox.funcMessageBox(
+      "Error Loading Data",
+      modMessageBox.objIcons.error,
+      modMessageBox.objButtons.ok,
+      -1,
+      "none",
+      1,
+      "btnNew"
+    );
+  };
 };

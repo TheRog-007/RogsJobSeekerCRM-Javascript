@@ -289,9 +289,9 @@ export const aryTables = [
         fieldName: "CVE_Role",
         primaryKey: false,
         autoNumber: true,
-        fieldSize: 0,
+        fieldSize: 75,
         fieldValue: 0,
-        requiredField: false,
+        requiredField: true,
       },
       {
         fieldName: "CVE_Responsibilities",
@@ -455,7 +455,7 @@ export const aryTables = [
         fieldName: "CVO_WebLink",
         primaryKey: false,
         autoNumber: false,
-        fieldSize: 4096,
+        fieldSize: 1024,
         fieldValue: "",
         requiredField: false,
       },
@@ -555,7 +555,7 @@ export const aryTables = [
         autoNumber: false,
         fieldSize: 50,
         fieldValue: "",
-        requiredField: true,
+        requiredField: false,
       },
       {
         fieldName: "CVRR_Details",
@@ -563,28 +563,6 @@ export const aryTables = [
         autoNumber: false,
         fieldSize: 4096,
         fieldValue: "",
-        requiredField: true,
-      },
-      {
-        fieldName: "CVR_ID",
-        primaryKey: false,
-        autoNumber: true,
-        fieldSize: 0,
-        fieldValue: 0,
-        requiredField: false,
-      },
-    ],
-  },
-
-  {
-    tblName: "CV_Roles",
-    aryFields: [
-      {
-        fieldName: "CVR_ID",
-        primaryKey: true,
-        autoNumber: true,
-        fieldSize: 0,
-        fieldValue: 0,
         requiredField: false,
       },
       {
@@ -597,6 +575,28 @@ export const aryTables = [
       },
     ],
   },
+
+  // {
+  //   tblName: "CV_Roles",
+  //   aryFields: [
+  //     {
+  //       fieldName: "CVR_ID",
+  //       primaryKey: true,
+  //       autoNumber: true,
+  //       fieldSize: 0,
+  //       fieldValue: 0,
+  //       requiredField: false,
+  //     },
+  //     {
+  //       fieldName: "CVR_Name",
+  //       primaryKey: false,
+  //       autoNumber: false,
+  //       fieldSize: 50,
+  //       fieldValue: "",
+  //       requiredField: true,
+  //     },
+  //   ],
+  // },
 
   {
     tblName: "CV_Skills",
@@ -1770,145 +1770,46 @@ export const funcGetSchema = (strTable = "") => {
 
   return objResult1;
 };
-export const funcGetFirstRecord = (strTable = "") => {
-  /*
-  Created 10/01/2025 By Roger Williams
-  
-  Gets first record of passed table returns data object containing:
 
-   tableName : "<value>"
-   aryFields : [ 
-       {
-         fieldname  : "<name>"
-         fieldValue : <value>
-       }
-    ]
+// function funcListDB_Click() {
+//   //fill divTable with seekers_where
 
+//   const dbRequest = dbJobSeekerCRM
+//     .transaction("Seekers_Types")
+//     .objectStore("Seekers_Types")
+//     .getAll();
+//   //.get(key) for one value based on ID
 
-  */
+//   dbRequest.onsuccess = () => {
+//     const qryTemp = dbRequest.result;
 
-  const trnTemp = dbJobSeekerCRM.transaction(strTable, "readonly");
-  const objTemp = trnTemp.objectStore(strTable);
-  const qryTemp = objTemp.openCursor();
-  //for schema
-  let objTemp2;
+//     console.table(qryTemp);
+//   };
 
-  //get table schema
-  objTemp2 = funcGetSchema(strTable);
+//   dbRequest.onerror = (err) => {
+//     alert("Error searching");
+//   };
+// }
 
-  //open table for read
-  qryTemp.onsuccess = (event) => {
-    const curTemp = event.target.result;
+// function funcFindDB_Click() {
+//   //find txtFind in seekers_types->typ_type
 
-    if (curTemp) {
-      /*
-       - find field in objTemp2
-       - Set fieldValue property with value
-      */
-      console.log(curTemp);
-      console.log(curTemp.value);
-      return objTemp2;
-      //      curTemp.continue();
-    }
-  };
-};
+//   alert(document.getElementById("txtFind").value);
+//   const dbRequest = dbJobSeekerCRM
+//     .transaction("Seekers_Types")
+//     .objectStore("Seekers_Types")
+//     .get(document.getElementById("txtFind").value);
 
-// export const funcValidateForm = (objData) => {
-/*
-  Created 10/01/2025 By Roger Williams
-  
-   is form data valid?
+//   dbRequest.onsuccess = () => {
+//     const objFound = dbRequest.result;
+//     alert("found");
+//     console.log(objFound);
+//   };
 
-   Checks:
-
-   - formatting (if any)
-   - field length
-
-   Vars
-
-   objData - an object with same structure as aryTables i.e.:
-
-   tableName : "<value>"
-   aryFields : [ 
-       {
-         fieldname  :  "<name>"
-         fieldValue : <value>
-       }
-    ]
-
-*/
-//};
-
-function funcOpenDB_Click(event) {
-  //Note: open also creates if does not exist
-  funcOpenDatabase();
-}
-
-function funcUpdateDB_Click(event) {
-  /*
-    updates table seekers_types
-
-  */
-
-  const dbRequest = dbJobSeekerCRM.transaction("Seekers_Types", "readwrite");
-
-  dbRequest.onerror = (event) => {
-    alert("error updating");
-  };
-
-  const objTemp = dbRequest.objectStore("Seekers_Types");
-  const dbUpdate = objTemp.add({ TYP_Type: "Test" + intNum });
-
-  dbUpdate.onsuccess = (event) => {
-    alert("saved!");
-    intNum++;
-    alert(intNum);
-  };
-
-  dbUpdate.onerror = (event) => {
-    alert("error updating table");
-  };
-}
-
-function funcListDB_Click() {
-  //fill divTable with seekers_where
-
-  const dbRequest = dbJobSeekerCRM
-    .transaction("Seekers_Types")
-    .objectStore("Seekers_Types")
-    .getAll();
-  //.get(key) for one value based on ID
-
-  dbRequest.onsuccess = () => {
-    const qryTemp = dbRequest.result;
-
-    console.table(qryTemp);
-  };
-
-  dbRequest.onerror = (err) => {
-    alert("Error searching");
-  };
-}
-
-function funcFindDB_Click() {
-  //find txtFind in seekers_types->typ_type
-
-  alert(document.getElementById("txtFind").value);
-  const dbRequest = dbJobSeekerCRM
-    .transaction("Seekers_Types")
-    .objectStore("Seekers_Types")
-    .get(document.getElementById("txtFind").value);
-
-  dbRequest.onsuccess = () => {
-    const objFound = dbRequest.result;
-    alert("found");
-    console.log(objFound);
-  };
-
-  dbRequest.onerror = (err) => {
-    alert(`Error to get student information: ${err}`);
-  };
-}
+//   dbRequest.onerror = (err) => {
+//     alert(`Error to get student information: ${err}`);
+//   };
+// }
 export function funcValidateForm(aryElements, strTable) {
   /*
   checks form INPUT elements values with schema

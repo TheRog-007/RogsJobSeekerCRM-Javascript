@@ -10,6 +10,8 @@
 <body>
     <main>
         <!-- 
+          Modified 22/01/2025 now uses CV_Responsibilites ONLY
+
           This form uses TWO tables:
 
             CV_Responsibilities
@@ -25,17 +27,16 @@
         <section id="secMain-CV-RolesMaintenance">    
             <label for="cmbID" id="lblRoles">Roles ID:</label>    
             <select id="cmbID" tabindex="1">
-               <option value="none" selected disabled hidden>Select ID
-               <option value="1">MailShot Summary Report</option>
            </select>
 
          <button id="btnNew" tabindex="2">New</button> 
+
          <label for="txtCVR_Name" id="lblCVR_Name">Name Of Role:</label>
          <input type="text" maxlength="30" id="txtCVR_Name" tabindex="3"/>
 
          <div class="clhLine"></div>
           <!-- below list of CV_Responsibilities linked to CV_Role->CVR_ID -->
-         <label for="cmbResponsibilities" id="lblResponsibilities">Role Responsibilities:</label>
+         <!-- <label for="cmbResponsibilities" id="lblResponsibilities">Role Responsibilities:</label> -->
          <!-- <select id="cmbResponsibilities"  tabindex="4">
             <option value="none" selected disabled hidden>Select Responsibility
             <option value="1">MailShot Summary Report</option>
@@ -52,26 +53,36 @@
 
             as HTML does not support this will use TWO unordered
             lists one for the name one for the details!
-          -->
+          
+          
+          Role Responsibilities: 
+            -->
+   
+ 
+         <div id="divResponsibility">
+          <p id="pResponsibility_Name">Responsibility Name:</p>
+          <p id="pResponsibility_Details">Responsibility Details:</p>
 
-         <div id="divRoles"> 
-           <ul id="ulRole_Name" tabindex="4">
+          <select id="lstResponsibility_Name" size="10" multiple>
+            </select>
+            <select id="lstResponsibility_Details" size="10" multiple>
+            </select>
+           <!-- <ul id="ulResponsibility_Name" tabindex="4">
               <li>Name</li>
            </ul>
-           <ul id="ulRole_Details">
+          <ul id="ulResponsibility_Details"> 
              <li>Details</li>
-           </ul>
-        </div>
-
+           </ul> -->
+         </div>
 
         <!-- below writes to CV_Responsibilities-->
         <label for="txtCVRR_Name" id="lblCVRR_Name">Name Of Responsibility:</label>
         <input type="text" maxlength="50" id="txtCVRR_Name" tabindex="5"/>
 
         <label for="txtCVRR_Details" id="lblCVRR_Details">Details:</label>
-        <input type="=textarea" maxlength="4096" id="txtCVRR_Details" tabindex="6"/>
+        <textarea maxlength="4096" id="txtCVRR_Details" tabindex="6"></textarea>
         <!-- stores role id in CV_Resposibilities-->
-        <input type="=text" id="txtCVR_ID" hidden/>    
+        <!-- <input type="=text" id="txtCVR_Name" maxlength="50" hidden/>     -->
 
         <div id="divResponsibilities">
           <button id="btnNewResponsibility" tabindex="7">New Responsibility Record</button>

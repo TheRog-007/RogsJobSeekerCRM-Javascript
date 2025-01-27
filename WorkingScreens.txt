@@ -1,0 +1,37 @@
+What Is Currently Working?
+=========================
+
+Except CV-Template Creator, all screens display with their custom CSS however only these are
+fully functional:
+
+
+Data Maintenance
+----------------
+Contract Type Maintenance
+Hours Maintenance
+Work From Maintenance
+Job Status Maintenance
+CV-Contact Maintenance
+CV-Current Focus Maintenance
+CV-Education Maintenance
+CV-Experience Maintenance
+CV-Highlights Maintenance
+CV-Interests Maintenance
+CV-Other Information Maintenance
+CV-Personal Information Maintenance
+CV-Personality Maintenance
+CV-Skills Maintenance
+CV-Roles
+
+
+ 
+
+
+Reports
+-------
+
+
+Main Screens
+------------
+
+

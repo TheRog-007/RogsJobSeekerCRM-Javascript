@@ -1,20 +1,20 @@
 #secMain-mailshotscreator {
-    width                            : 500px;
+    width                                 : 500px;
     
 }
 #lblID {
-    left                             : 10px;
+    left                                  : 10px;
 }
 #cmbID {
-    left                             : 140px;
-    width                            : 80px;
+    left                                  : 140px;
+    width                                 : 80px;
 }
 #btnNew {
-    left                             : 230px;
-    top                              : 15px;
+    left                                  : 230px;
+    top                                   : 15px;
 }
 #btnSave, #btnUndo, #btnDelete {
-    top                              : 670px;
+    top                                   : 670px;
 }
 #lblMSH_MailshotName {
     left                                  : 10px;
@@ -30,9 +30,9 @@
     top                                   : 90px;
 }
 #txtMSH_CVPath {
-    left                                  : 180px;
+    left                                  : 140px;
     top                                   : 100px;
-    width                                 : 102ch;
+    width                                 : 95ch;
 }
 #imgCV {
     position                              : absolute;
@@ -44,11 +44,11 @@
     mix-blend-mode                        : screen;   
 }
 #lblMSH_PrintedDate {
-    left                                  : 560px;
+    left                                  : 660px;
     top                                   : 50px;
 }
 #dteMSH_PrintedDate {
-    left                                  : 700px;
+    left                                  : 800px;
     top                                   : 65px; 
 }
 #lblMSH_LetterPath {
@@ -56,9 +56,9 @@
     top                                   : 130px;
 }
 #txtMSH_LetterPath {
-    left                                  : 180px;
+    left                                  : 140px;
     top                                   : 140px;
-    width                                 : 102ch;
+    width                                 : 95ch;
 }
 #imgLetter {
     position                              : absolute;
@@ -74,41 +74,204 @@
 }
 #divMailshotAddresses {
      position                             : absolute;
-     left                                 : 10px;
+     left                                 : 2px;
      top                                  : 190px; 
      border                               : solid;
      border-color                         :green;
      border-width                         : 1px;
      width                                : 970px;
      height                               : 200px;
-     display                              : grid;
-     grid-template-areas                  : "contact company address1 address2 address3 towncity postcode";
-     
-     grid-template-columns                : repeat (7, auto);
-     column-gap                           : 5px ;
-     scroll-behavior                      : auto;
+     display                              : block;
+
+     /* display:grid;
+     grid-template-columns: 8ch 25ch 20ch 10ch 10ch 10ch 10ch 10ch 10ch 10ch;
+     grid-template-rows: 60px; */
+
+     background-color: none;
+     scrollbar-color: yellow darkblue;
+     scroll-behavior: smooth;
+     scrollbar-width: 10px;
+     overflow-y: scroll;
+     overflow-x: scroll;
+
+     border-radius: 6px;
+     /* padding-bottom: 10px;
+     padding-left:  10px;
+     padding-top: 10px;  */
+} 
+.btnSelect {
+    width                                   : 6ch;
+    left                                    : 0;
 }
-#ulContact {
-    grid-area                             : contact;
+.clhAddressRowContainer {
+    background-color                        :darkslategrey;
+    display: inline-block;
+    width:970px;
+    height:30px;
 }
-#ulCompany {
-    grid-area                             : company;
+ /* .clhAddressRowContainer {
+    height: 100px;
+    background-color                        :darkslategrey;
+ } */
+.clhAddressCol1 {
+    /* background-color: black; */
+    /* border-radius: 10px; */
+    /* margin-bottom: 10px; */
+    margin-right: 2px;
+    /* padding-top: 10px;  */
+    /* padding-left: 2px; */
+    color: yellow;
+    height: 30px;
 }
-#ulAddress1 {
-    grid-area                             : address1;
+.clhAddressCol2 {
+    /* background-color: black; */
+    /* border-radius: 10px; */
+    /* margin-bottom: 10px; */
+    margin-right: 2px;
+    padding-top: 5px; 
+    padding-left: 2px;
+    color: yellow;
+    height: 30px;
+    left: 80px;
 }
-#ulAddress2 {
-    grid-area                             : address2;
+.clhAddressCol3 {
+    /* background-color: black; */
+    /* border-radius: 10px; */
+    /* margin-bottom: 10px; */
+    margin-right: 2px;
+    padding-top: 5px;
+    padding-left: 2px;
+    color: yellow;
+    height: 30px;
+    left: 240px;
 }
-#ulAddress3 {
-    grid-area                             : address3;
+.clhAddressCol4 {
+    /* background-color: black; */
+    /* border-radius: 10px; */
+    /* margin-bottom: 10px; */
+    margin-right: 2px;
+    padding-top: 5px;
+    padding-left: 2px;
+    color: yellow;
+    height: 30px;
+    left: 340px;
 }
-#ulTownCity {
-    grid-area                             : towncity;
+.clhAddressCol5 {
+    /* background-color: black; */
+    /* border-radius: 10px; */
+    /* margin-bottom: 10px; */
+    margin-right: 2px;
+    padding-top: 5px;
+    padding-left: 2px;
+    color: yellow;
+    height: 30px;
+    left: 440px;
 }
-#ulPostcode {
-    grid-area                             : postcode;
+.clhAddressCol6 {
+    /* background-color: black; */
+    /* border-radius: 10px; */
+    /* margin-bottom: 10px; */
+    margin-right: 2px;
+    padding-top: 5px;
+    padding-left: 2px;
+    color: yellow;
+    height: 30px;
+    left: 540px;
 }
+.clhAddressCol7 {
+    /* background-color: black; */
+    /* border-radius: 10px; */
+    /* margin-bottom: 10px; */
+    margin-right: 2px;
+    padding-top: 5px;
+    padding-left: 2px;
+    color: yellow;
+    height: 30px;
+    left: 640px;
+}
+.clhAddressCol8 {
+    /* background-color: black; */
+    /* border-radius: 10px; */
+    /* margin-bottom: 10px; */
+    margin-right: 2px;
+    padding-top: 5px;
+    padding-left: 2px;
+    color: yellow;
+    height: 30px;
+    left: 740px;
+}
+.clhAddressCol9 {
+    /* background-color: black; */
+    /* border-radius: 10px; */
+    /* margin-bottom: 10px; */
+    margin-right: 2px;
+    padding-top: 5px;
+    padding-left: 2px;
+    color: yellow;
+    height: 30px;
+    left: 840px;
+}
+/* .clhAddressRow:first-letter{
+    font-weight: 800;
+    color:lightyellow;
+    text-transform:capitalize;
+} */
+
+
+/* #tblData {
+    border-spacing                        : 1ch;
+    font-size                             : 12px;
+    width                                 : 960px;
+    overflow-x                            : auto;
+    overflow-y                            : auto;
+
+} */
+/*align columns */
+
+
+
+/* .btnTable {
+    font-size                             : 12px;
+    width                                 : 50px;
+    height                                : 30px;
+    left                                  : 2px;
+} */
+
+/* #tblHeader1 {
+    width                                 : 10ch;
+}
+#tblHeader2 {
+    width                                 : 14ch;
+  
+}
+#tblHeader3 {
+    width                                 : 20ch;
+  
+}
+#tblHeader4 {
+    width                                 : 20ch;
+  
+}
+#tblHeader5 {
+    width                                 : 20ch;
+  
+}
+#tblHeader6 {
+    width                                 : 10ch;
+  
+}
+#tblHeader7 {
+    width                                 : 10ch;
+  
+}
+#tblHeader8 {
+    width                                 : 13ch;
+  
+} */
+
+/*
+  form controls
+*/
 #lblMSL_Contact {
     left                                  : 10px;
     top                                   : 400px 
@@ -119,11 +282,11 @@
     width                                 : 30ch;
 }
 #lblMSL_CompanyName {
-    left                                  : 360px;
+    left                                  : 400px;
     top                                   : 400px;
 }
 #txtMSL_CompanyName {
-    left                                  : 450px;
+    left                                  : 490px;
     top                                   : 410px;
     width                                 : 50ch;    
 }
@@ -164,11 +327,11 @@
     width                                 : 30ch;
 }
 #lblMSL_Postcode {
-    left                                  : 360px;
+    left                                  : 400px;
     top                                   : 560px;
 }
 #txtMSL_Postcode {
-    left                                  : 440px;
+    left                                  : 490px;
     top                                   : 570px;
     width                                 : 15ch; 
 }

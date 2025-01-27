@@ -27,55 +27,69 @@
     width                            : 50ch;
 }
 .clhLine {
-    top                              : 100px; 
+    top                              : 98px; 
 }
 #lblResponsibilities {
     left                             : 10px;
     top                              : 90px;
 }
-#divRoles {
+
+#divResponsibility {
     position                         : absolute;
     left                             : 10px;
-    top                              : 140px; 
+    top                              : 130px; 
     border                           : solid;
     border-color                     :green;
     width                            : 960px;
-    height                           : 200px;
+    height                           : 230px;
     display                          : grid;
-    grid-template-areas              : "name details";
-    grid-template                    : 400px 400px / 300px 400px ; 
-    scroll-behavior                  : auto;
+    grid-template                    : 10px 200px / 200px 200px; 
+    /* scroll-behavior                  : auto; */
+    grid-gap                         : 1px;
 }
-#ulName {
-    grid-area                        : name;
-    /* top                              : 2px;
-    left                             : 2px;
-    width                            : 200px; */
+#pResponsibility_Name {
+    grid-column                      : 1 /2;
+    grid-row                         : 1 /2;
+    margin-top                       : 0px;
 }
-#ulDetails {
-    grid-area                        : details;
-    /* top                              : 2px;
-    left                             : 220px;  */
+#pResponsibility_Details {
+    grid-column                      : 2 /2;
+    grid-row                         : 1 /2;
+    margin-top                       : 0px;
+}
+
+#lstResponsibility_Name {
+    grid-column                      : 1 /2;
+    grid-row                         : 2 /2;
+    width                            : 200px;
+    height                           : 200px;
+}
+#lstResponsibility_Details {
+grid-column                          : 2 /2;
+grid-row                             : 2 /2;
+width                                : 750px;
+height                               : 200px;
+overflow                             : hidden;
 }
 
 #lblCVRR_Name {
     left                             : 10px;
-    top                              : 345px;
+    top                              : 370px;
 }
 #txtCVRR_Name {
     left                             : 200px;
-    top                              : 355px;
+    top                              : 375px;
     width                            : 50ch;
 }
 #lblCVRR_Details {
     left                             : 10px;
-    top                              : 380px;
+    top                              : 395px;
 }
 #txtCVRR_Details {
     left                             : 10px;
-    top                              : 430px;
+    top                              : 440px;
     width                            : 124ch;
-    height                           : 140px;
+    height                           : 130px;
 }
 #divResponsibilities {
     border                           : solid;

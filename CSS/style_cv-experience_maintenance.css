@@ -42,10 +42,10 @@
     left                             : 10px;
     top                              : 160px;
 }
-#cmbCVE_Role {
+#txtCVE_Role {
     left                             : 280px;
-    top                              : 160px;
-    width                            : 300px;
+    top                              : 170px;
+    width                            : 75ch;
 }
 
 #btnSave, #btnUndo, #btnDelete {

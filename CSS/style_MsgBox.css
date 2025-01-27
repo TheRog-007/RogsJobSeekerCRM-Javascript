@@ -49,7 +49,7 @@
 #btnMsgBox_Cancel {
     position: absolute;
     margin-top: 80px;
-    left: 275px;
+    left: 255px;
     height: var(--varButtonHeight);
     width: var(--varButtonWidth_Close);
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;  

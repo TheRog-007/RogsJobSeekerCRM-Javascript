@@ -22,7 +22,7 @@ CV-Personal Information Maintenance
 CV-Personality Maintenance
 CV-Skills Maintenance
 CV-Roles
-
+Mailshot Creator
 
  
 

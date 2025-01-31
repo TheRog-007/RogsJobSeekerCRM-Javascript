@@ -52,7 +52,8 @@ const funccmbIDSelect = (event) => {
         modMessageBox.objButtons.no,
         "load",
         1,
-        "btnNew"
+        "btnNew",
+        document.getElementsByTagName("html")
       );
     } else {
       modView.funcLoadData();
@@ -60,14 +61,6 @@ const funccmbIDSelect = (event) => {
   }
 };
 
-// const funcValidateTextLength = (strValue, intMaxLength) => {
-//   /*
-//        Created 10/01/2024 By Roger Williams
-
-//        Checks if string passed greater than passed max length
-
-//     */
-// };
 const functextboxKeyDown = (event) => {
   /*
   Created 08/01/2025 By Roger Williams
@@ -111,8 +104,8 @@ export function funcPopulateCombobox() {
 
    fields:
 
-   TYP_ID    - autonumber
-   CVO_Details  - string
+   autonumber - hidden
+   next primary key
 
   */
   let elFirst;
@@ -133,8 +126,6 @@ export function funcPopulateCombobox() {
 
       if (curTemp) {
         //create new option element inside the combobox
-        // console.log(curTemp.value);
-        //<option value="1">MailShot Summary Report</option>
         elTemp = document.createElement("option");
         elTemp.value = curTemp.key;
         elTemp.innerText = curTemp.value.CVO_Name;
@@ -151,7 +142,6 @@ export function funcPopulateCombobox() {
     }
   }
   // create first item
-  // <option value="none" selected disabled hidden>Select ID</option>
   elFirst = document.createElement("option");
   elFirst.value = "none";
   elFirst.innerText = "Select ID";
@@ -186,7 +176,8 @@ const funcSaveData = () => {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
     return;
   }
@@ -203,7 +194,8 @@ const funcSaveData = () => {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -230,7 +222,8 @@ const funcSaveData = () => {
         -1,
         "none",
         1,
-        "btnNew"
+        "btnNew",
+        document.getElementsByTagName("html")
       );
     };
 
@@ -242,7 +235,8 @@ const funcSaveData = () => {
         -1,
         "none",
         1,
-        "btnNew"
+        "btnNew",
+        document.getElementsByTagName("html")
       );
     };
   } else {
@@ -274,7 +268,8 @@ const funcSaveData = () => {
           -1,
           "none",
           1,
-          "btnNew"
+          "btnNew",
+          document.getElementsByTagName("html")
         );
       };
 
@@ -286,7 +281,8 @@ const funcSaveData = () => {
           -1,
           "none",
           1,
-          "btnNew"
+          "btnNew",
+          document.getElementsByTagName("html")
         );
       };
     };
@@ -300,6 +296,31 @@ const funcbtnSaveClick = () => {
    else saves
 
 */
+  //check all required fields filled
+  const aryErrors1 = modSchema.funcValidateForm(
+    document.getElementsByTagName("input"),
+    modSchema.constSeekers_Types
+  );
+
+  const aryErrors2 = modSchema.funcValidateForm(
+    document.getElementsByTagName("textarea"),
+    modSchema.constSeekers_Types
+  );
+
+  //see if returned errors object is empty
+  if (!aryErrors1 || !aryErrors2) {
+    modMessageBox.funcMessageBox(
+      "Please Enter Data In All Required Fields",
+      modMessageBox.objIcons.error,
+      modMessageBox.objButtons.ok,
+      -1,
+      "none",
+      1,
+      "btnNew"
+    );
+    return;
+  }
+
   if (!blnNew) {
     if (objTable.aryFields[0].fieldValue) {
       funcSaveData();
@@ -309,27 +330,6 @@ const funcbtnSaveClick = () => {
   }
 };
 
-// let objTemp = modSchema.funcGetFirstRecord(constCV_Other);
-
-// if (modSchema.funcValidateForm) {
-//   //save data
-// }
-// funcPopulateobjData();
-// modSchema.funcSaveData(objData);
-// let transaction = db.transaction("books", "readwrite"); // (1)
-// // get an object store to operate on it
-// let books = transaction.objectStore("books"); // (2)
-// let book = {
-// id: 'js',
-// price: 10,
-// created: new Date()
-// };
-// let request = books.add(book); // (3)
-
-//also transaction.oncompleted (event)
-// request.onsuccess = function() { // (4)
-// console.log("Book added to the store", request.result);
-// };
 export function funcUndoChanges() {
   /*
   Created 08/01/2025 By Roger Williams
@@ -366,7 +366,8 @@ const funcbtnUndoClick = (event) => {
     modMessageBox.objButtons.no,
     "undo",
     2,
-    "btnNew"
+    "btnNew",
+    document.getElementsByTagName("html")
   );
 };
 
@@ -391,7 +392,8 @@ export function funcDeleteRecord() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -403,7 +405,8 @@ export function funcDeleteRecord() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
 
     //update combobox
@@ -425,7 +428,8 @@ const funcbtnDeleteClick = (event) => {
     modMessageBox.objButtons.no,
     "delete",
     2,
-    "btnNew"
+    "btnNew",
+    document.getElementsByTagName("html")
   );
 };
 
@@ -458,7 +462,8 @@ const funcbtnNewClick = () => {
       modMessageBox.objButtons.no,
       "save",
       1,
-      "txtCVO_Name"
+      "txtCVO_Name",
+      document.getElementsByTagName("html")
     );
   } else {
     blnNew = true;
@@ -542,7 +547,8 @@ function funcOpenDatabase() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -554,7 +560,8 @@ function funcOpenDatabase() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -571,7 +578,8 @@ function funcOpenDatabase() {
         -1,
         "none",
         1,
-        "btnNew"
+        "btnNew",
+        document.getElementsByTagName("html")
       );
     };
 

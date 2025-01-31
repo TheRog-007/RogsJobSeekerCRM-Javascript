@@ -1,0 +1,59 @@
+/*
+ and (width: 22cm) and (height: 11cm)
+ */
+@media print{
+    @page {
+        size: 22cm 11cm; 
+        margin-top                             : 0; 
+        margin-bottom                          : 0;
+        margin-left                            : 3cm;
+    }
+
+    #btnPrintEnvelope {
+        display                                : none !important;
+    }
+}
+#divEnvelope {
+    width                                      : 220mm;
+    height                                     : 110mm;
+    padding-left                               : 50mm;
+    padding-top                                : 50mm;
+    border                                     : none;
+    position                                   : relative; 
+}
+#btnPrintEnvelope {
+    position                                   : absolute;
+    top                                        : 600px; 
+    height                                     : 40px;
+    font-size                                  : 24;
+}
+#divContact {
+    font-size                                  : 38px;
+    font-weight                                : 600;
+    top                                        : 0px;      
+}
+#divCompany {
+    top                                        : 20px;  
+    font-size                                  : 36px;
+    font-weight                                : 600;   
+}
+#divAddress1 {
+    top                                        : 40px;   
+    font-size                                  : 32px;   
+}
+#divAddress2 {
+    top                                        : 60px;
+    font-size                                  : 32px;      
+}
+#divAddress3 {
+    top                                        : 80px;
+    font-size                                  : 32px;      
+}
+#divTownCity {
+    top                                        : 100px;
+    font-size                                  : 32px;      
+}
+#divPostcode {
+    top                                        : 120px;
+    font-size                                  : 32px;      
+}

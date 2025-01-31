@@ -2,60 +2,170 @@
 
 import * as modModel from "./model.js";
 import * as modSchema from "../schema.js";
-
+import * as modMessageBox from "../messageBox.js";
 /*
   Created 08/01/2025 By Roger Williams
 
-  Visual handling
-
-  Note: Due to an unfixable bug btnNew is renamed btnNew2
-        leaving as btnNew means button cannot be repositioned!
+ visual handling etc
 
 */
 
-//config validation/max chars allowed etc
-// intSize = modSchema.funcGetFieldSize("CV_Roles", "CVI_Details");
-// export const funcSetupScreen = () => {
-//   /*
-//   Created 08/01/2025 By Roger Williams
+let intDivNumber = 1;
+export let intNewRowTop = 0;
+export const intRowHeight = 30;
+export let intRows = 0;
 
-//   positions buttons etc where we need them for this screen
+export function funcRenumberRowsResetPositions() {
+  /*
+  Created 28/01/2025 By Roger Williams
 
-//   228px = 30 chars
-// */
+  renumber button IDs to match ACTUAL row they are in
+  AND set positions of container DIV to make sure no gaps
+  if row deleted
 
-//   modModel.btnNew.style.top = "10px";
-//   modModel.btnNew.style.marginTop = "10px";
-//   modModel.btnNew.style.left = "250px";
-//   modModel.btnNew.style.height = "35px";
-//   modModel.btnNew.style.width = "60px";
+  */
+  let elTemp;
+  let intNum = 0;
+  let intRowNbr = 1;
+  let btnTemp;
+  let aryTemp = [];
 
-//   modModel.txtCVI_Details.style.marginTop = "10px";
-//   modModel.txtCVI_Details.style.width = "228px";
-//   modModel.txtCVI_Details.attributes.required = true;
-//   modModel.txtCVI_Details.setAttribute(
-//     "maxLength",
-//     modSchema.funcGetFieldSize("CV_Roles", "CVI_Details")
-//   );
-//   modModel.btnSave.style.marginTop = "20px";
+  aryTemp = document.getElementsByClassName("clhResponsibilitiesRowContainer");
 
-//   modModel.btnUndo.style.marginTop = "20px";
-//   modModel.btnUndo.style.left = "100px";
+  for (intNum = 0; intNum < aryTemp.length; intNum++) {
+    elTemp = aryTemp[intNum];
+    //reset top
+    elTemp.style.top = intRowHeight * intNum + "px";
+    btnTemp = elTemp.childNodes[0].nextSibling;
+    //reset "row" number
+    btnTemp.id = "btnSelect" + intRowNbr;
+    //reset DIV id
+    elTemp.id = "divResponsibilitiesRowContainer" + intRowNbr;
+    intRowNbr++;
+  }
 
-//   modModel.btnDelete.style.marginTop = "20px";
-//   modModel.btnDelete.style.left = "200px";
+  intNewRowTop = intRowHeight * intNum;
+  //resetintRows
+  intRows = intNum;
+}
+export function funcCreateTableRow() {
+  /*
+   Created 24/01/2025 By Roger Williams
 
-//   modModel.txtHidden.style.backgroundColor = "darkslategrey";
-// };
-// export function funcShowFirstRecord() {
-//   /*
-//    Created 19/01/2025 By Roger Williams
+   puts new row in table 
+   creates button for selecting the row
 
-//    gets first record data and displays in form
+   VARS
 
-//   */
-//   const objData = modSchema.funcGetFirstRecord();
-// }
+   blnLocal - is this called from lines save button?
+   dbData   - if from recordset this is the data to add
+
+  creates 1 select button and 9 text rows ALL as divs
+
+  */
+  let btnTemp;
+  let elTemp;
+  let elTemp2;
+
+  /*
+    structure
+
+    divMailShotAddresses
+   |  |divAddressRowContainer+row nbr                                     | 
+   |  | element1  elemen2 element3 elemen4 element5 element6 element7 etc |
+   |  |divAddressRowContainer+row nbr                                     | 
+   |  | element1  elemen2 element3 elemen4 element5 element6 element7 etc |
+   
+  */
+  //create div to house the columns
+  elTemp = document.createElement("div");
+  elTemp.id = "divResponsibilitiesRowContainer" + +intDivNumber;
+  elTemp.className = "clhResponsibilitiesRowContainer";
+  elTemp.style.top = intNewRowTop + "px";
+  modModel.divTableResponsibilities.appendChild(elTemp);
+
+  //create column one row select button
+  elTemp2 = document.createElement("div");
+  elTemp2.id = "divResponsibilitiesRow" + intDivNumber;
+  elTemp2.className = "clhResponsibilityCol1";
+  elTemp.appendChild(elTemp2);
+  //add select button
+  btnTemp = document.createElement("button");
+  btnTemp.innerText = "select";
+  //set button id to include ACTUAl row number
+  if (intRows === 0) {
+    btnTemp.id = "btnSelect1";
+  } else {
+    btnTemp.id = "btnSelect" + Number(intRows + 1);
+  }
+  btnTemp.style.width = "8ch";
+  btnTemp.style.height = "30px";
+  btnTemp.className = "btnSelect";
+  btnTemp.addEventListener("click", modModel.funcSelectButtonClick);
+  elTemp.appendChild(btnTemp);
+
+  //create the 9 columns divs that hold data
+  elTemp2 = document.createElement("div");
+  elTemp2.id = "divResponsibilitiesRow" + intDivNumber;
+  elTemp2.className = "clhResponsibilityCol2";
+  elTemp2.innerText = modModel.txtCVRR_Name.value;
+  elTemp.appendChild(elTemp2);
+
+  elTemp2 = document.createElement("div");
+  elTemp2.id = "divResponsibilitiesRow" + intDivNumber;
+  elTemp2.className = "clhResponsibilityCol3";
+  elTemp2.innerText = modModel.txtCVRR_Details.value;
+  elTemp.appendChild(elTemp2);
+
+  intRows++;
+  intDivNumber++;
+  intNewRowTop = intNewRowTop + 30;
+
+  //renumber button IDs to match ACTUAL row they are in and remove gaps in rows
+  funcRenumberRowsResetPositions();
+}
+
+export function funcUpdateTableRow(intWhat = 0) {
+  /*
+   Created 28/01/2025 By Roger Williams
+
+   updates row in table 
+
+   VARS
+
+   intWhat - row to update
+  */
+
+  let elTemp;
+  //get row div container
+  elTemp = document.getElementById("divResponsibilitiesRowContainer" + intWhat);
+  //update list
+  elTemp.childNodes[2].innerText = modModel.txtCVRR_Name.value;
+  elTemp.childNodes[3].innerText = modModel.txtCVRR_Details.value;
+}
+
+export function funcInitTable() {
+  /*
+  Created 24/01/2025 By Roger Williams
+
+  clears table and creates row headers
+
+  gives table headers an ID so CSS can format
+  */
+  let elTemp;
+  let intNum = 0;
+  let aryTemp = [];
+
+  aryTemp = modModel.divTableResponsibilities.getElementsByClassName(
+    "clhResponsibilitiesRowContainer"
+  );
+
+  while (intNum !== aryTemp.length) {
+    elTemp = aryTemp[intNum];
+    modModel.divTableResponsibilities.removeChild(elTemp);
+    intNum = 0;
+  }
+}
 export function funcInitView() {
   let intNum = 0;
   let strName = "";
@@ -111,6 +221,8 @@ export function funcInitView() {
       document.getElementById("lbl" + strName).style.color = "red";
     }
   }
+
+  funcInitTable();
 }
 
 export const funcLoadData = () => {
@@ -138,8 +250,7 @@ export const funcLoadData = () => {
   );
 
   //first clear any existing items before looking for item
-  modModel.funcClearCombobox(modModel.lstResponsibility_Name);
-  modModel.funcClearCombobox(modModel.lstResponsibility_Details);
+  funcInitTable();
 
   const dbQuery = idxTemp.openCursor(keyRange);
 
@@ -151,7 +262,8 @@ export const funcLoadData = () => {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
     return;
   };
@@ -172,24 +284,21 @@ export const funcLoadData = () => {
       modModel.objTable.aryFields[2].fieldValue = dbCursor.value.CVRR_Details;
       modModel.objTable.aryFields[3].fieldValue = dbCursor.value.CVR_Name;
       /*
-      load ALL CRR_ fields from table into
+      load ALL CRR_ fields from table into responsibility table
 
-       lstResponsibility_Name
-
+      populate address controls then add to table
       */
-      elTemp = document.createElement("option");
-      elTemp.innerText = dbCursor.value.CVRR_Name;
-      elTemp.value = elTemp.innerText;
-      modModel.lstResponsibility_Name.appendChild(elTemp);
+      modModel.txtCVRR_Name.value = dbCursor.value.CVRR_Name;
+      modModel.txtCVRR_Details.value = dbCursor.value.CVRR_Details;
 
-      elTemp = document.createElement("option");
-      elTemp.innerText = dbCursor.value.CVRR_Details;
-      elTemp.value = elTemp.innerText;
-      modModel.lstResponsibility_Details.appendChild(elTemp);
+      funcCreateTableRow();
       //goto next record
       dbCursor.continue();
+    } else {
+      //clear any existing address data
+      modModel.funcbtnClearResponsibilityClick();
+      //reset new indicator
+      modModel.funcResetblnNew(false);
     }
-    //reset new indicator
-    modModel.funcResetblnNew(false);
   };
 };

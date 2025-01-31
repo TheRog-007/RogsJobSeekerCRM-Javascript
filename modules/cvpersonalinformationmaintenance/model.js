@@ -55,7 +55,8 @@ const funccmbIDSelect = (event) => {
         modMessageBox.objButtons.no,
         "load",
         1,
-        "txtCVP_Name"
+        "txtCVP_Name",
+        document.getElementsByTagName("html")
       );
     } else {
       modView.funcLoadData();
@@ -115,8 +116,8 @@ export function funcPopulateCombobox() {
 
    fields:
 
-   TYP_ID    - autonumber
-   CVP_Nationality  - string
+   autonumber - hidden
+   next primary key
 
   */
   let elFirst;
@@ -190,7 +191,8 @@ const funcSaveData = () => {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
     return;
   }
@@ -207,7 +209,8 @@ const funcSaveData = () => {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -237,7 +240,8 @@ const funcSaveData = () => {
         -1,
         "none",
         1,
-        "btnNew"
+        "btnNew",
+        document.getElementsByTagName("html")
       );
     };
 
@@ -249,7 +253,8 @@ const funcSaveData = () => {
         -1,
         "none",
         1,
-        "btnNew"
+        "btnNew",
+        document.getElementsByTagName("html")
       );
     };
   } else {
@@ -283,7 +288,8 @@ const funcSaveData = () => {
           -1,
           "none",
           1,
-          "btnNew"
+          "btnNew",
+          document.getElementsByTagName("html")
         );
       };
 
@@ -295,7 +301,8 @@ const funcSaveData = () => {
           -1,
           "none",
           1,
-          "btnNew"
+          "btnNew",
+          document.getElementsByTagName("html")
         );
       };
     };
@@ -309,6 +316,31 @@ const funcbtnSaveClick = () => {
    else saves
 
 */
+  //check all required fields filled
+  const aryErrors1 = modSchema.funcValidateForm(
+    document.getElementsByTagName("input"),
+    modSchema.constSeekers_Types
+  );
+
+  const aryErrors2 = modSchema.funcValidateForm(
+    document.getElementsByTagName("textarea"),
+    modSchema.constSeekers_Types
+  );
+
+  //see if returned errors object is empty
+  if (!aryErrors1 || !aryErrors2) {
+    modMessageBox.funcMessageBox(
+      "Please Enter Data In All Required Fields",
+      modMessageBox.objIcons.error,
+      modMessageBox.objButtons.ok,
+      -1,
+      "none",
+      1,
+      "btnNew"
+    );
+    return;
+  }
+
   if (!blnNew) {
     if (objTable.aryFields[0].fieldValue) {
       funcSaveData();
@@ -377,7 +409,8 @@ const funcbtnUndoClick = (event) => {
     modMessageBox.objButtons.no,
     "undo",
     2,
-    "btnNew"
+    "btnNew",
+    document.getElementsByTagName("html")
   );
 };
 
@@ -402,7 +435,8 @@ export function funcDeleteRecord() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -414,7 +448,8 @@ export function funcDeleteRecord() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
 
     //update combobox
@@ -436,7 +471,8 @@ const funcbtnDeleteClick = (event) => {
     modMessageBox.objButtons.no,
     "delete",
     2,
-    "btnNew"
+    "btnNew",
+    document.getElementsByTagName("html")
   );
 };
 
@@ -471,7 +507,8 @@ const funcbtnNewClick = () => {
       modMessageBox.objButtons.no,
       "save",
       1,
-      "txtCVP_Nationality"
+      "txtCVP_Nationality",
+      document.getElementsByTagName("html")
     );
   } else {
     blnNew = true;
@@ -555,7 +592,8 @@ function funcOpenDatabase() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -567,7 +605,8 @@ function funcOpenDatabase() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -584,7 +623,8 @@ function funcOpenDatabase() {
         -1,
         "none",
         1,
-        "btnNew"
+        "btnNew",
+        document.getElementsByTagName("html")
       );
     };
 

@@ -24,12 +24,6 @@ export const txtHidden = document.getElementById("txtHidden");
 //db var
 let dbJobSeekerCRM;
 
-// const funcbtnLoginClick = () => {
-//   //dont act like a form and submit!
-//   btnLogin.preventDefault();
-//   //open connection
-// };
-
 //event handlers
 const funccmbIDClick = (event) => {
   /*
@@ -174,105 +168,11 @@ const funcHiddenTextBoxHandler = (event) => {
   }
 };
 
-// let transaction = db.transaction("books", "readwrite"); // (1)
-// // get an object store to operate on it
-// let books = transaction.objectStore("books"); // (2)
-// let book = {
-// id: 'js',
-// price: 10,
-// created: new Date()
-// };
-// let request = books.add(book); // (3)
-
-//also transaction.oncompleted (event)
-// request.onsuccess = function() { // (4)
-// console.log("Book added to the store", request.result);
-// };
-// request.onerror = function(event) {
-//     // ConstraintError occurs when an object with the same id already exists
-//     if (request.error.name == "ConstraintError") {
-//     console.log("Book with such id already exists"); // handle the error
-//     event.preventDefault(); // don't abort the transaction
-//     // use another key for the book?
-//     } else {
-//     // unexpected error, can't handle it
-//     // the transaction will abort
-//     }
-//     };
-//     transaction.onabort = function() {
-//     console.log("Error", transaction.error);
-//     };
-
-//search
-// get one book
-// books.get('js')
-// // get books with 'css' <= id <= 'html'
-// books.getAll(IDBKeyRange.bound('css', 'html'))
-// // get books with id < 'html'
-// books.getAll(IDBKeyRange.upperBound('html', true))
-// // get all books
-// books.getAll()
-// // get all keys, where id > 'js'
-// books.getAllKeys(IDBKeyRange.lowerBound('js', true))
-
-//use index to search on non key fields
-// let index = books.createIndex('price_idx', 'price');
-// let priceIndex = books.index("price_idx");
-// index.get("Donna").onsuccess = (event) => {
-//     console.
-
-//delete by index
-// find the key where price = 5
-// let request = priceIndex.getKey(5);
-// request.onsuccess = function() {
-// let id = request.result;
-// let deleteRequest = books.delete(id);
-
-//cursor
-// called for each book found by the cursor
-// request.onsuccess = function() {
-//     let cursor = request.result;
-//     if (cursor) {
-//     let key = cursor.key; // book key (id field)
-//     let value = cursor.value; // book object
-//     console.log(key, value);
-//     cursor.continue();
-//     } else {
-//     console.log("No more books");
-//     }
-
-// The main cursor methods are:
-// advance(count) – advance the cursor count times, skipping values.
-// continue([key]) – advance the cursor to the next value in range matching (or immediately after key if given).
-
 //exports
 export function funcCreateMessageBoxResultHandler() {
   txtHidden.addEventListener("focus", funcHiddenTextBoxHandler);
 }
 
-// export function funcOpenDatabase() {
-//   let dbopenRequest = indexedDB.open("RogsJobSeekerCRM", 1);
-
-//   // dbopenRequest.onupgradeneeded = (event) => {
-//   //   //if no database create it from the schema file
-//   //   funcCreateFromSchema(event);
-//   // };
-
-//   dbopenRequest.onerror = () => {
-//     alert(`Error Accessing Database ${dbopenRequest.error}`);
-//   };
-
-//   dbopenRequest.onsuccess = () => {
-//    modSchema.dbJobSeekerCRM = dbopenRequest.result;
-
-//     dbJobSeekerCRM.onversionchange = () => {
-//       dbJobSeekerCRM.close();
-//       alert("Database Version Is Outdated Please Reload Page");
-//     };
-//     //populate combobox
-//     funcPopulateCombobox();
-//   };
-// }
 export function funcOpenDB() {
   /*
   Created 13/01/2025 By Roger Williams

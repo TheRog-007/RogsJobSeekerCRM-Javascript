@@ -48,6 +48,7 @@ const txtHidden = document.getElementById("txtHidden");
 //used to specify control to set focus too AFTER txtHidden
 let strFocus = "";
 
+let elParent;
 //determines if yes or no was clicked
 export let blnOk;
 //specifies context for the message
@@ -57,14 +58,19 @@ export let strContext = "none";
 const funcMessageBoxClick_Ok = (event) => {
   dlgMessage.close();
   blnOk = true;
+  //"restore" page
+  elParent[0].style.opacity = "1";
   //"passback" value
   txtHidden.focus();
+  //"reset" parent forms blur
   document.getElementById(strFocus).focus();
 };
 
 const funcMessageBoxClick_Cancel = (event) => {
   dlgMessage.close();
   blnOk = false;
+  //"restore" page
+  elParent[0].style.opacity = "1";
   //"passback" value
   txtHidden.focus();
   document.getElementById(strFocus).focus();
@@ -94,7 +100,8 @@ export const funcMessageBox = (
   intButton2 = -1,
   strMsgContext = "none",
   intButtonFocus = -1,
-  strFocusTo = ""
+  strFocusTo = "",
+  htmlParent
 ) => {
   /*
     creates a mnessage box for the user to interact with
@@ -113,6 +120,7 @@ export const funcMessageBox = (
                         REQUIRED 
   */
   let elTemp;
+  elParent = htmlParent;
 
   switch (intIcon) {
     case 1:

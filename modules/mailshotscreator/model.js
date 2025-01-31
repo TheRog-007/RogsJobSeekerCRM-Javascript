@@ -35,16 +35,16 @@ export const txtMSH_CVPath = document.getElementById("txtMSH_CVPath");
 export const lblMSH_CVPath = document.getElementById("lblMSH_CVPath");
 export const txtMSH_LetterPath = document.getElementById("txtMSH_LetterPath");
 export const lblMSH_LetterPath = document.getElementById("lblMSH_LetterPath");
-export const txtPrintedDate = document.getElementById("txtPrintedDate");
-export const lblPrintedDate = document.getElementById("lblPrintedDate");
+export const dteMSH_PrintedDate = document.getElementById("dteMSH_PrintedDate");
+export const lblMSH_PrintedDate = document.getElementById("lblMSH_PrintedDate");
 export const divMailshotAddresses = document.getElementById(
   "divMailshotAddresses"
 );
-// export const tblData = document.getElementById("tblData");
-// //table data area
-// export const tblDataArea = document
-//  .getElementById("tblData")
-//  .getElementsByTagName("tbody")[0];
+export const btnPrintMailshot = document.getElementById("btnPrintMailshot");
+export const btnPrintTestEnvelope = document.getElementById(
+  "btnPrintTestEnvelope"
+);
+
 //lines
 export const lblMSL_Contact = document.getElementById("lblMSL_Contact");
 export const txtMSL_Contact = document.getElementById("txtMSL_Contact");
@@ -73,19 +73,13 @@ export const txtHidden = document.getElementById("txtHidden");
 //db var
 export let dbJobSeekerCRM;
 //table schema var
-export let objTable;
+export let objTableHeader;
+export let objTableLines;
 
 //new record
 let blnNew = false;
 //selected list item
-let intSelectedRow = -1;
-
-// export const funcTableButtonClick = (event) => {
-//   /*
-//     returns row selected when button clicked
-//   */
-//   return event.currentTarget.id;
-// };
+export let intSelectedRow = -1;
 
 const funccmbIDSelect = (event) => {
   /*
@@ -104,7 +98,8 @@ const funccmbIDSelect = (event) => {
         modMessageBox.objButtons.no,
         "load",
         1,
-        "btnNew"
+        "btnNew",
+        document.getElementsByTagName("html")
       );
     } else {
       modView.funcLoadData();
@@ -112,14 +107,6 @@ const funccmbIDSelect = (event) => {
   }
 };
 
-// const funcValidateTextLength = (strValue, intMaxLength) => {
-//   /*
-//        Created 10/01/2024 By Roger Williams
-
-//        Checks if string passed greater than passed max length
-
-//     */
-// };
 const functextboxKeyDown = (event) => {
   /*
   Created 08/01/2025 By Roger Williams
@@ -155,7 +142,7 @@ const functextboxKeyDown = (event) => {
   }
 };
 
-export const funcClearCombobox = (cmbWhat) => {
+export function funcClearCombobox(cmbWhat) {
   /*
   Created 23/01/2025 By Roger Williams
 
@@ -166,7 +153,7 @@ export const funcClearCombobox = (cmbWhat) => {
       cmbWhat.remove(cmbWhat.length - 1);
     }
   }
-};
+}
 export function funcPopulateCombobox() {
   /*
    Created 09/01/2025 By Roger Williams
@@ -229,55 +216,233 @@ const funcbtnSaveAddressClick = () => {
     saves new data IF not already in list
     Note: not saved to DB ONLY list!
   */
-  let elTemp;
+  let intFound = 0;
+  let aryErrors1;
+  let aryErrors2;
 
   function funcExists() {
     /*
     Created 22/01/2025 By Roger Williams
 
     sees if data to add already exists
+    specifically the company name
 
-    Note: need to use TEXT property as value is number!
+    returns false if not found else row number
+   
   */
-    let intNum = 0;
-    // let intRows;
-    let rowTemp;
+
     let elTemp;
+    let intNum = 0;
+    let strTemp = "";
+    let aryTemp = [];
 
-    // if (txtMSL_CompanyName.length === 0) {
-    //   return false;
-    // }
+    aryTemp = document.getElementsByClassName("clhAddressRowContainer");
 
-    // intRows = tblData.rows.length;
+    for (intNum = 0; intNum < aryTemp.length; intNum++) {
+      elTemp = aryTemp[intNum];
+      strTemp = elTemp.childNodes[2].innerText;
 
-    // for (intNum = 1; intNum < intRows; intNum++) {
-    //   rowTemp = tblData.rows[intNum];
-
-    //   if (rowTemp.cells[1] === txtMSL_CompanyName.value) {
-    //     return true;
-    //   }
-    // }
+      if (strTemp === txtMSL_CompanyName.value) {
+        return ++intNum;
+      }
+    }
 
     return false;
   }
-  //make sure not already in name list
-  if (funcExists()) {
+
+  //check required fields completed
+  aryErrors1 = modSchema.funcValidateForm(
+    document.getElementsByTagName("textarea"),
+    modSchema.constSeekers_Mailshot_Lines
+  );
+  aryErrors2 = modSchema.funcValidateForm(
+    document.getElementsByTagName("input"),
+    modSchema.constSeekers_Mailshot_Lines
+  );
+
+  //see if returned errors object is empty
+  if (aryErrors1.length > 0 || aryErrors2.length > 0) {
     modMessageBox.funcMessageBox(
-      "Address Already Exists!",
-      modMessageBox.objIcons.exclamation,
+      "Please Enter Data In All Required Fields",
+      modMessageBox.objIcons.error,
       modMessageBox.objButtons.ok,
-      modMessageBox.objButtons.none,
+      -1,
       "none",
       1,
-      "txtMSL_CompanyName"
+      "txtMSL_CompanyName",
+      document.getElementsByTagName("html")
     );
     return;
   }
 
-  modView.funcCreateTableRow(true);
+  //if exists update
+  intFound = funcExists();
+  //make sure not already in name list
+  if (intFound) {
+    // modMessageBox.funcMessageBox(
+    //   "Company Already Exists!",
+    //   modMessageBox.objIcons.exclamation,
+    //   modMessageBox.objButtons.ok,
+    //   modMessageBox.objButtons.none,
+    //   "none",
+    //   1,
+    //   "txtMSL_CompanyName"
+    // );
+    modView.funcUpdateTableRow(intFound);
+  } else {
+    //add new row
+    modView.funcCreateTableRow(true);
+  }
 };
 //handlers
-export const funcSelectButtonClick = (event) => {
+const funcPrintMailshotClick = () => {
+  /*
+    Created 27/01/2025 By Roger Williams
+
+    handles print mailshot click
+
+    - iterates throuogh the list and prints envelopes
+    - prints same numbers of CVs/letters as envelopes
+
+    due to a flaw in browsers unable to iterate through and print 
+    from a loop so had to slum it with a button!
+  */
+
+  function funcPrintMailshotEnvelopes() {
+    let elTemp;
+    let winTemp;
+    let intNum = 0;
+    let aryTemp = [];
+    let elTemp2;
+
+    //get all rows
+    aryTemp = document.getElementsByClassName("clhAddressRowContainer");
+    elTemp = aryTemp[intNum];
+    //create first envelope
+    winTemp = window.open("/screens/mailshot_Envelope.html");
+
+    const funcPrintEnvelopes = () => {
+      if (intNum === aryTemp.length) {
+        winTemp.setTimeout(winTemp.close, 0);
+      } else {
+        elTemp = aryTemp[intNum];
+        winTemp.document.getElementById("divCompany").innerText =
+          elTemp.childNodes[2].innerText;
+        winTemp.document.getElementById("divContact").innerText =
+          elTemp.childNodes[3].innerText;
+        winTemp.document.getElementById("divAddress1").innerText =
+          elTemp.childNodes[4].innerText;
+        winTemp.document.getElementById("divAddress2").innerText =
+          elTemp.childNodes[5].innerText;
+        winTemp.document.getElementById("divAddress3").innerText =
+          elTemp.childNodes[6].innerText;
+        winTemp.document.getElementById("divTownCity").innerText =
+          elTemp.childNodes[7].innerText;
+        winTemp.document.getElementById("divPostcode").innerText =
+          elTemp.childNodes[8].innerText;
+        winTemp.print();
+      }
+    };
+
+    winTemp.addEventListener("afterprint", (event) => {
+      intNum++;
+
+      if (intNum === aryTemp.length) {
+        winTemp.setTimeout(winTemp.close, 0);
+      } else {
+        elTemp2.innerText = `Print Envelope ${intNum + 1} of ${aryTemp.length}`;
+      }
+    });
+
+    winTemp.onload = () => {
+      elTemp2 = winTemp.document.getElementById("btnPrintEnvelope");
+      elTemp2.addEventListener("click", funcPrintEnvelopes);
+      elTemp2.innerText = `Print Envelope ${intNum + 1} of ${aryTemp.length}`;
+    };
+  }
+
+  function funcPrintMailshotDocuments() {
+    /*
+     Created 31/01/2025 By Roger Williams
+
+     Due to restrraints of JavaScript resorting to opening a HTML page
+     with hyperlinks to the file(s) and message to user about how many copies to print
+
+     due to browser security via live-server have no idea if link actually works!
+
+    */
+    let winTemp;
+    let divCopies;
+    let lnkDocumentCV;
+    let lnkDocumentLetter;
+    let aryTemp = [];
+
+    const funcCloseDocumentWindow = () => {
+      winTemp.close();
+    };
+
+    //get all rows
+    aryTemp = document.getElementsByClassName("clhAddressRowContainer");
+    //create print page
+    winTemp = window.open("/screens/mailshot_Documents.html");
+
+    winTemp.onload = () => {
+      lnkDocumentCV = winTemp.document.getElementById("lnkDocumentCV");
+      lnkDocumentLetter = winTemp.document.getElementById("lnkDocumentLetter");
+      divCopies = winTemp.document.getElementById("divCopies");
+
+      if (txtMSH_CVPath.value.length !== 0) {
+        lnkDocumentCV.href = txtMSH_CVPath.value;
+        lnkDocumentCV.innerText = "Click To Open CV For Printing";
+      }
+      if (txtMSH_LetterPath.value.length !== 0) {
+        lnkDocumentLetter.href = txtMSH_LetterPath.value;
+        lnkDocumentLetterV.innerText = "Click To Open Letter For Printing";
+      } else {
+        lnkDocumentLetter.style.display = "none";
+      }
+
+      divCopies.innerText = `Print ${
+        aryTemp.length + 1
+      } Copies Of Each Document Click Button When Finished`;
+      winTemp.document
+        .getElementById("btnClose")
+        .addEventListener("click", funcCloseDocumentWindow);
+    };
+  }
+
+  if (txtMSH_MailshotName.value === 0) return;
+
+  funcPrintMailshotEnvelopes();
+  funcPrintMailshotDocuments();
+};
+const funcPrintTestEnvelopeClick = () => {
+  /*
+    Created 28/01/2025 By Roger Williams
+
+    handles print test envelope click
+    Closes print form when printed
+  */
+  let winTemp;
+
+  winTemp = window.open("/screens/mailshot_Envelope.html");
+
+  winTemp.onload = () => {
+    winTemp.document.getElementById("btnPrintEnvelope").style.display = "none";
+    winTemp.document.getElementById("divContact").innerText = "Contact";
+    winTemp.document.getElementById("divCompany").innerText = "Company";
+    winTemp.document.getElementById("divAddress1").innerText = "Address1";
+    winTemp.document.getElementById("divAddress2").innerText = "Address2";
+    winTemp.document.getElementById("divAddress3").innerText = "Address3";
+    winTemp.document.getElementById("divTownCity").innerText = "Town/City";
+    winTemp.document.getElementById("divPostcode").innerText = "Postcode";
+    winTemp.alert("Load Test Envelope Into Printer Then Click 'Ok'");
+    winTemp.print();
+    //close after print
+    winTemp.setTimeout(winTemp.close, 0);
+  };
+};
+export function funcSelectButtonClick(event) {
   /*
     Created 27/01/2025 By Roger Williams
 
@@ -295,8 +460,6 @@ export const funcSelectButtonClick = (event) => {
   //set global selected row indicator
   intSelectedRow = intNum;
   //populate text boxes
-  // console.log(elTemp.childNodes[2].innerText);
-  // console.log(elTemp.childNodes[3].innerText);
   txtMSL_CompanyName.value = elTemp.childNodes[2].innerText;
   txtMSL_Contact.value = elTemp.childNodes[3].innerText;
   txtMSL_Address1.value = elTemp.childNodes[4].innerText;
@@ -306,9 +469,9 @@ export const funcSelectButtonClick = (event) => {
   txtMSL_Postcode.value = elTemp.childNodes[8].innerText;
   strTemp = elTemp.childNodes[9].innerText;
   chkMSH_PrintContact.checked = strTemp = "true" ? true : false;
-};
+}
 
-const funcbtnClearAddressClick = () => {
+export function funcbtnClearAddressClick() {
   /*
     Created 22/01/2025 By Roger Williams
 
@@ -324,7 +487,7 @@ const funcbtnClearAddressClick = () => {
   chkMSH_PrintContact.checked = false;
   txtMSL_Contact.focus();
   intSelectedRow = -1; //reset selected row
-};
+}
 const funcbtnDeleteAddressClick = () => {
   /*
     Created 22/01/2025 By Roger Williams
@@ -334,56 +497,13 @@ const funcbtnDeleteAddressClick = () => {
   */
 
   let elTemp;
-  let intNum = 0;
-  let intNum2 = 0;
-  let strTemp = "";
 
   //get row div container
   elTemp = document.getElementById("divAddressRowContainer" + intSelectedRow);
   //delete it
   divMailshotAddresses.removeChild(elTemp);
-  //realign the rest of the div rows
-
-  /*
-   To Do
-
-   - how know IF anymore divAddressRowContainer<num> exist
-   - how got get their unique IDs or
-     iterate through the divMailshotAddresses div and do it
-
-  */
-  intNum = Number(intSelectedRow) + 1;
-
-  if (intNum > modView.intRows) {
-    intNum--;
-  }
-
-  while (intNum < modView.intRows + 1) {
-    elTemp = document.getElementById("divAddressRowContainer" + intNum);
-
-    if (!elTemp) {
-      elTemp = document.getElementById(
-        "divAddressRowContainer" + Number(intNum + 1)
-      );
-    } else {
-      elTemp = document.getElementById("divAddressRowContainer" + intNum);
-    }
-
-    strTemp = elTemp.style.top;
-    intNum2 = Number(strTemp.replace(/[^0-9]/g, ""));
-    intNum2 = intNum2 - modView.intRowHeight;
-    elTemp.style.top = intNum2 + "px";
-    intNum++;
-  }
-
-  modView.funcChangeNumberOfRow(modView.intRows - 1);
-
-  if (intNum2 > 0) {
-    modView.funcChangeNewRowPos(intNum2);
-  } else {
-    intNum = Number(intSelectedRow) - 1;
-    modView.funcChangeNewRowPos(intNum * modView.intRowHeight);
-  }
+  //renumber the buttons to reflect actual rows
+  modView.funcRenumberRowsResetPositions();
   funcbtnClearAddressClick();
 };
 
@@ -396,95 +516,29 @@ const funcbtnNewAddressClick = () => {
   funcbtnClearAddressClick();
 };
 
-// const funclstAddressClick = () => {
-//   /*
-//     Created 22/01/2025 By Roger Williams
-
-//     selects matching row in the details lst
-
-//   */
-//   const intIndex = lstAddress_Name.selectedIndex;
-
-//   if (intIndex !== -1) {
-//     lstAddress_Details.selectedIndex = intIndex;
-//   }
-// };
-// const funclstAddressDblClick = () => {
-//   /*
-//     Created 22/01/2025 By Roger Williams
-
-//     populates lstResponsibilities_Details using
-//     selected item (CRR_Name)
-
-//   */
-//   let elTemp;
-//   let qryTemp;
-//   const trnTemp = dbJobSeekerCRM.transaction(
-//     modSchema.constSeekers_Mailshot_Header,
-//     "readonly"
-//   );
-//   const objTemp = trnTemp.objectStore(modSchema.constSeekers_Mailshot_Header);
-
-//   qryTemp = objTemp.openCursor();
-//   qryTemp.onsuccess = (event) => {
-//     //create query to get data (cursor)
-//     const qryRead = event.target.result;
-
-//     if (lstAddress_Details.length > 0) {
-//       while (lstAddress_Details.length > 0) {
-//         lstAddress_Details.remove(lstAddress_Details.length - 1);
-//       }
-//     }
-//     while (qryRead) {
-//       //find matching role
-//       if (qryRead.MSH_MailshotName === txtMSH_MailshotName.value) {
-//         elTemp = document.createElement("li");
-//         elTemp.innerText = qryRead.CVRR_Details;
-//         elTemp.value = elTemp.innerText;
-//         lstAddress_Details.appendChild(elTemp);
-//       }
-//       //goto next record
-//       qryRead.continue();
-//     }
-//   };
-// };
-// let objTemp = modSchema.funcGetFirstRecord(constSeekers_Mailshot_Header);
-
-// if (modSchema.funcValidateForm) {
-//   //save data
-// }
-// funcPopulateobjData();
-// modSchema.funcSaveData(objData);
-// let transaction = db.transaction("books", "readwrite"); // (1)
-// // get an object store to operate on it
-// let books = transaction.objectStore("books"); // (2)
-// let book = {
-// id: 'js',
-// price: 10,
-// created: new Date()
-// };
-// let request = books.add(book); // (3)
-
-//also transaction.oncompleted (event)
-// request.onsuccess = function() { // (4)
-// console.log("Book added to the store", request.result);
-// };
-export function funcDeleteRecord() {
+export function funcDeleteRecord(blnSave = false) {
   /*
    Created 24/01/2025 By Roger Willimas
+  
+   Deletes record
 
+   if blnSave then runs save after delete
 
 */
+  if (txtMSH_MailshotName.value === 0) return;
+
   const dbRequest = dbJobSeekerCRM.transaction(
     modSchema.constSeekers_Mailshot_Header,
     "readwrite"
   );
-  const objTemp = dbRequest.objectStore(modSchema.constSeekers_Mailshot_Header);
-  const idxTemp = objTemp.index("MSH_MailshotName");
-  const keyRange = IDBKeyRange.only(txtMSH_MailshotName.value);
-  const dbQuery1 = idxTemp.openCursor(keyRange);
+  const objHead = dbRequest.objectStore(modSchema.constSeekers_Mailshot_Header);
 
-  dbQuery1.onerror = (event) => {
+  // const idxHead = objHead.index("MSH_MailshotName");
+  // const keyRangeHead = IDBKeyRange.only(txtMSH_MailshotName.value);
+  const dbQueryHead = objHead.openCursor();
+
+  //set value to look for from combobox
+  dbQueryHead.onerror = (event) => {
     modMessageBox.funcMessageBox(
       "Error Accessing Table",
       modMessageBox.objIcons.error,
@@ -492,125 +546,34 @@ export function funcDeleteRecord() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
-  dbQuery1.onsuccess = (event) => {
+  dbQueryHead.onsuccess = (event) => {
     //delete header record
-    dbQuery1.delete();
 
-    //delete lines records
-    const objTemp = dbRequest.objectStore(
-      modSchema.constSeekers_Mailshot_Lines
-    );
-    const idxTemp = objTemp.index("MSH_MailshotName");
-    const keyRange = IDBKeyRange.only(txtMSH_MailshotName.value);
-    const dbQuery2 = idxTemp.openCursor(keyRange);
+    const dbCursorHead = event.target.result;
 
-    dbQuery2.onerror = (event) => {
-      modMessageBox.funcMessageBox(
-        "Error Accessing Table",
-        modMessageBox.objIcons.error,
-        modMessageBox.objButtons.ok,
-        -1,
-        "none",
-        1,
-        "btnNew"
-      );
-    };
-
-    dbQuery2.onsuccess = (event) => {
-      const dbCursor = event.target.result;
-
-      if (dbCursor) {
-        dbCursor.delete();
-        //    }
-        dbCursor.continue();
+    if (dbCursorHead) {
+      if (dbCursorHead.value.MSH_MailshotName === txtMSH_MailshotName.value) {
+        dbCursorHead.delete();
       }
-
-      //clear form
-      funcResetForm();
-      modMessageBox.funcMessageBox(
-        "Record Deleted",
-        modMessageBox.objIcons.information,
-        modMessageBox.objButtons.ok,
-        -1,
-        "none",
-        1,
-        "btnNew"
-      );
-    };
-  };
-
-  const funcSaveData = () => {
-    /*
-  Created 08/01/2025 By Roger Williams
-  
-   processes save
-
-*/
-    let dbUpdate;
-    let intNum = 0;
-    //check all required fields filled
-    const aryErrors1 = modSchema.funcValidateForm(
-      document.getElementsByTagName("textarea"),
-      modSchema.constSeekers_Mailshot_Header
-    );
-    const aryErrors2 = modSchema.funcValidateForm(
-      document.getElementsByTagName("input"),
-      modSchema.constSeekers_Mailshot_Header
-    );
-
-    //see if returned errors object is empty
-    if (!aryErrors1 || !aryErrors2) {
-      modMessageBox.funcMessageBox(
-        "Please Enter Data In All Required Fields",
-        modMessageBox.objIcons.error,
-        modMessageBox.objButtons.ok,
-        -1,
-        "none",
-        1,
-        "txtSeekers_Mailshot_HeaderMSH_MailshotName"
-      );
-      return;
-    }
-
-    const dbRequest = dbJobSeekerCRM.transaction(
-      modSchema.constSeekers_Mailshot_Header,
-      "readwrite"
-    );
-    dbRequest.onerror = (event) => {
-      modMessageBox.funcMessageBox(
-        "Error Accessing Table",
-        modMessageBox.objIcons.error,
-        modMessageBox.objButtons.ok,
-        -1,
-        "none",
-        1,
-        "btnNew"
-      );
-    };
-
-    const objTemp = dbRequest.objectStore(
-      modSchema.constSeekers_Mailshot_Header
-    );
-
-    dbUpdate = objTemp.add({
-      MSH_MailshotName: txtMSH_MailshotName.value,
-      MSH_CVPath: txtMSH_CVPath.value,
-      MSH_LetterPath: txtMSH_LetterPath.value,
-      MSH_PrintedDate: txtPrintedDate.value,
-      MSH_PrintContact: chkMSH_PrintContact.checked,
-    });
-
-    dbUpdate.onsuccess = (event) => {
-      //save lines
+      dbCursorHead.continue();
+    } else {
+      //delete lines records
       const dbRequest = dbJobSeekerCRM.transaction(
         modSchema.constSeekers_Mailshot_Lines,
         "readwrite"
       );
-      dbRequest.onerror = (event) => {
+
+      const objLines = dbRequest.objectStore(
+        modSchema.constSeekers_Mailshot_Lines
+      );
+      const dbQueryLines = objLines.openCursor(); //(keyRangeLines);
+
+      dbQueryLines.onerror = (event) => {
         modMessageBox.funcMessageBox(
           "Error Accessing Table",
           modMessageBox.objIcons.error,
@@ -618,48 +581,166 @@ export function funcDeleteRecord() {
           -1,
           "none",
           1,
-          "btnNew"
+          "btnNew",
+          document.getElementsByTagName("html")
         );
       };
 
-      const objTemp = dbRequest.objectStore(
-        modSchema.constSeekers_Mailshot_Lines
+      dbQueryLines.onsuccess = (event) => {
+        const dbCursorLines = event.target.result;
+
+        if (dbCursorLines) {
+          if (
+            dbCursorLines.value.MSH_MailshotName === txtMSH_MailshotName.value
+          ) {
+            const dbDeleteLines = dbCursorLines.delete();
+            dbDeleteLines.onsuccess = (event) => {
+              dbCursorLines.continue();
+            };
+          } else {
+            dbCursorLines.continue();
+          }
+        } else {
+          if (blnSave) {
+            funcSaveData();
+          }
+
+          if (!blnSave) {
+            //clear form
+            funcResetForm();
+            modMessageBox.funcMessageBox(
+              "Record Deleted",
+              modMessageBox.objIcons.information,
+              modMessageBox.objButtons.ok,
+              -1,
+              "none",
+              1,
+              "btnNew",
+              document.getElementsByTagName("html")
+            );
+          }
+        }
+      };
+    }
+  };
+}
+const funcSaveData = () => {
+  /*
+  Created 08/01/2025 By Roger Williams
+  
+   processes save
+
+*/
+  let intWritten = 0;
+  let objTempHead;
+  let dbAddHead;
+  let qryAddHead;
+  let strTemp = "";
+
+  function funcSaveLines() {
+    let elTemp;
+    let intNum = 0;
+    let aryTemp = [];
+    let dbAddLines;
+    let objTempLines;
+    let qryAddLines;
+
+    //save lines
+    dbAddLines = dbJobSeekerCRM.transaction(
+      modSchema.constSeekers_Mailshot_Lines,
+      "readwrite"
+    );
+    dbAddLines.onerror = (event) => {
+      modMessageBox.funcMessageBox(
+        "Error Accessing Table",
+        modMessageBox.objIcons.error,
+        modMessageBox.objButtons.ok,
+        -1,
+        "none",
+        1,
+        "btnNew",
+        document.getElementsByTagName("html")
       );
-
-      for (intNum = 0; tblData.length - 1; intNum++) {
-        dbUpdate = objTemp.add({
-          MSH_MailshotName: txtMSH_MailshotName.value,
-          MSL_Address1: txtMSL_Address1.value,
-          MSL_Address2: txtMSL_Address2.value,
-          MSL_Address3: txtMSL_Address3.value,
-          MSL_CompanyName: txtMSL_CompanyName.value,
-          MSL_Contact: txtMSL_Contact.value,
-          MSL_Postcode: txtMSL_Postcode.value,
-          MSL_TownCity: txtMSL_TownCity.value,
-        });
-      }
-
-      dbRequest.onsuccess = (event) => {
-        //reset new indicator
-        blnNew = false;
-        //clear form
-        funcResetForm();
-        //reload combobox with new values
-        funcPopulateCombobox();
-        modMessageBox.funcMessageBox(
-          "Record Saved",
-          modMessageBox.objIcons.information,
-          modMessageBox.objButtons.ok,
-          -1,
-          "none",
-          1,
-          "btnNew"
-        );
-      };
     };
+
+    objTempLines = dbAddLines.objectStore(
+      modSchema.constSeekers_Mailshot_Lines
+    );
+
+    aryTemp = document.getElementsByClassName("clhAddressRowContainer");
+
+    for (intNum = 0; intNum !== aryTemp.length; intNum++) {
+      elTemp = aryTemp[intNum];
+
+      qryAddLines = objTempLines.add({
+        MSH_MailshotName: txtMSH_MailshotName.value,
+        MSL_Address1: elTemp.childNodes[4].innerText,
+        MSL_Address2: elTemp.childNodes[5].innerText,
+        MSL_Address3: elTemp.childNodes[6].innerText,
+        MSL_CompanyName: elTemp.childNodes[2].innerText,
+        MSL_Contact: elTemp.childNodes[3].innerText,
+        MSL_Postcode: elTemp.childNodes[8].innerText,
+        MSL_TownCity: elTemp.childNodes[7].innerText,
+      });
+
+      qryAddLines.onerror = (event) => {
+        console.log(error);
+      };
+      qryAddLines.onsuccess = (event) => {
+        intWritten = intNum;
+      };
+    }
+
+    dbAddLines.oncomplete = () => {
+      //reset new indicator
+      blnNew = false;
+      funcResetForm();
+      //reload combobox with new values
+      funcPopulateCombobox();
+      modMessageBox.funcMessageBox(
+        "Record Saved",
+        modMessageBox.objIcons.information,
+        modMessageBox.objButtons.ok,
+        -1,
+        "none",
+        1,
+        "btnNew",
+        document.getElementsByTagName("html")
+      );
+    };
+  }
+
+  if (txtMSH_MailshotName.value.length === 0) return;
+
+  //save header
+  dbAddHead = dbJobSeekerCRM.transaction(
+    modSchema.constSeekers_Mailshot_Header,
+    "readwrite"
+  );
+  dbAddHead.onerror = (event) => {
+    modMessageBox.funcMessageBox(
+      "Error Accessing Table",
+      modMessageBox.objIcons.error,
+      modMessageBox.objButtons.ok,
+      -1,
+      "none",
+      1,
+      "btnNew",
+      document.getElementsByTagName("html")
+    );
   };
 
-  dbUpdate.onerror = (event) => {
+  objTempHead = dbAddHead.objectStore(modSchema.constSeekers_Mailshot_Header);
+
+  qryAddHead = objTempHead.put({
+    MSH_MailshotName: txtMSH_MailshotName.value,
+    MSH_CVPath: txtMSH_CVPath.value,
+    MSH_LetterPath: txtMSH_LetterPath.value,
+    MSH_PrintedDate: dteMSH_PrintedDate.value,
+    MSH_PrintContact: chkMSH_PrintContact.checked,
+  });
+
+  qryAddHead.onabort = (event) => {
     modMessageBox.funcMessageBox(
       "Error Saving Record",
       modMessageBox.objIcons.error,
@@ -667,56 +748,26 @@ export function funcDeleteRecord() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
-}
-//  else {
-//   //update data
-//   //find record by key: cmbID.value
-//   //Note: have to convert to number as get() does not convert string!
-//   const dbQuery = objTemp.get(Number(cmbID.value));
-
-//   dbQuery.onsuccess = () => {
-//     const dbData = dbQuery.result;
-
-//     //edit
-//     dbData.MSH_MailshotName = txtMSH_MailshotName.value;
-//     dbData.CVRR_Details = txtCVRR_Details.value;
-//     dbData.txtMSL_CompanyName = txtMSL_CompanyName.value;
-
-//     //update
-//     const dbUpdate = objTemp.put(dbData);
-
-//     dbUpdate.onsuccess = () => {
-//       blnNew = false;
-//       funcPopulateCombobox();
-//       //clear form
-//       funcResetForm();
-//       modMessageBox.funcMessageBox(
-//         "Record Saved",
-//         modMessageBox.objIcons.information,
-//         modMessageBox.objButtons.ok,
-//         -1,
-//         "none",
-//         1,
-//         "btnNew"
-//       );
-//     };
-
-//     dbUpdate.onerror = (event) => {
-//       modMessageBox.funcMessageBox(
-//         "Error Updating Record",
-//         modMessageBox.objIcons.error,
-//         modMessageBox.objButtons.ok,
-//         -1,
-//         "none",
-//         1,
-//         "btnNew"
-//       );
-//     };
-//   };
-// }
+  qryAddHead.onerror = (event) => {
+    modMessageBox.funcMessageBox(
+      "Error Saving Record",
+      modMessageBox.objIcons.error,
+      modMessageBox.objButtons.ok,
+      -1,
+      "none",
+      1,
+      "btnNew",
+      document.getElementsByTagName("html")
+    );
+  };
+  qryAddHead.onsuccess = (event) => {
+    funcSaveLines();
+  };
+};
 
 const funcbtnSaveClick = () => {
   /*
@@ -726,14 +777,21 @@ const funcbtnSaveClick = () => {
    combobox has contents if so save
 
 */
-  //check all required fields filled
-  const aryErrors = modSchema.funcValidateForm(
+  let aryErrors1;
+  let aryErrors2;
+
+  //check all required fields filled - header
+  aryErrors1 = modSchema.funcValidateForm(
+    document.getElementsByTagName("textarea"),
+    modSchema.constSeekers_Mailshot_Header
+  );
+  aryErrors2 = modSchema.funcValidateForm(
     document.getElementsByTagName("input"),
-    modSchema.constSeekers_Types
+    modSchema.constSeekers_Mailshot_Header
   );
 
   //see if returned errors object is empty
-  if (!aryErrors) {
+  if (aryErrors1.length > 0 || aryErrors2.length > 0) {
     modMessageBox.funcMessageBox(
       "Please Enter Data In All Required Fields",
       modMessageBox.objIcons.error,
@@ -741,7 +799,8 @@ const funcbtnSaveClick = () => {
       -1,
       "none",
       1,
-      "btnNew"
+      "txtMSH_MailshotName",
+      document.getElementsByTagName("html")
     );
     return;
   }
@@ -751,7 +810,7 @@ const funcbtnSaveClick = () => {
   } else {
     //erase existing data THEN save
     funcDeleteRecord(true);
-    funcSaveData();
+    //  funcSaveData();
   }
 };
 export function funcUndoChanges() {
@@ -763,6 +822,8 @@ export function funcUndoChanges() {
    if not new record simply populates the form from objTable!
 
 */
+  if (txtMSH_MailshotName.value === 0) return;
+
   blnNew = false;
 
   if (blnNew) {
@@ -786,7 +847,8 @@ const funcbtnDeleteClick = () => {
     modMessageBox.objButtons.no,
     "delete",
     2,
-    "btnNew"
+    "btnNew",
+    document.getElementsByTagName("html")
   );
 };
 const funcbtnUndoClick = (event) => {
@@ -802,7 +864,8 @@ const funcbtnUndoClick = (event) => {
     modMessageBox.objButtons.no,
     "undo",
     2,
-    "btnNew"
+    "btnNew",
+    document.getElementsByTagName("html")
   );
 };
 
@@ -825,8 +888,8 @@ const funcResetForm = () => {
   txtMSL_Postcode.value = "";
   txtMSL_TownCity.value = "";
   chkMSH_PrintContact.checked = false;
-  // modView.funcInitTable();
   intSelectedRow = -1;
+  modView.funcInitTable();
 };
 
 const funcbtnNewClick = () => {
@@ -846,7 +909,8 @@ const funcbtnNewClick = () => {
       modMessageBox.objButtons.no,
       "save",
       1,
-      "txtMSH_MailshotName"
+      "txtMSH_MailshotName",
+      document.getElementsByTagName("html")
     );
   } else {
     blnNew = true;
@@ -917,7 +981,7 @@ const funcHiddenTextBoxHandler = (event) => {
   }
 };
 
-function funcOpenDatabase() {
+const funcOpenDatabase = () => {
   let dbopenRequest = indexedDB.open(modSchema.constDBName, 1);
 
   dbopenRequest.onupgradeneeded = (event) => {
@@ -930,7 +994,8 @@ function funcOpenDatabase() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -942,7 +1007,8 @@ function funcOpenDatabase() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -959,7 +1025,8 @@ function funcOpenDatabase() {
         -1,
         "none",
         1,
-        "btnNew"
+        "btnNew",
+        document.getElementsByTagName("html")
       );
     };
 
@@ -971,118 +1038,21 @@ function funcOpenDatabase() {
     //populate combobox
     funcPopulateCombobox();
   };
-}
-
-// let transaction = db.transaction("books", "readwrite"); // (1)
-// // get an object store to operate on it
-// let books = transaction.objectStore("books"); // (2)
-// let book = {
-// id: 'js',
-// price: 10,
-// created: new Date()
-// };
-// let request = books.add(book); // (3)
-
-//also transaction.oncompleted (event)
-// request.onsuccess = function() { // (4)
-// console.log("Book added to the store", request.result);
-// };
-// request.onerror = function(event) {
-//     // ConstraintError occurs when an object with the same id already exists
-//     if (request.error.name == "ConstraintError") {
-//     console.log("Book with such id already exists"); // handle the error
-//     event.preventDefault(); // don't abort the transaction
-//     // use another key for the book?
-//     } else {
-//     // unexpected error, can't handle it
-//     // the transaction will abort
-//     }
-//     };
-//     transaction.onabort = function() {
-//     console.log("Error", transaction.error);
-//     };
-
-//search
-// get one book
-// books.get('js')
-// // get books with 'css' <= id <= 'html'
-// books.getAll(IDBKeyRange.bound('css', 'html'))
-// // get books with id < 'html'
-// books.getAll(IDBKeyRange.upperBound('html', true))
-// // get all books
-// books.getAll()
-// // get all keys, where id > 'js'
-// books.getAllKeys(IDBKeyRange.lowerBound('js', true))
-
-//use index to search on non key fields
-// let index = books.createIndex('price_idx', 'price');
-// let priceIndex = books.index("price_idx");
-// index.get("Donna").onsuccess = (event) => {
-//     console.
-
-//delete by index
-// find the key where price = 5
-// let request = priceIndex.getKey(5);
-// request.onsuccess = function() {
-// let id = request.result;
-// let deleteRequest = books.delete(id);
-
-//cursor
-// called for each book found by the cursor
-// request.onsuccess = function() {
-//     let cursor = request.result;
-//     if (cursor) {
-//     let key = cursor.key; // book key (id field)
-//     let value = cursor.value; // book object
-//     console.log(key, value);
-//     cursor.continue();
-//     } else {
-//     console.log("No more books");
-//     }
-
-// The main cursor methods are:
-// advance(count) – advance the cursor count times, skipping values.
-// continue([key]) – advance the cursor to the next value in range matching (or immediately after key if given).
+};
 
 //exports
 export function funcCreateMessageBoxResultHandler() {
   txtHidden.addEventListener("focus", funcHiddenTextBoxHandler);
 }
 
-// export function funcOpenDatabase() {
-//   let dbopenRequest = indexedDB.open("RogsJobSeekerCRM", 1);
-
-//   // dbopenRequest.onupgradeneeded = (event) => {
-//   //   //if no database create it from the schema file
-//   //   funcCreateFromSchema(event);
-//   // };
-
-//   dbopenRequest.onerror = () => {
-//     alert(`Error Accessing Database ${dbopenRequest.error}`);
-//   };
-
-//   dbopenRequest.onsuccess = () => {
-//    modSchema.dbJobSeekerCRM = dbopenRequest.result;
-
-//     dbJobSeekerCRM.onversionchange = () => {
-//       dbJobSeekerCRM.close();
-//       alert("Database Version Is Outdated Please Reload Page");
-//     };
-//     //populate combobox
-//     funcPopulateCombobox();
-//   };
-// }
-// export function funcOpenDB() {
-//   /*
-//   Created 13/01/2025 By Roger Williams
-
-//   opens db and stores in local var
-// */
-//   modSchema.dbJobSeekerCRM = modSchema.funcOpenDatabase();
-// }
 export function funcInitSchema() {
   //get schema
-  objTable = modSchema.funcGetSchema(modSchema.constSeekers_Mailshot_Header);
+  objTableHeader = modSchema.funcGetSchema(
+    modSchema.constSeekers_Mailshot_Header
+  );
+  objTableLines = modSchema.funcGetSchema(
+    modSchema.constSeekers_Mailshot_Lines
+  );
 }
 export function funcInitDB() {
   /*
@@ -1095,8 +1065,6 @@ export function funcInitDB() {
 
   //open db
   dbJobSeekerCRM = funcOpenDatabase();
-  // //get first record
-  // objData = modSchema.funcGetFirstRecord(modSchema.constSeekers_Mailshot_Header);
 }
 export function funcInitHandlers() {
   /*
@@ -1120,8 +1088,12 @@ export function funcInitHandlers() {
   btnUndo.addEventListener("click", funcbtnUndoClick);
   btnDelete.addEventListener("click", funcbtnDeleteClick);
   btnNew.addEventListener("click", funcbtnNewClick);
+
   btnClearAddress.addEventListener("click", funcbtnClearAddressClick);
   btnNewAddress.addEventListener("click", funcbtnNewAddressClick);
   btnSaveAddress.addEventListener("click", funcbtnSaveAddressClick);
   btnDeleteAddress.addEventListener("click", funcbtnDeleteAddressClick);
+
+  btnPrintMailshot.addEventListener("click", funcPrintMailshotClick);
+  btnPrintTestEnvelope.addEventListener("click", funcPrintTestEnvelopeClick);
 }

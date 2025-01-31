@@ -15,11 +15,15 @@
 */
 import * as modModel from "./model.js";
 import * as modView from "./view.js";
-import * as modSchema from "../schema.js";
+//import * as modSchema from "../schema.js";
 
 //create element event handlers
 modModel.funcInitHandlers();
+//get schema
+modModel.funcInitSchema();
 //init database
-
-//format screen layout
-modView.funcSetupScreen();
+modModel.funcInitDB();
+//init view
+modView.funcInitView();
+//init messagebox result handler
+modModel.funcCreateMessageBoxResultHandler();

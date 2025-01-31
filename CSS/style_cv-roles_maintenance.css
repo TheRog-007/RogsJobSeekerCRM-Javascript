@@ -34,19 +34,88 @@
     top                              : 90px;
 }
 
-#divResponsibility {
+/*
+  table and table controls
+*/
+/* 
+
+   headers container
+
+*/
+#divTableHeaders {
+    position                         : absolute;
+    top                              : 110px;
+    width                            : 970px;
+}
+
+/*
+ table headers
+*/
+#divTableHeaderSelect {
+    width                            : 20ch;
+    left                             : 0;
+}
+#divTableHeader1 {
+    left                             : 85px;
+}
+#divTableHeader2 {
+    left                             : 237px;
+}
+#divTableResponsibilities {
     position                         : absolute;
     left                             : 10px;
-    top                              : 130px; 
+    top                              : 140px; 
     border                           : solid;
     border-color                     :green;
-    width                            : 960px;
-    height                           : 230px;
-    display                          : grid;
-    grid-template                    : 10px 200px / 200px 200px; 
-    /* scroll-behavior                  : auto; */
-    grid-gap                         : 1px;
+    border-width                     : 1px;
+    width                            : 970px;
+    height                           : 220px;
+    display                          : block;
+    background-color                 : none;
+    scrollbar-color                  : yellow darkblue;
+    scroll-behavior                  : smooth;
+    scrollbar-width                  : 10px;
+    overflow-y                       : scroll;
+    overflow-x                       : scroll;
+    border-radius                    : 6px;
 }
+.clhResponsibilitiesRowContainer {
+    background-color                 :darkslategrey;
+    display                          : inline-block;
+    width                            : 970px;
+    height                           : 30px;
+}
+
+/*
+ table elements
+*/
+.btnSelect {
+    width                            : 6ch;
+    left                             : 0;
+}
+.clhResponsibilityCol1 {
+    left                             : 0;
+    margin-right                     : 20px;
+    color                            : yellow;
+    height                           : 30px;
+}
+.clhResponsibilityCol2 {
+    margin-right                     : 2px;
+    padding-top                      : 5px; 
+    padding-left                     : 2px;
+    color                            : yellow;
+    height                           : 30px;
+    left                             : 82px;
+} 
+.clhResponsibilityCol3 {
+    margin-right                     : 2px;
+    padding-top                      : 5px; 
+    padding-left                     : 2px;
+    color                            : yellow;
+    height                           : 30px;
+    left                             : 232px;
+}    
+/*
 #pResponsibility_Name {
     grid-column                      : 1 /2;
     grid-row                         : 1 /2;
@@ -70,8 +139,11 @@ grid-row                             : 2 /2;
 width                                : 750px;
 height                               : 200px;
 overflow                             : hidden;
-}
+} */
 
+/*
+  form controls
+*/
 #lblCVRR_Name {
     left                             : 10px;
     top                              : 370px;

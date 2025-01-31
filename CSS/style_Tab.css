@@ -18,7 +18,7 @@
 {
     position:          relative;
     width:             1000px;
-    height:            760px;
+    height:            780px;
     /* height:            var(--varTabHeight); */
     border-style:      solid;
     /* display:           inline; */
@@ -58,7 +58,7 @@
      /* margin-left:      280px; */
      /* width:            var(--varTabFrameWidth);  */
      width:            995px;
-     height:           730px;
+     height:           740px;
      /* height:           var(--varTabFrameHeight); */
      position:         absolute;
      /* left:             0px; */

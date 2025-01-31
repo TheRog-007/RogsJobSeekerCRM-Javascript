@@ -31,7 +31,7 @@
            <!-- <img id="imgCV" src="/images/search.png"/>  -->
 
            <label for="dteMSH_PrintedDate" id="lblMSH_PrintedDate">Date Last Printed:</label>
-           <input type="date" id="dteMSH_PrintedDate" disabled tabindex="5"/>
+           <input type="text" id="dteMSH_PrintedDate" disabled tabindex="5"/>
            <label for="txtMSH_LetterPath" id="lblMSH_LetterPath">Letter To Print:</label>
            <textarea maxlength="4096" id="txtMSH_LetterPath" tabindex="6"></textarea>
            <!-- <img id="imgLetter" src="/images/search.png"/>  -->
@@ -43,38 +43,31 @@
              lists instead :)
              
              Columns are:
-
-             contact
+    
              company
+             contact
              address 1
              address 2
              address 3
-             toen/city
+             town/city
              postcode
           -->
-          <div id="divMailshotAddresses">
-               <!-- <button id="btnSelect1">Select</button>
-               <div id="divTableItem1"></div>
-               <div id="divTableItem1"></div>
-               <div id="divTableItem1"></div>
-               <div id="divTableItem1"></div>
-               <div id="divTableItem1"></div>
-               <div id="divTableItem1"></div>
-               <div id="divTableItem1"></div>
-               <div id="divTableItem1"></div>
-               <div id="divTableItem1"></div> -->
-
-            <!-- <table id="tblData">
-               <tbody>
-                   
-               </tbody>
-           </table> -->
+     
+          <!-- table headers-->
+          <div id="divTableHeaders">
+            <div id="divTableHeaderSelect">Select</div>
+            <div id="divTableHeader1">Company</div>
+            <div id="divTableHeader2">Contact</div>
+            <div id="divTableHeader3">Address 1</div>
+            <div id="divTableHeader4">Address 2</div>
+            <div id="divTableHeader5">Address 3</div>
+            <div id="divTableHeader6">Town/City</div>
+            <div id="divTableHeader7">PostCode</div>
+            <div id="divTableHeader8">Print Contact</div>
           </div>
-
-           <!-- <select id="cmbAddresses"  tabindex="5">
-              <option value="none" selected disabled hidden>Select Address
-              <option value="1">MailShot Summary Report</option>
-          </select> -->
+          <!-- table div-->
+          <div id="divMailshotAddresses">
+          </div>
 
           <!-- Seekers_Maiilshot_Lines --> 
           <label for="txtMSL_Contact" id="lblMSL_Contact">Contact:</label>
@@ -108,6 +101,8 @@
         <button id="btnSave" class="clhFormbutton" tabindex="18">Save</button>
         <button id="btnUndo" class="clhFormbutton" tabindex="19">Undo</button>
         <button id="btnDelete" class="clhFormbutton" tabindex="20">Delete</button>
+        <button id="btnPrintMailshot" tabindex="21" class="clhFormbutton" >Print Mailshot</button>
+        <button id="btnPrintTestEnvelope" tabindex="22" class="clhFormbutton" >Print Test Envelope</button>
     </footer>
 
     <section>

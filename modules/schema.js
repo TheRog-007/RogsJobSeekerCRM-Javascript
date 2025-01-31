@@ -555,7 +555,7 @@ export const aryTables = [
         autoNumber: false,
         fieldSize: 50,
         fieldValue: "",
-        requiredField: false,
+        requiredField: true,
       },
       {
         fieldName: "CVRR_Details",
@@ -563,7 +563,7 @@ export const aryTables = [
         autoNumber: false,
         fieldSize: 4096,
         fieldValue: "",
-        requiredField: false,
+        requiredField: true,
       },
       {
         fieldName: "CVR_Name",
@@ -1721,29 +1721,25 @@ export function funcDeleteDatabase() {
 export function funcIndexedDBSupport() {
   return "indexedDB" in window;
 }
-/*
-  possible other functions:
-
-  getrecord
-  - getfirstrecord
-  - getlastrecord
-  - getnextrecord
-  deleteRecord
-  saveRecord
-  populatecombobox
-  
-
-*/
-// export const funcSaveData = (objData) => {
+// export const funcGetSchemaName = (strTable = "") => {
 //   /*
-//    Created By Roger Williams 19/02/2025
+//   Created 30/01/2025 By Roger Williams
 
-//    Saves data to table in objData
+//   checks if passed table exists if so returns name
 
+//   used by modmodel.funcinitcomboboxes
 //   */
 
-//   const trnTemp = dbJobSeekerCRM.transaction(objData.tableName, "readonly");
-//   const objTemp = trnTemp.objectStore("objData.tableName");
+//   //find table
+//   const objResult1 = aryTables.find((objTemp) => {
+//     return objTemp.tblName === strTable;
+//   });
+
+//   if (objResult1) {
+//     return objResult1.tblName;
+//   } else {
+//     return "";
+//   }
 // };
 export const funcGetSchema = (strTable = "") => {
   /*
@@ -1771,48 +1767,11 @@ export const funcGetSchema = (strTable = "") => {
   return objResult1;
 };
 
-// function funcListDB_Click() {
-//   //fill divTable with seekers_where
-
-//   const dbRequest = dbJobSeekerCRM
-//     .transaction("Seekers_Types")
-//     .objectStore("Seekers_Types")
-//     .getAll();
-//   //.get(key) for one value based on ID
-
-//   dbRequest.onsuccess = () => {
-//     const qryTemp = dbRequest.result;
-
-//     console.table(qryTemp);
-//   };
-
-//   dbRequest.onerror = (err) => {
-//     alert("Error searching");
-//   };
-// }
-
-// function funcFindDB_Click() {
-//   //find txtFind in seekers_types->typ_type
-
-//   alert(document.getElementById("txtFind").value);
-//   const dbRequest = dbJobSeekerCRM
-//     .transaction("Seekers_Types")
-//     .objectStore("Seekers_Types")
-//     .get(document.getElementById("txtFind").value);
-
-//   dbRequest.onsuccess = () => {
-//     const objFound = dbRequest.result;
-//     alert("found");
-//     console.log(objFound);
-//   };
-
-//   dbRequest.onerror = (err) => {
-//     alert(`Error to get student information: ${err}`);
-//   };
-// }
 export function funcValidateForm(aryElements, strTable) {
   /*
   checks form INPUT elements values with schema
+
+  Returns array of controls missing required data
 
 */
   let intNum = 0;

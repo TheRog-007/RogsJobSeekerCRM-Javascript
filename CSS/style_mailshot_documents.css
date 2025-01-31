@@ -1,0 +1,77 @@
+* {
+    font-size                         : 19px;
+}
+body {
+    background-color                  :darkolivegreen;
+}
+#divContainer {
+    display                           : grid;
+    grid-template-columns             : 400px 600px;
+    grid-template-rows                : 150px 40px 100px 80px 140px 140px 40px;
+}
+#divBox {
+    border                            : solid;;
+    grid-column                       : 1 / 2;
+    grid-row                          : 2 / 6;
+    width                             : 1000px;
+    margin-left                       : 80px;
+    border-radius                     : 8px;
+    border-color                      : rgb(230, 217, 217);
+    animation-name                    : aniBox;
+    animation-timing-function         : ease-in;
+    animation-iteration-count         : infinite;
+    animation-duration                : 4s;
+    animation-direction               :normal; 
+}
+@keyframes aniBox {
+    0% {
+        border-color                  : rgb(230, 217, 217);
+    }
+    40% {
+        border-color                  : rgb(204, 198, 198);
+    }
+    60% {
+        border-color                  : rgb(145, 143, 143);
+    }
+}
+#imgBanner {
+    height                            : 100px;
+    grid-column                       : 1 / 2;
+}
+#divCopies {
+    grid-column                       : 1 / 2;
+    grid-row                          : 3;
+    font-weight                       : 800;
+    color                             :greenyellow;
+    border                            : solid;
+    border-color                      :white; 
+    margin-left                       : 300px;
+    width                             : 520px;
+    height                            : 25px;
+    padding                           : 10px; 
+}
+#lnkDocumentCV {
+    grid-column                       : 1 / 2;
+    grid-row                          : 4;
+    margin-left                       : 100px;
+    color                             :white;
+}
+#lnkDocumentLetter {
+    grid-column                       : 1 / 2;
+    grid-row                          : 5;
+    margin-left                       : 100px;
+    color                             :white;
+}
+#btnClose {
+    grid-column                       : 1 / 2;
+    grid-row                          : 7;
+    margin-left                       : 500px;
+    width                             : 160px;
+    height                            : 60px;
+    border-radius                     : 6px;
+    background-color                  :darkgoldenrod;
+    color                             : white;
+    font-weight                       : 600;
+    box-shadow                        : 0px 0px 1px 1px;
+}
+

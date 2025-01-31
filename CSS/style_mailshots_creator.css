@@ -2,6 +2,9 @@
     width                                 : 500px;
     
 }
+/*
+  form controls
+*/
 #lblID {
     left                                  : 10px;
 }
@@ -15,6 +18,16 @@
 }
 #btnSave, #btnUndo, #btnDelete {
     top                                   : 670px;
+}
+#btnPrintMailshot {
+    left: 600px;
+    width: 140px;
+    top: 680px;
+}
+#btnPrintTestEnvelope {
+    left: 400px;
+    width: 160px;
+    top: 680px;
 }
 #lblMSH_MailshotName {
     left                                  : 10px;
@@ -44,11 +57,11 @@
     mix-blend-mode                        : screen;   
 }
 #lblMSH_PrintedDate {
-    left                                  : 660px;
+    left                                  : 640px;
     top                                   : 50px;
 }
 #dteMSH_PrintedDate {
-    left                                  : 800px;
+    left                                  : 780px;
     top                                   : 65px; 
 }
 #lblMSH_LetterPath {
@@ -72,138 +85,145 @@
 .clhLine {
     top                                   : 180px;
 }
+/*
+  table and table controls
+*/
+/* headers
+
+*/
+#divTableHeaders {
+    top                                   : 190px;
+    width                                 : 970px;
+}
+
+
 #divMailshotAddresses {
      position                             : absolute;
      left                                 : 2px;
-     top                                  : 190px; 
+     top                                  : 214px; 
      border                               : solid;
      border-color                         :green;
      border-width                         : 1px;
      width                                : 970px;
      height                               : 200px;
      display                              : block;
-
-     /* display:grid;
-     grid-template-columns: 8ch 25ch 20ch 10ch 10ch 10ch 10ch 10ch 10ch 10ch;
-     grid-template-rows: 60px; */
-
-     background-color: none;
-     scrollbar-color: yellow darkblue;
-     scroll-behavior: smooth;
-     scrollbar-width: 10px;
-     overflow-y: scroll;
-     overflow-x: scroll;
-
-     border-radius: 6px;
-     /* padding-bottom: 10px;
-     padding-left:  10px;
-     padding-top: 10px;  */
+     background-color                     : none;
+     scrollbar-color                      : yellow darkblue;
+     scroll-behavior                      : smooth;
+     scrollbar-width                      : 10px;
+     overflow-y                           : scroll;
+     overflow-x                           : scroll;
+     border-radius                        : 6px;
 } 
-.btnSelect {
-    width                                   : 6ch;
-    left                                    : 0;
-}
 .clhAddressRowContainer {
-    background-color                        :darkslategrey;
-    display: inline-block;
-    width:970px;
-    height:30px;
+    background-color                      :darkslategrey;
+    display                               : inline-block;
+    width                                 : 970px;
+    height                                : 30px;
 }
- /* .clhAddressRowContainer {
-    height: 100px;
-    background-color                        :darkslategrey;
- } */
+
+/*
+ table headers
+*/
+
+#divTableHeaderSelect {
+    width                                 : 6ch;
+    left                                  : 0;
+}
+#divTableHeader1 {
+    left                                  : 75px;
+}
+#divTableHeader2 {
+    left                                  : 235px;
+}
+#divTableHeader3 {
+    left                                  : 339px;
+}
+#divTableHeader4 {
+    left                                  : 439px;
+}
+#divTableHeader5 {
+    left                                  : 539px;
+}
+#divTableHeader6 {
+    left                                  : 639px;
+}
+#divTableHeader7 {
+    left                                  : 739px;
+}
+#divTableHeader8 {
+    left                                  : 839px;
+}
+
+/*
+ table elements
+*/
+.btnSelect {
+    width                                 : 6ch;
+    left                                  : 0;
+}
 .clhAddressCol1 {
-    /* background-color: black; */
-    /* border-radius: 10px; */
-    /* margin-bottom: 10px; */
-    margin-right: 2px;
-    /* padding-top: 10px;  */
-    /* padding-left: 2px; */
-    color: yellow;
-    height: 30px;
+    margin-right                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
 }
 .clhAddressCol2 {
-    /* background-color: black; */
-    /* border-radius: 10px; */
-    /* margin-bottom: 10px; */
-    margin-right: 2px;
-    padding-top: 5px; 
-    padding-left: 2px;
-    color: yellow;
-    height: 30px;
-    left: 80px;
+    margin-right                          : 2px;
+    padding-top                           : 5px; 
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 80px;
 }
 .clhAddressCol3 {
-    /* background-color: black; */
-    /* border-radius: 10px; */
-    /* margin-bottom: 10px; */
-    margin-right: 2px;
-    padding-top: 5px;
-    padding-left: 2px;
-    color: yellow;
-    height: 30px;
-    left: 240px;
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 240px;
 }
 .clhAddressCol4 {
-    /* background-color: black; */
-    /* border-radius: 10px; */
-    /* margin-bottom: 10px; */
-    margin-right: 2px;
-    padding-top: 5px;
-    padding-left: 2px;
-    color: yellow;
-    height: 30px;
-    left: 340px;
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 340px;
 }
 .clhAddressCol5 {
-    /* background-color: black; */
-    /* border-radius: 10px; */
-    /* margin-bottom: 10px; */
-    margin-right: 2px;
-    padding-top: 5px;
-    padding-left: 2px;
-    color: yellow;
-    height: 30px;
-    left: 440px;
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 440px;
 }
 .clhAddressCol6 {
-    /* background-color: black; */
-    /* border-radius: 10px; */
-    /* margin-bottom: 10px; */
-    margin-right: 2px;
-    padding-top: 5px;
-    padding-left: 2px;
-    color: yellow;
-    height: 30px;
-    left: 540px;
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 540px;
 }
 .clhAddressCol7 {
-    /* background-color: black; */
-    /* border-radius: 10px; */
-    /* margin-bottom: 10px; */
-    margin-right: 2px;
-    padding-top: 5px;
-    padding-left: 2px;
-    color: yellow;
-    height: 30px;
-    left: 640px;
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 640px;
 }
 .clhAddressCol8 {
-    /* background-color: black; */
-    /* border-radius: 10px; */
-    /* margin-bottom: 10px; */
-    margin-right: 2px;
-    padding-top: 5px;
-    padding-left: 2px;
-    color: yellow;
-    height: 30px;
-    left: 740px;
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 740px;
 }
 .clhAddressCol9 {
-    /* background-color: black; */
-    /* border-radius: 10px; */
-    /* margin-bottom: 10px; */
     margin-right: 2px;
     padding-top: 5px;
     padding-left: 2px;
@@ -211,138 +231,84 @@
     height: 30px;
     left: 840px;
 }
-/* .clhAddressRow:first-letter{
-    font-weight: 800;
-    color:lightyellow;
-    text-transform:capitalize;
-} */
-
-
-/* #tblData {
-    border-spacing                        : 1ch;
-    font-size                             : 12px;
-    width                                 : 960px;
-    overflow-x                            : auto;
-    overflow-y                            : auto;
-
-} */
-/*align columns */
-
-
-
-/* .btnTable {
-    font-size                             : 12px;
-    width                                 : 50px;
-    height                                : 30px;
-    left                                  : 2px;
-} */
-
-/* #tblHeader1 {
-    width                                 : 10ch;
-}
-#tblHeader2 {
-    width                                 : 14ch;
-  
-}
-#tblHeader3 {
-    width                                 : 20ch;
-  
-}
-#tblHeader4 {
-    width                                 : 20ch;
-  
-}
-#tblHeader5 {
-    width                                 : 20ch;
-  
-}
-#tblHeader6 {
-    width                                 : 10ch;
-  
-}
-#tblHeader7 {
-    width                                 : 10ch;
-  
-}
-#tblHeader8 {
-    width                                 : 13ch;
-  
-} */
 
 /*
   form controls
 */
 #lblMSL_Contact {
     left                                  : 10px;
-    top                                   : 400px 
+    top                                   : 420px 
 }
 #txtMSL_Contact {
     left                                  : 100px;
-    top                                   : 410px;
+    top                                   : 430px;
     width                                 : 30ch;
 }
 #lblMSL_CompanyName {
     left                                  : 400px;
-    top                                   : 400px;
+    top                                   : 420px;
 }
 #txtMSL_CompanyName {
     left                                  : 490px;
-    top                                   : 410px;
+    top                                   : 430px;
     width                                 : 50ch;    
 }
 #lblMSL_Address1 {
     left                                  : 10px;
-    top                                   : 440px;
+    top                                   : 460px;
 }
 #txtMSL_Address1 {
     left                                  : 100px;
-    top                                   : 450px;
+    top                                   : 470px;
     width                                 : 50ch; 
 }
 #lblMSL_Address2 {
     left                                  : 10px;
-    top                                   : 480px;
+    top                                   : 500px;
 }
 #txtMSL_Address2 {
     left                                  : 100px;
-    top                                   : 490px; 
+    top                                   : 510px; 
     width                                 : 50ch;
 }
 #lblMSL_Address3 {
     left                                  : 10px;
-    top                                   : 520px;
+    top                                   : 540px;
 }
 #txtMSL_Address3 {
     left                                  : 100px;
-    top                                   : 530px;
+    top                                   : 550px;
     width                                 : 50ch; 
 }
 #lblMSL_TownCity {
     left                                  : 10px;
-    top                                   : 560px;
+    top                                   : 580px;
 }
 #txtMSL_TownCity {
     left                                  : 100px;
-    top                                   : 570px;
+    top                                   : 590px;
     width                                 : 30ch;
 }
 #lblMSL_Postcode {
     left                                  : 400px;
-    top                                   : 560px;
+    top                                   : 580px;
 }
 #txtMSL_Postcode {
     left                                  : 490px;
-    top                                   : 570px;
+    top                                   : 590px;
     width                                 : 15ch; 
 }
 #lblMSH_PrintContact {
     left                                  : 40px;
-    top                                   : 600px;
+    top                                   : 620px;
 }
 #chkMSH_PrintContact {
     left                                  : 10px;
-    top                                   : 618px;
+    top                                   : 638px;
 }
+/*
+   address "action" buttons
+*/
 #divAddress {
     left                                  : 760px;
     top                                   : 460px;

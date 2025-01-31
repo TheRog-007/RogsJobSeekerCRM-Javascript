@@ -24,12 +24,6 @@ export const txtHidden = document.getElementById("txtHidden");
 //db var
 let dbJobSeekerCRM;
 
-// const funcbtnLoginClick = () => {
-//   //dont act like a form and submit!
-//   btnLogin.preventDefault();
-//   //open connection
-// };
-
 //event handlers
 const funccmbIDClick = (event) => {
   /*
@@ -46,14 +40,6 @@ const funccmbIDClick = (event) => {
   }
 };
 
-// const funcValidateTextLength = (strValue, intMaxLength) => {
-//   /*
-//        Created 10/01/2024 By Roger Williams
-
-//        Checks if string passed greater than passed max length
-
-//     */
-// };
 const functextboxKeyDown = (event) => {
   /*
   Created 08/01/2025 By Roger Williams
@@ -98,10 +84,6 @@ const funcbtnSaveClick = (event) => {
    processes save
 
 */
-  // const trnTemp = dbJobSeekerCRM.transaction("Seekers_Types", "readonly");
-  // const objTemp = trnTemp.objectStore("Seekers_Types");
-  //dont allow submit to work!
-  // btnSave.preventDefault();
   let objTemp = modSchema.funcGetFirstRecord("Seekers_Types");
 
   if (modSchema.funcValidateForm) {
@@ -136,8 +118,8 @@ const funcPopulateCombobox = () => {
 
   fields:
 
-  TYP_ID    - autonumber
-  TYP_Type  - string
+   autonumber - hidden
+   next primary key
 
   */
   const trnTemp = dbJobSeekerCRM.transaction("Seekers_Types", "readonly");

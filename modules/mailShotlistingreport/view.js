@@ -2,7 +2,7 @@
 
 import * as modModel from "./model.js";
 import * as modSchema from "../schema.js";
-
+import * as modMessageBox from "../messageBox.js";
 /*
   Created 08/01/2025 By Roger Williams
 
@@ -41,7 +41,4 @@ export const funcSetupScreen = () => {
   modModel.btnDelete.style.left = "200px";
 
   modModel.txtHidden.style.backgroundColor = "darkslategrey";
-
-  //config validation/max chars allowed etc
-  // intSize = modSchema.funcGetFieldSize("Seekers_Types", "TYP_Type");
 };

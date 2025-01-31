@@ -36,11 +36,10 @@ export const txtCVRR_Name = document.getElementById("txtCVRR_Name");
 export const lblCVRR_Name = document.getElementById("lblCVRR_Name");
 export const txtCVRR_Details = document.getElementById("txtCVRR_Details");
 export const lblCVRR_Details = document.getElementById("lblCVRR_Details");
-export const lstResponsibility_Name = document.getElementById(
-  "lstResponsibility_Name"
-);
-export const lstResponsibility_Details = document.getElementById(
-  "lstResponsibility_Details"
+//table
+export const divTableheaders = document.getElementById("divTableHeader");
+export const divTableResponsibilities = document.getElementById(
+  "divTableResponsibilities"
 );
 export const txtHidden = document.getElementById("txtHidden");
 //local
@@ -49,11 +48,33 @@ export const txtHidden = document.getElementById("txtHidden");
 export let dbJobSeekerCRM;
 //table schema var
 export let objTable;
-
+//selected row
+export let intSelectedRow = -1;
 //new record
 let blnNew = false;
 
 //event handlers
+export function funcSelectButtonClick(event) {
+  /*
+    Created 27/01/2025 By Roger Williams
+
+    handles address list click
+  */
+  let elTemp;
+  let intNum = 0;
+  let strTemp = event.target.id;
+  //get row number
+  intNum = strTemp.replace(/[^0-9]/g, "");
+  //get row div container
+  elTemp = document.getElementById("divResponsibilitiesRowContainer" + intNum);
+  //clear any existing address data
+  funcbtnClearResponsibilityClick();
+  //set global selected row indicator
+  intSelectedRow = intNum;
+  //populate text boxes
+  txtCVRR_Name.value = elTemp.childNodes[2].innerText;
+  txtCVRR_Details.value = elTemp.childNodes[3].innerText;
+}
 const funccmbIDSelect = (event) => {
   /*
    Created 08/01/2025 By Roger Williams
@@ -71,7 +92,8 @@ const funccmbIDSelect = (event) => {
         modMessageBox.objButtons.no,
         "load",
         1,
-        "btnNew"
+        "btnNew",
+        document.getElementsByTagName("html")
       );
     } else {
       modView.funcLoadData();
@@ -79,14 +101,6 @@ const funccmbIDSelect = (event) => {
   }
 };
 
-// const funcValidateTextLength = (strValue, intMaxLength) => {
-//   /*
-//        Created 10/01/2024 By Roger Williams
-
-//        Checks if string passed greater than passed max length
-
-//     */
-// };
 const functextboxKeyDown = (event) => {
   /*
   Created 08/01/2025 By Roger Williams
@@ -136,14 +150,14 @@ export const funcClearCombobox = (cmbWhat) => {
 };
 export function funcPopulateCombobox() {
   /*
-   Created 09/01/2025 By Roger Williams
-
-   Creates combobox items from db
-
-   Note: because it is a many - many relationship filter
-        duplicate values BEFORE adding to combos
-
-  */
+     Created 09/01/2025 By Roger Williams
+  
+     Creates combobox items from db
+  
+     Note: because it is a many - many relationship filter
+          duplicate values BEFORE adding to combos
+  
+    */
   let elFirst;
   let strTemp = "";
 
@@ -169,9 +183,10 @@ export function funcPopulateCombobox() {
           cmbID.appendChild(elTemp);
           curTemp.continue();
         }
-      }
-      if (strTemp !== curTemp.value.CVR_Name) {
-        strTemp = curTemp.value.CVR_Name;
+
+        if (strTemp !== curTemp.value.CVR_Name) {
+          strTemp = curTemp.value.CVR_Name;
+        }
       }
     };
   }
@@ -195,57 +210,77 @@ const funcbtnSaveResponsibilityClick = () => {
     saves new data IF not already in list
     Note: not saved to DB ONLY list!
   */
-  let elTemp;
+  let intFound = 0;
+  let aryErrors1;
+  let aryErrors2;
 
   function funcExists() {
     /*
     Created 22/01/2025 By Roger Williams
 
     sees if data to add already exists
+    specifically the company name
 
-    Note: need to use TEXT property as value is number!
+    returns false if not found else row number
+   
   */
+
+    let elTemp;
     let intNum = 0;
+    let strTemp = "";
+    let aryTemp = [];
 
-    if (lstResponsibility_Name.length === 0) {
-      return false;
-    }
+    aryTemp = document.getElementsByClassName("clhResponsibilityRowContainer");
 
-    while (intNum !== lstResponsibility_Name.length) {
-      if (lstResponsibility_Name[intNum].text === txtCVRR_Name.value) {
-        return true;
+    for (intNum = 0; intNum < aryTemp.length; intNum++) {
+      elTemp = aryTemp[intNum];
+      strTemp = elTemp.childNodes[2].innerText;
+
+      if (strTemp === txtCVRR_Name.value) {
+        return ++intNum;
       }
-
-      intNum++;
     }
 
     return false;
   }
-  //make sure not already in name list
-  if (funcExists()) {
+
+  //check required fields completed
+  aryErrors1 = modSchema.funcValidateForm(
+    document.getElementsByTagName("textarea"),
+    modSchema.constCV_Responsibilites
+  );
+  aryErrors2 = modSchema.funcValidateForm(
+    document.getElementsByTagName("input"),
+    modSchema.constCV_Responsibilites
+  );
+
+  //see if returned errors object is empty
+  if (aryErrors1.length > 0 || aryErrors2.length > 0) {
     modMessageBox.funcMessageBox(
-      "Responsibility Already Exists!",
-      modMessageBox.objIcons.exclamation,
+      "Please Enter Data In All Required Fields",
+      modMessageBox.objIcons.error,
       modMessageBox.objButtons.ok,
-      modMessageBox.objButtons.none,
+      -1,
       "none",
       1,
-      "txtCVRR_Name"
+      "txtCVRR_Name",
+      document.getElementsByTagName("html")
     );
     return;
   }
 
-  elTemp = document.createElement("option");
-  elTemp.innerText = txtCVRR_Name.value;
-  elTemp.value = elTemp.innerText;
-  lstResponsibility_Name.appendChild(elTemp);
-
-  elTemp = document.createElement("option");
-  elTemp.innerText = txtCVRR_Details.value;
-  elTemp.value = elTemp.innerText;
-  lstResponsibility_Details.appendChild(elTemp);
+  //if exists update
+  intFound = funcExists();
+  //make sure not already in name list
+  if (intFound) {
+    modView.funcUpdateTableRow(intFound);
+  } else {
+    //add new row
+    modView.funcCreateTableRow(true);
+  }
 };
-const funcbtnClearResponsibilityClick = () => {
+
+export const funcbtnClearResponsibilityClick = () => {
   /*
     Created 22/01/2025 By Roger Williams
 
@@ -257,28 +292,23 @@ const funcbtnClearResponsibilityClick = () => {
 };
 const funcbtnDeleteResponsibilityClick = () => {
   /*
-    Created 22/01/2025 By Roger Williams
+      Created 22/01/2025 By Roger Williams
+  
+      Deletes the selected item from the list and clears the
+      details list 
+    */
 
-    Deletes the selected item from the list and clears the
-    details list 
-  */
+  let elTemp;
 
-  console.log(lstResponsibility_Name.length);
-
-  if (lstResponsibility_Name.length > 1) {
-    if (lstResponsibility_Name.value) {
-      lstResponsibility_Name.remove(lstResponsibility_Name.value);
-
-      if (lstResponsibility_Details.value) {
-        lstResponsibility_Details.remove(lstResponsibility_Details.value);
-      }
-    }
-  }
-  // else {
-  //   lstResponsibility_Name.innerText = "";
-  // }
-
-  // lstResponsibility_Details.innerText = "";
+  //get row div container
+  elTemp = document.getElementById(
+    "divResponsibilityRowContainer" + intSelectedRow
+  );
+  //delete it
+  divTableResponsibilities.removeChild(elTemp);
+  //renumber the buttons to reflect actual rows
+  modView.funcRenumberRowsResetPositions();
+  funcbtnClearResponsibilityClick();
 };
 
 const funcbtnNewResponsibilityClick = () => {
@@ -290,79 +320,6 @@ const funcbtnNewResponsibilityClick = () => {
   funcbtnClearResponsibilityClick();
 };
 
-const funclstResponsibilityClick = () => {
-  /*
-    Created 22/01/2025 By Roger Williams
-
-    selects matching row in the details lst
-
-  */
-  const intIndex = lstResponsibility_Name.selectedIndex;
-
-  if (intIndex !== -1) {
-    lstResponsibility_Details.selectedIndex = intIndex;
-  }
-};
-const funclstResponsibilityDblClick = () => {
-  /*
-    Created 22/01/2025 By Roger Williams
-
-    populates lstResponsibilities_Details using
-    selected item (CRR_Name)
-
-  */
-  let elTemp;
-  let qryTemp;
-  const trnTemp = dbJobSeekerCRM.transaction(
-    modSchema.constCV_Responsibilites,
-    "readonly"
-  );
-  const objTemp = trnTemp.objectStore(modSchema.constCV_Responsibilites);
-
-  qryTemp = objTemp.openCursor();
-  qryTemp.onsuccess = (event) => {
-    //create query to get data (cursor)
-    const qryRead = event.target.result;
-
-    if (lstResponsibility_Details.length > 0) {
-      while (lstResponsibility_Details.length > 0) {
-        lstResponsibility_Details.remove(lstResponsibility_Details.length - 1);
-      }
-    }
-    while (qryRead) {
-      //find matching role
-      if (qryRead.CVR_Name === txtCVR_Name.value) {
-        elTemp = document.createElement("li");
-        elTemp.innerText = qryRead.CVRR_Details;
-        elTemp.value = elTemp.innerText;
-        lstResponsibility_Details.appendChild(elTemp);
-      }
-      //goto next record
-      qryRead.continue();
-    }
-  };
-};
-// let objTemp = modSchema.funcGetFirstRecord(constCV_Responsibilites);
-
-// if (modSchema.funcValidateForm) {
-//   //save data
-// }
-// funcPopulateobjData();
-// modSchema.funcSaveData(objData);
-// let transaction = db.transaction("books", "readwrite"); // (1)
-// // get an object store to operate on it
-// let books = transaction.objectStore("books"); // (2)
-// let book = {
-// id: 'js',
-// price: 10,
-// created: new Date()
-// };
-// let request = books.add(book); // (3)
-
-//also transaction.oncompleted (event)
-// request.onsuccess = function() { // (4)
-// console.log("Book added to the store", request.result);
-// };
 export function funcDeleteRecord(blnSilent = false) {
   /*
    Modified 23/01/2025
@@ -394,7 +351,8 @@ export function funcDeleteRecord(blnSilent = false) {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -403,9 +361,7 @@ export function funcDeleteRecord(blnSilent = false) {
     const dbCursor = event.target.result;
 
     if (dbCursor) {
-      //      if (dbCursor.CVR_Name === txtCVR_Name.value) {
       dbCursor.delete();
-      //    }
       dbCursor.continue();
     }
 
@@ -421,7 +377,8 @@ export function funcDeleteRecord(blnSilent = false) {
         -1,
         "none",
         1,
-        "btnNew"
+        "btnNew",
+        document.getElementsByTagName("html")
       );
     }
   };
@@ -439,7 +396,8 @@ const funcbtnDeleteClick = (event) => {
     modMessageBox.objButtons.no,
     "delete",
     2,
-    "btnNew"
+    "btnNew",
+    document.getElementsByTagName("html")
   );
 };
 const funcSaveData = () => {
@@ -451,6 +409,9 @@ const funcSaveData = () => {
 */
   let dbUpdate;
   let intNum = 0;
+  let aryTemp = [];
+  let elTemp;
+
   //check all required fields filled
   const aryErrors1 = modSchema.funcValidateForm(
     document.getElementsByTagName("textarea"),
@@ -470,7 +431,8 @@ const funcSaveData = () => {
       -1,
       "none",
       1,
-      "txtCV_ResponsibilitesCVR_Name"
+      "txtCVR_Name",
+      document.getElementsByTagName("html")
     );
     return;
   }
@@ -487,22 +449,22 @@ const funcSaveData = () => {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
   const objTemp = dbRequest.objectStore(modSchema.constCV_Responsibilites);
 
-  // if (blnNew) {
+  aryTemp = document.getElementsByClassName("clhResponsibilitiesRowContainer");
 
-  while (intNum !== lstResponsibility_Name.length) {
+  for (intNum = 0; intNum !== aryTemp.length; intNum++) {
+    elTemp = aryTemp[intNum];
     dbUpdate = objTemp.add({
       CVR_Name: txtCVR_Name.value,
-      CVRR_Name: lstResponsibility_Name[intNum].value,
-      CVRR_Details: lstResponsibility_Details[intNum].value,
+      CVRR_Name: elTemp.childNodes[2].innerText,
+      CVRR_Details: elTemp.childNodes[3].innerText,
     });
-
-    intNum++;
   }
 
   dbUpdate.onsuccess = (event) => {
@@ -519,7 +481,8 @@ const funcSaveData = () => {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -531,56 +494,11 @@ const funcSaveData = () => {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 };
-//  else {
-//   //update data
-//   //find record by key: cmbID.value
-//   //Note: have to convert to number as get() does not convert string!
-//   const dbQuery = objTemp.get(Number(cmbID.value));
-
-//   dbQuery.onsuccess = () => {
-//     const dbData = dbQuery.result;
-
-//     //edit
-//     dbData.CVR_Name = txtCVR_Name.value;
-//     dbData.CVRR_Details = txtCVRR_Details.value;
-//     dbData.CVRR_Name = txtCVRR_Name.value;
-
-//     //update
-//     const dbUpdate = objTemp.put(dbData);
-
-//     dbUpdate.onsuccess = () => {
-//       blnNew = false;
-//       funcPopulateCombobox();
-//       //clear form
-//       funcResetForm();
-//       modMessageBox.funcMessageBox(
-//         "Record Saved",
-//         modMessageBox.objIcons.information,
-//         modMessageBox.objButtons.ok,
-//         -1,
-//         "none",
-//         1,
-//         "btnNew"
-//       );
-//     };
-
-//     dbUpdate.onerror = (event) => {
-//       modMessageBox.funcMessageBox(
-//         "Error Updating Record",
-//         modMessageBox.objIcons.error,
-//         modMessageBox.objButtons.ok,
-//         -1,
-//         "none",
-//         1,
-//         "btnNew"
-//       );
-//     };
-//   };
-// }
 
 const funcbtnSaveClick = () => {
   /*
@@ -591,13 +509,18 @@ const funcbtnSaveClick = () => {
 
 */
   //check all required fields filled
-  const aryErrors = modSchema.funcValidateForm(
+  const aryErrors1 = modSchema.funcValidateForm(
     document.getElementsByTagName("input"),
     modSchema.constSeekers_Types
   );
 
+  const aryErrors2 = modSchema.funcValidateForm(
+    document.getElementsByTagName("textarea"),
+    modSchema.constSeekers_Types
+  );
+
   //see if returned errors object is empty
-  if (!aryErrors) {
+  if (!aryErrors1 || !aryErrors2) {
     modMessageBox.funcMessageBox(
       "Please Enter Data In All Required Fields",
       modMessageBox.objIcons.error,
@@ -634,11 +557,6 @@ export function funcUndoChanges() {
     funcResetForm();
     blnNew = false;
   } else {
-    //restore from objTable
-    // cmbID.value = objTable.aryFields[0].fieldValue;
-    // txtCVRR_Name.value = objTable.aryFields[1].fieldValue;
-    // txtCVRR_Details.value = objTable.aryFields[2].fieldValue;
-    // txtCVR_Name.value = objTable.aryFields[3].fieldValue;
     modView.funcLoadData();
   }
 }
@@ -655,7 +573,8 @@ const funcbtnUndoClick = (event) => {
     modMessageBox.objButtons.no,
     "undo",
     2,
-    "btnNew"
+    "btnNew",
+    document.getElementsByTagName("html")
   );
 };
 
@@ -669,9 +588,7 @@ const funcResetForm = () => {
   txtCVRR_Name.value = "";
   txtCVRR_Details.value = "";
   txtCVR_Name.value = "";
-  //reset comboboxes and lists
-  funcClearCombobox(lstResponsibility_Name);
-  funcClearCombobox(lstResponsibility_Details);
+  modView.funcInitTable();
 };
 const funcbtnNewClick = () => {
   /*
@@ -690,7 +607,8 @@ const funcbtnNewClick = () => {
       modMessageBox.objButtons.no,
       "save",
       1,
-      "txtCVR_Name"
+      "txtCVR_Name",
+      document.getElementsByTagName("html")
     );
   } else {
     blnNew = true;
@@ -774,7 +692,8 @@ function funcOpenDatabase() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -786,7 +705,8 @@ function funcOpenDatabase() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -803,7 +723,8 @@ function funcOpenDatabase() {
         -1,
         "none",
         1,
-        "btnNew"
+        "btnNew",
+        document.getElementsByTagName("html")
       );
     };
 
@@ -817,113 +738,11 @@ function funcOpenDatabase() {
   };
 }
 
-// let transaction = db.transaction("books", "readwrite"); // (1)
-// // get an object store to operate on it
-// let books = transaction.objectStore("books"); // (2)
-// let book = {
-// id: 'js',
-// price: 10,
-// created: new Date()
-// };
-// let request = books.add(book); // (3)
-
-//also transaction.oncompleted (event)
-// request.onsuccess = function() { // (4)
-// console.log("Book added to the store", request.result);
-// };
-// request.onerror = function(event) {
-//     // ConstraintError occurs when an object with the same id already exists
-//     if (request.error.name == "ConstraintError") {
-//     console.log("Book with such id already exists"); // handle the error
-//     event.preventDefault(); // don't abort the transaction
-//     // use another key for the book?
-//     } else {
-//     // unexpected error, can't handle it
-//     // the transaction will abort
-//     }
-//     };
-//     transaction.onabort = function() {
-//     console.log("Error", transaction.error);
-//     };
-
-//search
-// get one book
-// books.get('js')
-// // get books with 'css' <= id <= 'html'
-// books.getAll(IDBKeyRange.bound('css', 'html'))
-// // get books with id < 'html'
-// books.getAll(IDBKeyRange.upperBound('html', true))
-// // get all books
-// books.getAll()
-// // get all keys, where id > 'js'
-// books.getAllKeys(IDBKeyRange.lowerBound('js', true))
-
-//use index to search on non key fields
-// let index = books.createIndex('price_idx', 'price');
-// let priceIndex = books.index("price_idx");
-// index.get("Donna").onsuccess = (event) => {
-//     console.
-
-//delete by index
-// find the key where price = 5
-// let request = priceIndex.getKey(5);
-// request.onsuccess = function() {
-// let id = request.result;
-// let deleteRequest = books.delete(id);
-
-//cursor
-// called for each book found by the cursor
-// request.onsuccess = function() {
-//     let cursor = request.result;
-//     if (cursor) {
-//     let key = cursor.key; // book key (id field)
-//     let value = cursor.value; // book object
-//     console.log(key, value);
-//     cursor.continue();
-//     } else {
-//     console.log("No more books");
-//     }
-
-// The main cursor methods are:
-// advance(count) – advance the cursor count times, skipping values.
-// continue([key]) – advance the cursor to the next value in range matching (or immediately after key if given).
-
 //exports
 export function funcCreateMessageBoxResultHandler() {
   txtHidden.addEventListener("focus", funcHiddenTextBoxHandler);
 }
 
-// export function funcOpenDatabase() {
-//   let dbopenRequest = indexedDB.open("RogsJobSeekerCRM", 1);
-
-//   // dbopenRequest.onupgradeneeded = (event) => {
-//   //   //if no database create it from the schema file
-//   //   funcCreateFromSchema(event);
-//   // };
-
-//   dbopenRequest.onerror = () => {
-//     alert(`Error Accessing Database ${dbopenRequest.error}`);
-//   };
-
-//   dbopenRequest.onsuccess = () => {
-//    modSchema.dbJobSeekerCRM = dbopenRequest.result;
-
-//     dbJobSeekerCRM.onversionchange = () => {
-//       dbJobSeekerCRM.close();
-//       alert("Database Version Is Outdated Please Reload Page");
-//     };
-//     //populate combobox
-//     funcPopulateCombobox();
-//   };
-// }
-// export function funcOpenDB() {
-//   /*
-//   Created 13/01/2025 By Roger Williams
-
-//   opens db and stores in local var
-// */
-//   modSchema.dbJobSeekerCRM = modSchema.funcOpenDatabase();
-// }
 export function funcInitSchema() {
   //get schema
   objTable = modSchema.funcGetSchema(modSchema.constCV_Responsibilites);
@@ -969,9 +788,4 @@ export function funcInitHandlers() {
     "click",
     funcbtnDeleteResponsibilityClick
   );
-  lstResponsibility_Name.addEventListener(
-    "dblclick",
-    funclstResponsibilityDblClick
-  );
-  lstResponsibility_Name.addEventListener("click", funclstResponsibilityClick);
 }

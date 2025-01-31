@@ -61,7 +61,8 @@ const funccmbIDSelect = (event) => {
         modMessageBox.objButtons.no,
         "load",
         1,
-        "txtCVC_Name"
+        "txtCVC_Name",
+        document.getElementsByTagName("html")
       );
     } else {
       modView.funcLoadData();
@@ -69,14 +70,6 @@ const funccmbIDSelect = (event) => {
   }
 };
 
-// const funcValidateTextLength = (strValue, intMaxLength) => {
-//   /*
-//        Created 10/01/2024 By Roger Williams
-
-//        Checks if string passed greater than passed max length
-
-//     */
-// };
 const functextboxKeyDown = (event) => {
   /*
   Created 08/01/2025 By Roger Williams
@@ -120,8 +113,8 @@ export function funcPopulateCombobox() {
 
    fields:
 
-   TYP_ID    - autonumber
-   CVC_Nationality  - string
+   autonumber - hidden
+   next primary key
 
   */
   let elFirst;
@@ -141,8 +134,6 @@ export function funcPopulateCombobox() {
 
       if (curTemp) {
         //create new option element inside the combobox
-        // console.log(curTemp.value);
-        //<option value="1">MailShot Summary Report</option>
         elTemp = document.createElement("option");
         elTemp.value = curTemp.key;
         elTemp.innerText = curTemp.value.CVC_Address1;
@@ -159,7 +150,6 @@ export function funcPopulateCombobox() {
     }
   }
   // create first item
-  // <option value="none" selected disabled hidden>Select ID</option>
   elFirst = document.createElement("option");
   elFirst.value = "none";
   elFirst.innerText = "Select ID";
@@ -194,7 +184,8 @@ const funcSaveData = () => {
       -1,
       "none",
       1,
-      "txtCVC_Name"
+      "txtCVC_Name",
+      document.getElementsByTagName("html")
     );
     return;
   }
@@ -211,7 +202,8 @@ const funcSaveData = () => {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -244,7 +236,8 @@ const funcSaveData = () => {
         -1,
         "none",
         1,
-        "btnNew"
+        "btnNew",
+        document.getElementsByTagName("html")
       );
     };
 
@@ -256,7 +249,8 @@ const funcSaveData = () => {
         -1,
         "none",
         1,
-        "btnNew"
+        "btnNew",
+        document.getElementsByTagName("html")
       );
     };
   } else {
@@ -293,7 +287,8 @@ const funcSaveData = () => {
           -1,
           "none",
           1,
-          "btnNew"
+          "btnNew",
+          document.getElementsByTagName("html")
         );
       };
 
@@ -305,7 +300,8 @@ const funcSaveData = () => {
           -1,
           "none",
           1,
-          "btnNew"
+          "btnNew",
+          document.getElementsByTagName("html")
         );
       };
     };
@@ -319,6 +315,26 @@ const funcbtnSaveClick = () => {
    else saves
 
 */
+  //check all required fields filled
+  const aryErrors = modSchema.funcValidateForm(
+    document.getElementsByTagName("input"),
+    modSchema.constCV_Contact
+  );
+
+  //see if returned errors object is empty
+  if (!aryErrors) {
+    modMessageBox.funcMessageBox(
+      "Please Enter Data In All Required Fields",
+      modMessageBox.objIcons.error,
+      modMessageBox.objButtons.ok,
+      -1,
+      "none",
+      1,
+      "btnNew"
+    );
+    return;
+  }
+
   if (!blnNew) {
     if (objTable.aryFields[0].fieldValue) {
       funcSaveData();
@@ -328,27 +344,6 @@ const funcbtnSaveClick = () => {
   }
 };
 
-// let objTemp = modSchema.funcGetFirstRecord(constCV_Contact);
-
-// if (modSchema.funcValidateForm) {
-//   //save data
-// }
-// funcPopulateobjData();
-// modSchema.funcSaveData(objData);
-// let transaction = db.transaction("books", "readwrite"); // (1)
-// // get an object store to operate on it
-// let books = transaction.objectStore("books"); // (2)
-// let book = {
-// id: 'js',
-// price: 10,
-// created: new Date()
-// };
-// let request = books.add(book); // (3)
-
-//also transaction.oncompleted (event)
-// request.onsuccess = function() { // (4)
-// console.log("Book added to the store", request.result);
-// };
 export function funcUndoChanges() {
   /*
   Created 08/01/2025 By Roger Williams
@@ -389,7 +384,8 @@ const funcbtnUndoClick = (event) => {
     modMessageBox.objButtons.no,
     "undo",
     2,
-    "btnNew"
+    "btnNew",
+    document.getElementsByTagName("html")
   );
 };
 
@@ -414,7 +410,8 @@ export function funcDeleteRecord() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -426,7 +423,8 @@ export function funcDeleteRecord() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
 
     //update combobox
@@ -448,7 +446,8 @@ const funcbtnDeleteClick = (event) => {
     modMessageBox.objButtons.no,
     "delete",
     2,
-    "btnNew"
+    "btnNew",
+    document.getElementsByTagName("html")
   );
 };
 
@@ -478,7 +477,7 @@ const funcbtnNewClick = () => {
 */
 
   //if Already a new record been created and text entered in a control
-  if (blnNew && txtCVC_Nationality.value.length !== 0) {
+  if (blnNew && txtCVC_Addrress1.value.length !== 0) {
     modMessageBox.funcMessageBox(
       "Record Not Saved, Save?",
       modMessageBox.objIcons.exclamation,
@@ -486,7 +485,8 @@ const funcbtnNewClick = () => {
       modMessageBox.objButtons.no,
       "save",
       1,
-      "txtCVC_Nationality"
+      "txtCVC_Addrress1",
+      document.getElementsByTagName("html")
     );
   } else {
     blnNew = true;
@@ -570,7 +570,8 @@ function funcOpenDatabase() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -582,7 +583,8 @@ function funcOpenDatabase() {
       -1,
       "none",
       1,
-      "btnNew"
+      "btnNew",
+      document.getElementsByTagName("html")
     );
   };
 
@@ -599,7 +601,8 @@ function funcOpenDatabase() {
         -1,
         "none",
         1,
-        "btnNew"
+        "btnNew",
+        document.getElementsByTagName("html")
       );
     };
 
@@ -613,113 +616,11 @@ function funcOpenDatabase() {
   };
 }
 
-// let transaction = db.transaction("books", "readwrite"); // (1)
-// // get an object store to operate on it
-// let books = transaction.objectStore("books"); // (2)
-// let book = {
-// id: 'js',
-// price: 10,
-// created: new Date()
-// };
-// let request = books.add(book); // (3)
-
-//also transaction.oncompleted (event)
-// request.onsuccess = function() { // (4)
-// console.log("Book added to the store", request.result);
-// };
-// request.onerror = function(event) {
-//     // ConstraintError occurs when an object with the same id already exists
-//     if (request.error.name == "ConstraintError") {
-//     console.log("Book with such id already exists"); // handle the error
-//     event.preventDefault(); // don't abort the transaction
-//     // use another key for the book?
-//     } else {
-//     // unexpected error, can't handle it
-//     // the transaction will abort
-//     }
-//     };
-//     transaction.onabort = function() {
-//     console.log("Error", transaction.error);
-//     };
-
-//search
-// get one book
-// books.get('js')
-// // get books with 'css' <= id <= 'html'
-// books.getAll(IDBKeyRange.bound('css', 'html'))
-// // get books with id < 'html'
-// books.getAll(IDBKeyRange.upperBound('html', true))
-// // get all books
-// books.getAll()
-// // get all keys, where id > 'js'
-// books.getAllKeys(IDBKeyRange.lowerBound('js', true))
-
-//use index to search on non key fields
-// let index = books.createIndex('price_idx', 'price');
-// let priceIndex = books.index("price_idx");
-// index.get("Donna").onsuccess = (event) => {
-//     console.
-
-//delete by index
-// find the key where price = 5
-// let request = priceIndex.getKey(5);
-// request.onsuccess = function() {
-// let id = request.result;
-// let deleteRequest = books.delete(id);
-
-//cursor
-// called for each book found by the cursor
-// request.onsuccess = function() {
-//     let cursor = request.result;
-//     if (cursor) {
-//     let key = cursor.key; // book key (id field)
-//     let value = cursor.value; // book object
-//     console.log(key, value);
-//     cursor.continue();
-//     } else {
-//     console.log("No more books");
-//     }
-
-// The main cursor methods are:
-// advance(count) – advance the cursor count times, skipping values.
-// continue([key]) – advance the cursor to the next value in range matching (or immediately after key if given).
-
 //exports
 export function funcCreateMessageBoxResultHandler() {
   txtHidden.addEventListener("focus", funcHiddenTextBoxHandler);
 }
 
-// export function funcOpenDatabase() {
-//   let dbopenRequest = indexedDB.open("RogsJobSeekerCRM", 1);
-
-//   // dbopenRequest.onupgradeneeded = (event) => {
-//   //   //if no database create it from the schema file
-//   //   funcCreateFromSchema(event);
-//   // };
-
-//   dbopenRequest.onerror = () => {
-//     alert(`Error Accessing Database ${dbopenRequest.error}`);
-//   };
-
-//   dbopenRequest.onsuccess = () => {
-//    modSchema.dbJobSeekerCRM = dbopenRequest.result;
-
-//     dbJobSeekerCRM.onversionchange = () => {
-//       dbJobSeekerCRM.close();
-//       alert("Database Version Is Outdated Please Reload Page");
-//     };
-//     //populate combobox
-//     funcPopulateCombobox();
-//   };
-// }
-// export function funcOpenDB() {
-//   /*
-//   Created 13/01/2025 By Roger Williams
-
-//   opens db and stores in local var
-// */
-//   modSchema.dbJobSeekerCRM = modSchema.funcOpenDatabase();
-// }
 export function funcInitSchema() {
   //get schema
   objTable = modSchema.funcGetSchema(modSchema.constCV_Contact);

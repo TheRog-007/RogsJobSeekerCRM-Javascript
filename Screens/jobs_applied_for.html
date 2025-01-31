@@ -25,71 +25,63 @@
          <input type="date" id="dteJOB_DateExpires" tabindex="4"/>
           
          <label for="txtJOB_Company" id="lblJOB_Company">Company:</label>
-         <!-- <select id="cmbJOB_Company"  tabindex="5">
-            <option value="none" selected disabled hidden>Select Company:
-            <option value="1">MailShot Summary Report</option>
-        </select> -->
+         <select id="cmbJOB_Company">
+            <option value="none" selected disabled hidden>Select Company
+        </select>
         <input type="text" maxlength="50" id="txtJOB_Company" tabindex="5"/>
         <label for="txtJOB_TownCity" id="lblJOB_TownCity">Town/City:</label>
-         <!-- <select id="cmbJOB_TownCity" tabindex="6">
+         <select id="cmbJOB_TownCity">
             <option value="none" selected disabled hidden>Select Town/City
-            <option value="1">MailShot Summary Report</option>
-        </select> -->
+        </select>
         <input type="text" maxlength="30" id="txtJOB_TownCity" tabindex="6"/>
 
         <div id="divLine" class="clhLine"></div>
 
         <label for="txtJOB_Salary" id="lblJOB_Salary">Salary Per Year e.g. £10K:</label>
-        <!-- <select id="cmbJOB_Salary"  tabindex="7">
+        <select id="cmbJOB_Salary">
            <option value="none" selected disabled hidden>Select Salary
-           <option value="1">MailShot Summary Report</option>
-       </select> -->
+       </select>
        <input type="text" maxlength="10" id="txtJOB_Salary" tabindex="7"/>
 
        <label for="txtJOB_Sector" id="lblJOB_Sector">What Job Sector?:</label>
-       <!-- <select id="cmbJOB_Sector"  tabindex="8">
+       <select id="cmbJOB_Sector">
           <option value="none" selected disabled hidden>Select Sector
-          <option value="1">MailShot Summary Report</option>
-      </select> -->
+      </select>
       <input type="text" maxlength="50" id="txtJOB_Sector" tabindex="8"/>
 
       <label for="txtJOB_Title" id="lblJOB_Title">Job Title:</label>
       <input type="text" maxlength="50" id="txtJOB_Title" tabindex="9"/>
 
       <label for="txtJOB_Type" id="lblJOB_Type">Contract/Permanent etc.:</label>
-      <!-- <select id="cmbJOB_Type"  tabindex="10">
+      <select id="cmbJOB_Type">
          <option value="none" selected disabled hidden>Select Contract Type
-         <option value="1">MailShot Summary Report</option>
-      </select> -->
-      <input type="text" maxlength="30" id="txtJOB_Type" tabindex="10"/>
+      </select>
+      <input type="text" maxlength="30" id="txtJOB_Type" disabled tabindex="10"/>
       
      <label for="txtJOB_Hours" id="lblJOB_Hours">Full Time/Part Time:</label>
-     <!-- <select id="cmbJOB_Hours"  tabindex="11">
+     <select id="cmbJOB_Hours"  >
         <option value="none" selected disabled hidden>Select Hours
-        <option value="1">MailShot Summary Report</option>
-    </select> -->
-    <input type="text" maxlength="30" id="txtJOB_Hours" tabindex="11"/>
+    </select>
+    <input type="text" maxlength="30" id="txtJOB_Hours" disabled tabindex="11"/>
 
     <label for="txtJOB_Where" id="lblJOB_Where">On-Site/Hybrid etc.:</label>
-    <!-- <select id="cmbJOB_Where"  tabindex="12">
+    <select id="cmbJOB_Where"  tabindex="12">
        <option value="none" selected disabled hidden>Select Where
-       <option value="1">MailShot Summary Report</option>
-   </select> -->
-   <input type="text" maxlength="255" id="txtJOB_Where" tabindex="12"/>
+    </select>
+   <input type="text" maxlength="255" id="txtJOB_Where" disabled tabindex="12"/>
 
    <label for="txtJOB_Details" id="lblJOB_Details">Details About Position - Either Type It In Or Copy/Paste From Website Job Advertised:</label>
-   <input type="textarea" maxlength="4096" id="txtJOB_Details" tabindex="13"/>
+   <textarea maxlength="4096" id="txtJOB_Details" tabindex="13"></textarea>
         
    <label for="txtJOB_PhoneNumber" id="lblJOB_PhoneNumber">Phone Number (If Known):</label>
    <input type="text" maxlength="20" id="txtJOB_PhoneNumber" tabindex="14"/>
 
    <label for="txtJOB_Status" id="lblJOB_Status">Status: Applied, Response etc.:</label>
-   <!-- <select id="cmbJOB_Status"  tabindex="15">
-      <option value="none" selected disabled hidden>Select Status
-      <option value="1">MailShot Summary Report</option>
-   </select> -->
    <input type="text" maxlength="20" id="txtJOB_Status" tabindex="15"/>
-
+   <select id="cmbJOB_Status">
+    <option value="none" selected disabled hidden>Select Status
+   </select>
+   
    <label for="txtJOB_ContactName" id="lblJOB_ContactName">Contact Name (If Known):</label>
    <input type="text" maxlength="30" id="txtJOB_ContactName" tabindex="16"/>
 

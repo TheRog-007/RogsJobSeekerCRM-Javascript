@@ -1758,7 +1758,6 @@ export const funcGetSchema = (strTable = "") => {
 
    This is used for saving data 
   */
-
   //find table
   const objResult1 = aryTables.find((objTemp) => {
     return objTemp.tblName === strTable;

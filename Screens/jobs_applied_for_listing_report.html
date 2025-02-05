@@ -16,8 +16,10 @@
                <option value="none" selected disabled hidden>Select ID
                <option value="1">MailShot Summary Report</option>
            </select>
-         <!-- <label for="chkAllJobID" id="lblAllJobID">All</label>  
-         <input type="checkbox" class="clhCheckBox" id="chkAllJobID"  tabindex="2" checked/>   -->
+         <label for="chkAllJobID" id="lblAllJobID">All</label>  
+         <input type="checkbox" class="clhCheckBox" id="chkAllJobID"  tabindex="2" checked/>  
+         <div id="divJobTitle"></div>
+
          <label for="cmbJobTitle" id="lblJobTitle">Job Title:</label>
          <select id="cmbJobTitle"  tabindex="2">
             <option value="none" selected disabled hidden>Select Job Title
@@ -28,39 +30,56 @@
   
          <div class="clhLine"></div>
 
+         <div id="divDateAppliedFrom"></div>
+
          <label for="cmbDateAppliedFrom" id="lblDateAppliedFrom">Date Applied From:</label>
          <select id="cmbDateAppliedFrom" tabindex="4">
             <option value="none" selected disabled hidden>Select Date
             <option value="1">MailShot Summary Report</option>
         </select>        
+        
+        <div id="divDateAppliedTo"></div>
+
         <label for="cmbDateAppliedTo" id="lblDateAppliedTo">Date Applied To:</label>
         <select id="cmbDateAppliedTo"  tabindex="5">
            <option value="none" selected disabled hidden>Select Date
            <option value="1">MailShot Summary Report</option>
-       </select>        
+       </select>             
+
        <label for="chkAllDateApplied" id="lblAllDateApplied">All</label>  
        <input type="checkbox" id="chkAllDateApplied" class="clhCheckBox"  tabindex="6" checked/>  
- 
-       <label for="cmbDateExpiresFrom" id="lblDateExpiredFrom">Date Expired From:</label>
-       <select id="cmbDateExpiredFrom"  tabindex="7">
+
+      <div id="divDateExpiresFrom"></div>
+
+       <label for="cmbDateExpiresFrom" id="lblDateExpiresFrom">Date Expired From:</label>
+       <select id="cmbDateExpiresFrom"  tabindex="7">
           <option value="none" selected disabled hidden>Select Date
           <option value="1">MailShot Summary Report</option>
-      </select>        
-      <label for="cmbDateExpiredTo" id="lblDateExpiredTo">Date Expired To:</label>
-      <select id="cmbDateExpiredTo"  tabindex="8">
+      </select>   
+
+      <div id="divDateExpiresTo"></div>
+
+      <label for="cmbDateExpiresTo" id="lblDateExpiresTo">Date Expired To:</label>
+      <select id="cmbDateExpiresTo"  tabindex="8">
          <option value="none" selected disabled hidden>Select Date
          <option value="1">MailShot Summary Report</option>
      </select>        
-     <label for="chkAllDateExpired" id="lblAllDateExpired">All</label>  
-     <input type="checkbox" id="chkAllDateExpired" class="clhCheckBox" tabindex="9" checked/>  
+
+     <label for="chkAllDateExpires" id="lblAllDateExpires">All</label>  
+     <input type="checkbox" id="chkAllDateExpires" class="clhCheckBox" tabindex="9" checked/>  
+
+     <div id="divStatus"></div>
 
      <label for="cmbStatus" id="lblStatus">Status:</label>
      <select id="cmbStatus"  tabindex="10">
         <option value="none" selected disabled hidden>Select Status
         <option value="1">MailShot Summary Report</option>
     </select>        
+
     <label for="chkAllStatus" id="lblAllStatus">All</label>  
     <input type="checkbox" id="chkAllStatus" class="clhCheckBox" tabindex="5" tabindex="11" checked/>  
+
+    <div id="divSector"></div>
 
     <label for="cmbSector" id="lblSector">Sector:</label>
     <select id="cmbSector" tabindex="12">

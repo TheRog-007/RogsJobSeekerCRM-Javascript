@@ -6,6 +6,7 @@
     <link type="text/css" link rel="stylesheet" href="/CSS/style_screens.css"></link>
     <link type="text/css" link rel="stylesheet" href="/CSS/style_mailShotlisting_report.css"></link>
     <link type="text/css" link rel="stylesheet" href="/CSS/style_MsgBox.css"></link>
+    <title>Mailshot Listing</title>
 </head>
 <body>
     <main>
@@ -20,22 +21,21 @@
             <label for="cmbID" id="lblID">Mailshot ID:</label>    
             <select id="cmbID" tabindex="1">
                <option value="none" selected disabled hidden>Select ID
-               <option value="1">MailShot Summary Report</option>
            </select>
 
          <label for="chkAllMailshots" id="lblAllMailshots">All</label>  
          <input type="checkbox" id="chkAllMailshots" checked tabindex="2"/>  
 
+         <div id="divMSH_MailshotName"></div>
+
          <label for="cmbDateFrom" id="lblDateFrom">Date Printed From:</label>
          <select id="cmbDateFrom"  tabindex="3">
             <option value="none" selected disabled hidden>Select From
-            <option value="1">MailShot Summary Report</option>
         </select>
 
         <label for="cmbDateTo" id="lblDateTo">To:</label>
         <select id="cmbDateTo"  tabindex="4">
            <option value="none" selected disabled hidden>Select To
-           <option value="1">MailShot Summary Report</option>
        </select>
 
        <label for="chkAllDates" id="lblAllDates">All</label>  
@@ -59,9 +59,9 @@
          </dialog>
     </section>
 
-    <script src="/modules/mailShotlistingreport/controller.js" type="module" defer></script>
-    <script src="/modules/mailShotlistingreport/model.js" type="module" defer></script>
-    <script src="/modules/mailShotlistingreport/view.js" type="module" defer></script>
+    <script src="/modules/mailShotlisting_report/controller.js" type="module" defer></script>
+    <script src="/modules/mailShotlisting_report/model.js" type="module" defer></script>
+    <script src="/modules/mailShotlisting_report/view.js" type="module" defer></script>
     <script src="/modules/messageBox.js" type="module" defer></script> 
     <script src="/modules/schema.js" type="module" defer></script>
 

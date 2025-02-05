@@ -1,0 +1,278 @@
+* {
+    margin                                 : 0;
+    padding                                : 0;
+}
+/* .root   {
+    --var-DetailRowNumber                  : 11;
+} */
+
+/* @media print {
+    @page {
+    margin-top                             : 0; 
+    margin-bottom                          : 30mm;
+    }
+} */
+
+.clhHeader {
+   display                                 : grid;
+   grid-template-columns                   : 120px 160px 140px 160px 60px 140px;
+   grid-template-rows                      : 60px repeat (16, 16px);
+   row-gap                                 : 10px;
+}
+
+/*
+  grid header
+*/
+.clhTitle {
+    font-size                              : 42px;
+    padding-bottom                         : 20px;
+    grid-column                            : 1 / 6;
+    grid-row                               : 1;
+} 
+
+.clhLabelHeader1 {
+   grid-column                             : 1;
+   grid-row                                : 2;
+   font-size                               : 16px;
+   padding-bottom                          : 4px; 
+} 
+
+.clhTextHeader1 {
+    grid-column                            : 2 / 4;
+    grid-row                               : 2;
+    border                                 : none;
+    width                                  : 100px;
+    font-size                              : 18px;
+    padding-bottom                         : 4px; 
+}
+
+.clhLabelHeader2 {
+   grid-column                             : 1;
+   grid-row                                : 3;
+   font-size                               : 16px;
+   padding-bottom                          : 4px; 
+} 
+
+.clhTextHeader2 {
+    grid-column                            : 2;
+    grid-row                               : 3;
+    border                                 : none;
+    width                                  : 100px;
+    font-size                              : 16px;
+    padding-bottom                         : 4px; 
+}
+.clhLabelHeader3 {
+   grid-column                             : 3;
+   grid-row                                : 3;
+   font-size                               : 16px;
+   padding-bottom                          : 4px; 
+} 
+.clhTextHeader3 {
+    grid-column                            : 4;
+    grid-row                               : 3;
+    border                                 : none;
+    width                                  : 536px;
+    font-size                              : 16px;
+    padding-bottom                         : 4px; 
+}
+.clhLabelHeader4 {
+   grid-column                             : 5;
+   grid-row                                : 3;
+   font-size                               : 16px;
+   padding-bottom                          : 4px; 
+} 
+.clhTextHeader4 {
+    grid-column                            : 6;
+    grid-row                               : 3;
+    border                                 : none;
+    width                                  : 536px;
+    font-size                              : 16px;
+    padding-bottom                         : 4px; 
+}
+.clhLabelHeader5 {
+    grid-column                             : 1;
+    grid-row                                : 4;
+    font-size                               : 16px;
+    padding-bottom                          : 4px; 
+ } 
+ .clhTextHeader5 {
+     grid-column                            : 2;
+     grid-row                               : 4;
+     border                                 : none;
+     width                                  : 536px;
+     font-size                              : 16px;
+     padding-bottom                         : 4px; 
+ }
+ .clhLabelHeader6 {
+    grid-column                             : 1;
+    grid-row                                : 5;
+    font-size                               : 16px;
+    padding-bottom                          : 4px; 
+ } 
+ .clhTextHeader6 {
+     grid-column                            : 2;
+     grid-row                               : 5;
+     border                                 : none;
+     width                                  : 536px;
+     font-size                              : 16px;
+     padding-bottom                         : 4px; 
+ }
+ .clhLabelHeader7 {
+    grid-column                             : 3;
+    grid-row                                : 5;
+    font-size                               : 16px;
+    padding-bottom                          : 4px; 
+ } 
+ .clhTextHeader7 {
+     grid-column                            : 4;
+     grid-row                               : 5;
+     border                                 : none;
+     width                                  : 536px;
+     font-size                              : 16px;
+     padding-bottom                         : 4px; 
+ }
+ .clhLabelHeader8 {
+    grid-column                             : 5;
+    grid-row                                : 5;
+    font-size                               : 16px;
+    padding-bottom                          : 4px; 
+ } 
+ .clhTextHeader8 {
+     grid-column                            : 6;
+     grid-row                               : 5;
+     border                                 : none;
+     width                                  : 536px;
+     font-size                              : 16px;
+     padding-bottom                         : 4px; 
+ }
+ .clhLabelHeader9 {
+    grid-column                             : 1;
+    grid-row                                : 6;
+    font-size                               : 16px;
+    padding-bottom                          : 4px; 
+ } 
+ .clhTextHeader9 {
+     grid-column                            : 2;
+     grid-row                               : 6;
+     border                                 : none;
+     width                                  : 536px;
+     font-size                              : 16px;
+     padding-bottom                         : 4px; 
+ }
+ .clhLabelHeader10 {
+    grid-column                             : 3;
+    grid-row                                : 6;
+    font-size                               : 16px;
+    padding-bottom                          : 4px; 
+ } 
+ .clhTextHeader10 {
+     grid-column                            : 4;
+     grid-row                               : 6;
+     border                                 : none;
+     width                                  : 536px;
+     font-size                              : 16px;
+     padding-bottom                         : 4px; 
+ }
+ .clhLabelHeader11 {
+    grid-column                             : 5 / 6;
+    grid-row                                : 6;
+    font-size                               : 16px;
+    padding-bottom                          : 4px; 
+ } 
+ .clhTextHeader11 {
+     grid-column                            : 6;
+     grid-row                               : 6;
+     border                                 : none;
+     width                                  : 536px;
+     font-size                              : 16px;
+     padding-bottom                         : 4px; 
+ }
+ .clhLabelHeader12 {
+    grid-column                             : 1;
+    grid-row                                : 7;
+    font-size                               : 16px;
+    padding-bottom                          : 4px; 
+ } 
+ .clhTextHeader12 {
+     grid-column                            : 2;
+     grid-row                               : 7;
+     border                                 : none;
+     width                                  : 536px;
+     font-size                              : 16px;
+     padding-bottom                         : 4px; 
+ }
+ .clhLabelHeader13 {
+    grid-column                             : 3;
+    grid-row                                : 7;
+    font-size                               : 16px;
+    padding-bottom                          : 4px; 
+ } 
+ .clhTextHeader13 {
+     grid-column                            : 4;
+     grid-row                               : 7;
+     border                                 : none;
+     width                                  : 536px;
+     font-size                              : 16px;
+     padding-bottom                         : 4px; 
+ }
+
+ .clhLineHeader1 {
+    border                                 : solid;
+    border-width                           : 1px;
+    height                                 : 0.5px;
+    width                                  : 740px;
+    margin-top                             : 5px;
+    margin-bottom                          : 10px;
+
+}
+
+.clhTextDetail1 {
+    border                                 : none; 
+    width                                  : 360px;
+    font-size                              : 16px;
+    padding-bottom                         : 4px;
+    width                                  : 740px;
+}
+.clhDummy {
+    display: block;
+}
+/*
+ grid  footer
+
+ 1 row
+*/
+.clhFooter {
+    display: grid;
+    grid-template-columns: 40px 300px 120px 220px;
+    grid-template-rows: 16px;
+    }
+    
+.clhLabelFooter1 {
+    grid-column                             : 1;
+    grid-row                                : 48;
+    font-size                               : 12px;
+    padding-bottom                          : 4px; 
+ } 
+ 
+ .clhTextFooter1 {
+     grid-column                            : 2;
+     grid-row                               : 48;
+     border                                 : none;
+     width                                  : 100px;
+     font-size                              : 12px;
+     padding-bottom                         : 4px; 
+ }
+
+ .clhLabelFooter2 {
+    grid-column                             : 4;
+    grid-row                                : 48;
+    font-size                               : 12px;
+    padding-bottom                          : 4px; 
+    justify-self: end;
+ } 
+ 
+ 
+
+
+
+

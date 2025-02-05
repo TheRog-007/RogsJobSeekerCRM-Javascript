@@ -16,6 +16,11 @@
 #btnPrint, #btnPreview {
     top                              : 120px;
 }
+#btnClose {
+    position                         : absolute;
+    top                              : 130px;
+    left                             : 200px; 
+}
 #lblAllMailshots {
     left                             : 320px; 
 }
@@ -23,6 +28,19 @@
     position                         : absolute; 
     left                             : 290px;
     top                              : 22px;
+}
+#divMSH_MailshotName {
+    position                         : absolute; 
+    left                             : 350px;
+    top                              : 20px;
+    width                            : 51ch;
+    height                           : 30px;
+    border                           : solid;
+    border-width                     : 1px;
+    border-color                     : white;
+    padding-top                      : 5px;
+    padding-left                     : 1ch;
+
 }
 #lblDateFrom {
     left                             : 8px;
@@ -33,19 +51,19 @@
     top                              : 50px;
 }
 #lblDateTo {
-    left                             : 400px;
+    left                             : 350px;
     top                              : 50px;
 }
 #cmbDateTo {
-    Left                             : 440px;
+    Left                             : 390px;
     top                              : 50px;
 }
 #chkAllDates {
-    left                             : 640px;
-    top                              : 68px;
+    left                             : 480px;
+    top                              : 64px;
 }
 #lblAllDates {
-    left                             : 670px;
+    left                             : 510px;
     top                              : 50px;
 }
 

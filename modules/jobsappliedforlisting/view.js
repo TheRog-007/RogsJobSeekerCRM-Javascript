@@ -8,40 +8,65 @@ import * as modMessageBox from "../messageBox.js";
 
   Visual handling
 
-*/
 
-export const funcSetupScreen = () => {
+*/
+export function funcResetForm() {
   /*
-  Created 08/01/2025 By Roger Williams
+   Created 05/02/2025 By Roger Williams
 
-  positions buttons etc where we need them for this screen
+   clears ALL but the job title div
 
-  228px = 30 chars
-*/
+   called by cmdid on change
 
-  modModel.btnNew.style.top = "10px";
-  modModel.btnNew.style.marginTop = "10px";
-  modModel.btnNew.style.left = "250px";
-  modModel.btnNew.style.height = "35px";
-  modModel.btnNew.style.width = "60px";
+  */
 
-  modModel.txtTYP_Type.style.marginTop = "10px";
-  modModel.txtTYP_Type.style.width = "228px";
-  modModel.txtTYP_Type.attributes.required = true;
-  modModel.txtTYP_Type.setAttribute(
-    "maxLength",
-    modSchema.funcGetFieldSize("Seekers_Types", "TYP_Type")
-  );
-  modModel.btnSave.style.marginTop = "20px";
+  modModel.divDateAppliedFrom.innerText = "";
+  modModel.divDateAppliedTo.innerText = "";
+  modModel.divDateExpiresFrom.innerText = "";
+  modModel.divDateExpiresTo.innerText = "";
+  modModel.divSector.innerText = "";
+  modModel.divStatus.innerText = "";
+}
+export function funcInitView() {
+  //disable "action" buttons opendb activates them
+  modModel.btnPrint.style.display = "none";
+  modModel.btnPreview.style.display = "none";
+}
 
-  modModel.btnUndo.style.marginTop = "20px";
-  modModel.btnUndo.style.left = "100px";
+// export const funcLoadData = () => {
+//   /*
+//    Created 20/01/2025 By Roger Williams
 
-  modModel.btnDelete.style.marginTop = "20px";
-  modModel.btnDelete.style.left = "200px";
+//    loads record selected from combobox
+//    ALSO loads data into objTable -> the table schema
+//    THIS IS USED FOR UNDO
 
-  modModel.txtHidden.style.backgroundColor = "darkslategrey";
+// */
+//   const trnTemp = modModel.dbJobSeekerCRM.transaction(
+//     modSchema.constSeekers_Jobs,
+//     "readonly"
+//   );
+//   const objTemp = trnTemp.objectStore(modSchema.constSeekers_Jobs);
+//   //find record by key: modModel.cmbID.value
+//   //Note: have to convert to number as get() does not convert string!
+//   const objData = objTemp.get(Number(modModel.cmbID.value));
 
-  //config validation/max chars allowed etc
-  // intSize = modSchema.funcGetFieldSize("Seekers_Types", "TYP_Type");
-};
+//   objData.onsuccess = () => {
+//     const objFound = objData.result;
+//     //load data!
+//     modModel.divJobTitle.innerText = objFound.JOB_Title;
+//   };
+
+//   objData.onerror = (error) => {
+//     modMessageBox.funcMessageBox(
+//       "Error Loading Data",
+//       modMessageBox.objIcons.error,
+//       modMessageBox.objButtons.ok,
+//       -1,
+//       "none",
+//       1,
+//       "btnNew",
+//       document.getElementsByTagName("html")
+//     );
+//   };
+// };

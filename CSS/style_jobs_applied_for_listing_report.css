@@ -1,20 +1,6 @@
-#secMain-jobsappliedforlisting_report {
+#secMain-JobsAppliedForListing_Report {
     width                            : 500px;
     
-}
-#lblID {
-    left                             : 10px;
-}
-#cmbID {
-    left                             : 200px;
-    width                            : 80px;
-}
-#btnNew {
-    left                             : 280px;
-    top                              : 15px;
-}
-#btnPrint, #btnPreview {
-    top                              : 280px;
 }
 /* #txtHidden {
     background-color                      :darkslategrey;
@@ -25,104 +11,205 @@
     height                                : 2px; 
     font-size                             : 2px;    
 } */
+#lblID {
+    left                             : 10px;
+}
+#cmbID {
+    left                             : 200px;
+    width                            : 80px;
+}
+#lblAllJobID {
+    left                             : 316px;
 
+}
+#chkAllJobID {
+    left                             : 290px;
+    top                              : 20px; 
+}
 #lblJobTitle {
     left                             : 10px;
     top                              : 50px;
 }
-#cmbJobTitle {
+#divJobTitle {
     left                             : 200px;
+    top                              : 60px;
+    width                            : 260px;
+    border                           : solid;  
+    border-width                     : 1px;
+    border-color                     : white;   
+    height                           : 26px;
+    padding-top                      : 5px;
+    padding-left                     : 5px; 
+}
+#cmbJobTitle {
+    left                             : 480px;
     top                              : 50px;
-    width                            : 300px;
+    width                            : 120px;
 }
 #chkAllJobTitle {
-    left                             : 510px;
+    left                             : 610px;
     top                              : 64px;
 }
 #lblAllJobTitle {
-    left                             : 540px;
+    left                             : 640px;
     top                              : 50px;
 }
 .clhLine {
     top                              : 100px; 
+}
+#divDateAppliedFrom {
+    left                             : 200px;
+    top                              : 110px;
+    width                            : 90px;
+    border                           : solid;    
+    border-width                     : 1px;
+    border-color                     : white;
+    height                           : 26px;
+    padding-top                      : 5px;
+    padding-left                     : 5px;         
 }
 #lblDateAppliedFrom {
     left                             : 10px;
     top                              : 100px;
 }
 #cmbDateAppliedFrom {
-    left                             : 200px;
+    left                             : 300px;
     top                              : 100px;
+    width                            : 104px;
+}
+#divDateAppliedTo {
+    left                             : 550px;
+    top                              : 110px;
+    width                            : 90px;
+    border                           : solid;
+    border-width                     : 1px;
+    border-color                     : white;
+    height                           : 26px;
+    padding-top                      : 5px;
+    padding-left                     : 5px;         
 }
 #lblDateAppliedTo {
-    left                             : 400px;
+    left                             : 420px;
     top                              : 100px;
 }
 #cmbDateAppliedTo {
-    left                             : 530px;
+    left                             : 650px;
     top                              : 100px;
+    width                            : 104px;
 }
 #chkAllDateApplied {
-    left                             : 720px;
+    left                             : 780px;
     top                              : 112px;
 }
 #lblAllDateApplied {
-    left                             : 740px;
+    left                             : 760px;
     top                              : 100px;
 }
-#lblDateExpiredFrom {
+#divDateExpiresFrom {
+    left                             : 200px;
+    top                              : 150px;
+    width                            : 90px;
+    border                           : solid; 
+    border-width                     : 1px;
+    border-color                     : white;
+    height                           : 26px;
+    padding-top                      : 5px;
+    padding-left                     : 5px;         
+}
+#lblDateExpiresFrom {
     left                             : 10px;
     top                              : 140px;
 }
-#cmbDateExpiredFrom {
-    left                             : 200px;
+#cmbDateExpiresFrom {
+    top                              : 140px;
+    left                             : 300px;
+    width                            : 104px;
+}
+#divDateExpiresTo {
+    left                             : 550px;
+    top                              : 150px;
+    width                            : 90px;
+    border                           : solid;  
+    border-width                     : 1px;
+    border-color                     : white;
+    height                           : 26px;
+    padding-top                      : 5px;
+    padding-left                     : 5px;         
+}
+#lblDateExpiresTo {
+    left                             : 420px;
     top                              : 140px;
 }
-#lblDateExpiredTo {
-    left                             : 400px;
+#cmbDateExpiresTo {
+    top                              : 140px;
+    left                             : 650px;
+    width                            : 104px;
+}
+#lblAllDateExpires {
+    left                             : 760px;
     top                              : 140px;
 }
-#cmbDateExpiredTo {
-    left                             : 530px;
-    top                              : 140px;
-}
-#lblAllDateExpired {
-    left                             : 740px;
-    top                              : 140px;
-}
-#chkAllDateExpired {
-    left                             : 720px;
+#chkAllDateExpires {
+    left                             : 780px;
     top                              : 152px;
+}
+#divStatus {
+    left                             : 200px;
+    top                              : 190px;
+    width                            : 90px;
+    border                           : solid; 
+    border-width                     : 1px;
+    border-color                     : white;
+    height                           : 26px;
+    padding-top                      : 5px;
+    padding-left                     : 5px;         
 }
 #lblStatus {
     left                             : 10px;
     top                              : 180px;
 }
 #cmbStatus {
-    left                             : 200px;
+    left                             : 300px;
     top                              : 180px;
+    width                            : 102px; 
 }
 #lblAllStatus {
-    left                             : 420px;
+    left                             : 430px;
     top                              : 180px;
 }
 #chkAllStatus {
-    left                             : 394px;
+    left                             : 404px;
     top                              : 194px;
+}
+#divSector {
+    left                             : 200px;
+    top                              : 230px;
+    width                            : 90px;
+    border                           : solid; 
+    border-width                     : 1px;
+    border-color                     : white;
+    height                           : 26px;
+    padding-top                      : 5px;
+    padding-left                     : 5px;         
 }
 #lblSector {
     left                             : 10px;
     top                              : 220px;
 }
 #cmbSector {
-    left                             : 200px;
+    left                             : 300px;
     top                              : 220px;
+    width                            : 102px;
 }
 #lblAllSectors {
-    left                             : 420px;
+    left                             : 430px;
     top                              : 220px;
 }
 #chkAllSectors {
-    left                             : 394px;
+    left                             : 404px;
     top                              : 234px;
+}
+
+#btnPrint, #btnPreview {
+    top                              : 280px;
 }

@@ -3,14 +3,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" link rel="stylesheet" href="/CSS/style_screens.css"></link>
     <link type="text/css" link rel="stylesheet" href="/CSS/style_instructions.css"></link>
 </head>
 <body>
     <main>
-        <p>How To Use!</p>
+      <p id="parTitle">How To Use!</p>
+      <!-- <br>
+      <p>Welcome To Roger's Job Seeker CRM!</p>
+      <br> -->
+      <p>This is a port of the MS Access version including the DWP approved reports!
+         <br><br>
+         This application allows you to log your jobs applied for, report by sector, status and more!<br><br>
+         Also has a mailshot facility that prints mailshot envelopes for you! CV/Letter printing is experimental as testing in live-server browser security would not allow it!
+      </p>
+      <div id="divLine"></div>
 
-      <br>
-      <p>Put some fancy CSS with arrows pointing to the comnbobox and close buttons</p>
+      <div id="divMain" hidden>
+        <p>Main Forms!<br><br>
+           This is where the information in the Data Maintenance forms comes into use<br><br>
+           Current Forms:<br><br>
+           <pre>- CV Template Maintenance: Not working, when is allows use to create targeted CVs for specific roles based on user selected CV elements</pre>
+           <pre>- Jobs Applied For:        Enter details of roles, lots of detail such as salaray and sector</pre>
+           <pre>- Mailshot Creator:        Create mailshots for aultiple companys and print mailing envelopes</pre>
+           <pre>                           CV/Covering letter printing experimental</pre>
+        </p>
+      </div>
+      <div id="divReports" hidden>
+        <p>Reports!<br><br>
+           This is where you can analyse data entered, as the application develops more options will be added in time especially to the Job Listing report.<br><br>
+           Current Reports:<br><br>
+           <pre>- Job Listing Report:      See details about positions applied for DWP approved!</pre><br>
+           <pre>- Mailshot Listing Report: See contents of mailshots sent</pre>
+        </p>
+      </div> 
+      <div id="divData">
+        <p>First you need to enter data in the Data Maintenance section</p>
+        <br>
+        For the Jobs Applied For form to work properly please visitn every form in the "Other Maintenance" section and enter data
+        <br><br>
+        Information in this section such as working hours (part time/fulltime) is used by the Jobs Applied For form and is required data!</p>
+        <br>
+        <p id="parDataTitle">Data Examples For Each Form:</p>
+        <br>
+        <p><pre>- Contract Types Maintenance: Contract, permanent</pre></p>
+        <br>
+        <p><pre>- Hours Maintenance:          Full Time, Part Time</pre></p>
+        <br>
+        <p><pre>- Job Status Maintenance:     Applied For, Interview, No Response</pre></p>
+        <br>
+        <p><pre>- Work From  Maintenance:     Remote, On-site, Hybrid</pre></p>
+        <br><br>
+        Note: The CV Template Maintenance forms are implemented BUT the CV-Creator is not at this time (boo!)
+      </div>
+      
+      <div id="divArrowLeft"></div>
+      <div id="divArrowBody"></div>
     </main>
+
+    <script src="/modules/instructions/view.js" type="module" defer></script>
 </body>
 </html>

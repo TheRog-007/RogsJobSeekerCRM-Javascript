@@ -13,10 +13,6 @@
     left                             : 280px;
     top                              : 15px;
 }
-#btnSave, #btnUndo, #btnDelete {
-    top                              : 120px;
-}
-
 #lblHRS_Hours {
     left                             : 10px;
     top                              : 50px;
@@ -25,4 +21,7 @@
 #txtHRS_Hours {
     left                             : 200px;
     top                              : 60px;
+}
+#btnSave, #btnUndo, #btnDelete {
+    top                              : 120px;
 }

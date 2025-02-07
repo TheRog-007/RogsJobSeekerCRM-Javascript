@@ -25,8 +25,7 @@
     margin-left:       280px;
     /* margin-left:       0px; */
     border:            none;
-    /* left:              0px; */
-    
+    /* left:              0px; */  
 }
 #divButtons {
     display:           inline-block;
@@ -35,7 +34,7 @@
     /* border: solid;
     border-radius:     var(--varTabButtonContainerBorder-Radius);
     border-color:     var(--varInActiveTabButtonColour); */
-    height:20px;   
+    height:20px;  
 }
 .btnTab {
     background-color:  var(--varInActiveTabButtonColour);

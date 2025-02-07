@@ -1,3 +1,78 @@
-main {
+* {
+    margin                     : 0;
+    padding-top                : 2px;
+    padding-left               : 2px; 
+    font-size                  : 18px;
+}
+/* main {
     color:white;
+} */
+#parTitle {
+    font-size                   : 30px;
+    padding-bottom              : 10px;
+}
+#divLine {
+    top                         : 190px;
+    width                       : 978px;
+    height                      : 0.5px;
+    background-color            : white;
+}
+#divMain {
+    margin-left                 : 74px; 
+    margin-right                : 30px;
+    top                         : 210px;
+}
+#divReports {
+    margin-left                 : 74px; 
+    margin-right                : 30px;
+    top                         : 210px;
+}
+#divData {
+    margin-left                 : 74px; 
+    margin-right                : 30px;
+    top                         : 210px;
+}
+#parDataTitle {
+    font-weight                 : 600;
+}
+#divArrowLeft {
+   border                       : none;
+   background-color             :cornflowerblue;
+   height                       : 22px;
+   width                        : 22px;
+   transform                    : rotate(40deg); 
+   top                          : 380px;
+   animation-name               : aniArrowFlash;
+   animation-timing-function    : ease-in;
+   animation-duration           : 4s;
+   animation-iteration-count    : infinite;
+}
+#divArrowBody {
+    border                      : none;
+    background-color            :cornflowerblue;
+    left                        : 20px;
+    height                      : 22px;
+    width                       : 40px;
+    top                         : 380px;
+    animation-name              : aniArrowFlash;
+    animation-timing-function   : ease-in;
+    animation-duration          : 4s;
+    animation-iteration-count   : infinite;
+} 
+@keyframes aniArrowFlash {
+   0% {
+    background-color            : rgb(131, 129, 129);
+   }
+   10% {
+    background-color            :rgb(121, 161, 236);
+       } 
+   30% {
+    background-color            :cornflowerblue;
+   } 
+   50% {
+    background-color            :rgb(88, 143, 245);
+   }
+   90% {
+    background-color            :rgb(38, 106, 231);
+   }
 }

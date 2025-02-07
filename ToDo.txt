@@ -3,7 +3,9 @@ What Is It?
 ToDo list for the project
 
 05/02/2025
- - check what happens in reports if more lines to print in detail than page can handle
+- bang head on table to assertain why jobs applied for listing CSS shows fonts a fraction
+  of their ACTUAL size but mailshot listing report which I copied the CSS from works fine... 
+- check what happens in reports if more lines to print in detail than page can handle
 - blnNew needs to enforce whether user can type into screens when first loaded
 - letter and cv printing - browser won't allow it via live-server! - need to test locally
 - CV-Template Creator - not implemented at mo can't think of how to convert the Access form

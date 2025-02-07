@@ -312,6 +312,10 @@ export const funcAddTab = (
   if (funcInArray(strTitle, strPage)) {
     return;
   }
+  //set max tabs to 4
+  if (intUniqueTabNbr > 4) {
+    return;
+  }
 
   //make sure other tabs are in default colour
   funcResetTabColour();

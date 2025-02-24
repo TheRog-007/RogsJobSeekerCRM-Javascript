@@ -1,0 +1,198 @@
+/*
+  table and table controls
+*/
+#divPersonalInfoDetails {
+    overflow-y                            : none;
+    overflow-x                            : none;
+    Height                                : 300px;
+    Width                                 : 979px;
+    top                                   : 1760px;
+    display                               : grid;
+    grid-template-columns                 : 460px 50px 470px;
+    grid-template-rows                    : 30px 90px 70px 70px 70px;
+}
+#divPersonalInfoDetailsHeader {
+    grid-column                           : 1;
+    grid-row                              : 1;
+}
+#divCVPersonalInfoDetailsHeader {
+    grid-column                           : 3;
+    grid-row                              : 1;
+}
+/* 
+   table contents
+*/
+#divTablePersonalInfo {
+     grid-column                          : 1;
+     grid-row                             : 2;
+
+     border                               : solid;
+     border-color                         :green;
+     border-width                         : 1px;
+     width                                : 460px;
+     height                               : 200px;
+     display                              : block;
+     background-color                     : none;
+     scrollbar-color                      : yellow darkblue;
+     scroll-behavior                      : smooth;
+     scrollbar-width                      : 10px;
+     overflow-y                           : scroll;
+     overflow-x                           : scroll;
+     border-radius                        : 6px;
+
+
+ } 
+
+.clhCV_PersonalInfoDataRowContainer {
+    background-color                      :darkslategrey;
+    display                               : block;
+    width                                 : 920px;
+    height                                : 30px;
+}
+/*
+ table elements
+*/
+.btnSelect {
+    width                                 : 6ch;
+    left                                  : 0;
+}
+.clhCV_PersonalInfoSelectCol1 {
+    margin-right                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+
+}
+.clhCV_PersonalInfoDataCol1 {
+    margin-right                          : 2px;
+    padding-top                           : 5px; 
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 80px;
+
+}
+.clhCV_PersonalInfoDataCol2 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 400px;
+
+}
+.clhCV_PersonalInfoDataCol3 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 500px;
+
+}
+.clhCV_PersonalInfoDataCol4 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 600px;
+
+}
+.clhCV_PersonalInfoDataCol5 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 780px;
+
+}
+
+/*
+   table with what to put on CV
+
+*/
+
+/* 
+   table contents
+*/
+#divTableCVPersonalInfo {
+    grid-column                          : 3;
+    grid-row                             : 2;
+
+    border                               : solid;
+    border-color                         :green;
+    border-width                         : 1px;
+    width                                : 460px;
+    height                               : 200px;
+    display                              : block;
+    background-color                     : none;
+    scrollbar-color                      : yellow darkblue;
+    scroll-behavior                      : smooth;
+    scrollbar-width                      : 10px;
+    overflow-y                           : scroll;
+    overflow-x                           : scroll;
+    border-radius                        : 6px;
+   
+} 
+.clhCopyCV_PersonalInfoDataRowContainer
+{
+    background-color                      :darkslategrey;
+    display                               : block;
+    width                                 : 920px;
+    height                                : 30px;
+}
+/*
+table elements
+*/
+.clhCopyCV_PersonalInfoSelectCol1 {
+    margin-right                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+
+}
+.clhCopyCV_PersonalInfoDataCol1 {
+    margin-right                          : 2px;
+    padding-top                           : 5px; 
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 80px;
+
+}
+.clhCopyCV_PersonalInfoDataCol2 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 400px;
+
+}
+.clhCopyCV_PersonalInfoDataCol3 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 500px;
+
+}
+.clhCopyCV_PersonalInfoDataCol4 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 600px;
+
+}
+.clhCopyCV_PersonalInfoDataCol5 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 780px;
+
+}

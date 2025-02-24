@@ -1,0 +1,236 @@
+/*
+  table and table controls
+*/
+#divContactDetails {
+    overflow-y                             : none;
+    overflow-x                             : none;
+    Height                                : 300px;
+    Width                                 : 979px;
+    top                                   : 50px;
+    display                               : grid;
+    grid-template-columns                 : 460px 50px 470px;
+    grid-template-rows                    : 30px 90px 70px 70px 70px;
+}
+#divContactDetailsHeader {
+    grid-column                           : 1;
+    grid-row                              : 1;
+}
+#divCVContactDetailsHeader {
+    grid-column                           : 3;
+    grid-row                              : 1;
+}
+/* 
+   table contents
+*/
+#divTableContact {
+     grid-column                          : 1;
+     grid-row                             : 2;
+
+     border                               : solid;
+     border-color                         :green;
+     border-width                         : 1px;
+     width                                : 460px;
+     height                               : 200px;
+     display                              : block;
+     background-color                     : none;
+     scrollbar-color                      : yellow darkblue;
+     scroll-behavior                      : smooth;
+     scrollbar-width                      : 10px;
+     overflow-y                           : scroll;
+     overflow-x                           : scroll;
+     border-radius                        : 6px;
+} 
+
+.clhCV_ContactDataRowContainer {
+    background-color                      :darkslategrey;
+    display                               : inline-block;
+    width                                 : 470px;
+    height                                : 30px;
+}
+/*
+ table elements
+*/
+.btnSelect {
+    width                                 : 6ch;
+    left                                  : 0;
+}
+.clhCV_ContactSelectCol1 {
+    margin-right                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+}
+.clhCV_ContactDataCol1 {
+    margin-right                          : 2px;
+    padding-top                           : 5px; 
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 80px;
+}
+.clhCV_ContactDataCol2 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 240px;
+}
+.clhCV_ContactDataCol3 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 340px;
+}
+.clhCV_ContactDataCol4 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 440px;
+}
+.clhCV_ContactDataCol5 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 540px;
+}
+.clhCV_ContactDataCol6 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 640px;
+}
+.clhCV_ContactDataCol7 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 740px;
+}
+.clhCV_ContactDataCol8 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 840px;
+}
+
+/*
+   table with what to put on CV
+
+*/
+
+/* 
+   table contents
+*/
+#divTableCVContact {
+   grid-column                          : 3;
+   grid-row                             : 2;
+
+   border                               : solid;
+   border-color                         :green;
+   border-width                         : 1px;
+   width                                : 470px;
+   height                               : 200px;
+   display                              : block;
+   background-color                     : none;
+   scrollbar-color                      : yellow darkblue;
+   scroll-behavior                      : smooth;
+   scrollbar-width                      : 10px;
+   overflow-y                           : scroll;
+   overflow-x                           : scroll;
+   border-radius                        : 6px;
+} 
+.clhCV_ContactDataRowContainerCopy {
+   background-color                      :darkslategrey;
+   display                               : inline-block;
+   width                                 : 470px;
+   height                                : 30px;
+}
+/*
+table elements
+*/
+
+.clhCopyCV_ContactSelectCol {
+   margin-right                          : 2px;
+   color                                 : yellow;
+   height                                : 30px;
+}
+.clhCopyCV_ContactDataCol1 {
+   margin-right                          : 2px;
+   padding-top                           : 5px; 
+   padding-left                          : 2px;
+   color                                 : yellow;
+   height                                : 30px;
+   left                                  : 80px;
+}
+.clhCopyCV_ContactDataCol2 {
+   margin-right                          : 2px;
+   padding-top                           : 5px;
+   padding-left                          : 2px;
+   color                                 : yellow;
+   height                                : 30px;
+   left                                  : 240px;
+}
+.clhCopyCV_ContactDataCol3 {
+   margin-right                          : 2px;
+   padding-top                           : 5px;
+   padding-left                          : 2px;
+   color                                 : yellow;
+   height                                : 30px;
+   left                                  : 340px;
+}
+.clhCopyCV_ContactDataCol4 {
+   margin-right                          : 2px;
+   padding-top                           : 5px;
+   padding-left                          : 2px;
+   color                                 : yellow;
+   height                                : 30px;
+   left                                  : 440px;
+}
+.clhCopyCV_ContactDataCol5 {
+   margin-right                          : 2px;
+   padding-top                           : 5px;
+   padding-left                          : 2px;
+   color                                 : yellow;
+   height                                : 30px;
+   left                                  : 540px;
+}
+.clhCopyCV_ContactDataCol6 {
+   margin-right                          : 2px;
+   padding-top                           : 5px;
+   padding-left                          : 2px;
+   color                                 : yellow;
+   height                                : 30px;
+   left                                  : 640px;
+}
+.clhCopyCV_ContactDataCol7 {
+   margin-right                          : 2px;
+   padding-top                           : 5px;
+   padding-left                          : 2px;
+   color                                 : yellow;
+   height                                : 30px;
+   left                                  : 740px;
+}
+.clhCopyCV_ContactDataCol8 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 840px;
+}
+
+/*  
+  other non table elements
+
+*/

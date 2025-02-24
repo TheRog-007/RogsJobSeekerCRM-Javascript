@@ -1,0 +1,198 @@
+/*
+  table and table controls
+*/
+#divSkillsDetails {
+    overflow-y                            : none;
+    overflow-x                            : none;
+    Height                                : 300px;
+    Width                                 : 979px;
+    top                                   : 2480px;
+    display                               : grid;
+    grid-template-columns                 : 460px 50px 470px;
+    grid-template-rows                    : 30px 90px 70px 70px 70px;
+}
+#divSkillsDetailsHeader {
+    grid-column                           : 1;
+    grid-row                              : 1;
+}
+#divCVSkillsDetailsHeader {
+    grid-column                           : 3;
+    grid-row                              : 1;
+}
+/* 
+   table contents
+*/
+#divTableSkills {
+     grid-column                          : 1;
+     grid-row                             : 2;
+
+     border                               : solid;
+     border-color                         :green;
+     border-width                         : 1px;
+     width                                : 460px;
+     height                               : 200px;
+     display                              : block;
+     background-color                     : none;
+     scrollbar-color                      : yellow darkblue;
+     scroll-behavior                      : smooth;
+     scrollbar-width                      : 10px;
+     overflow-y                           : scroll;
+     overflow-x                           : scroll;
+     border-radius                        : 6px;
+
+
+ } 
+
+.clhCV_SkillsDataRowContainer {
+    background-color                      :darkslategrey;
+    display                               : block;
+    width                                 : 920px;
+    height                                : 30px;
+}
+/*
+ table elements
+*/
+.btnSelect {
+    width                                 : 6ch;
+    left                                  : 0;
+}
+.clhCV_SkillsSelectCol1 {
+    margin-right                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+
+}
+.clhCV_SkillsDataCol1 {
+    margin-right                          : 2px;
+    padding-top                           : 5px; 
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 80px;
+
+}
+.clhCV_SkillsDataCol2 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 400px;
+
+}
+.clhCV_SkillsDataCol3 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 500px;
+
+}
+.clhCV_SkillsDataCol4 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 600px;
+
+}
+.clhCV_SkillsDataCol5 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 780px;
+
+}
+
+/*
+   table with what to put on CV
+
+*/
+
+/* 
+   table contents
+*/
+#divTableCVSkills {
+    grid-column                          : 3;
+    grid-row                             : 2;
+
+    border                               : solid;
+    border-color                         :green;
+    border-width                         : 1px;
+    width                                : 460px;
+    height                               : 200px;
+    display                              : block;
+    background-color                     : none;
+    scrollbar-color                      : yellow darkblue;
+    scroll-behavior                      : smooth;
+    scrollbar-width                      : 10px;
+    overflow-y                           : scroll;
+    overflow-x                           : scroll;
+    border-radius                        : 6px;
+   
+} 
+.clhCopyCV_SkillsDataRowContainer
+{
+    background-color                      :darkslategrey;
+    display                               : block;
+    width                                 : 920px;
+    height                                : 30px;
+}
+/*
+table elements
+*/
+.clhCopyCV_SkillsSelectCol1 {
+    margin-right                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+
+}
+.clhCopyCV_SkillsDataCol1 {
+    margin-right                          : 2px;
+    padding-top                           : 5px; 
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 80px;
+
+}
+.clhCopyCV_SkillsDataCol2 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 400px;
+
+}
+.clhCopyCV_SkillsDataCol3 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 500px;
+
+}
+.clhCopyCV_SkillsDataCol4 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 600px;
+
+}
+.clhCopyCV_SkillsDataCol5 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 780px;
+
+}

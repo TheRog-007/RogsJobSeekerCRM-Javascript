@@ -3,6 +3,7 @@
 import * as modSchema from "../schema.js";
 import * as modMessageBox from "../messageBox.js";
 import * as modView from "./view.js";
+import * as modGlobalView from "../GlobalView.js";
 
 /*
   Created 08/01/2025 By Roger Williams
@@ -427,6 +428,7 @@ const funcbtnNewClick = () => {
     );
   } else {
     blnNew = true;
+    modGlobalView.funcEnableForm(document);
     funcResetForm();
   }
 };

@@ -102,7 +102,7 @@ export const aryTables = [
         requiredField: false,
       },
       {
-        fieldName: "CVC_Landline",
+        fieldName: "CVC_LandLine",
         primaryKey: false,
         autoNumber: false,
         fieldSize: 15,
@@ -528,7 +528,7 @@ export const aryTables = [
         requiredField: false,
       },
       {
-        fieldName: "CVPP_Details",
+        fieldName: "CVPP_Personality",
         primaryKey: false,
         autoNumber: false,
         fieldSize: 4096,
@@ -610,7 +610,7 @@ export const aryTables = [
         requiredField: false,
       },
       {
-        fieldName: "CVS_SkillName",
+        fieldName: "CVS_Name",
         primaryKey: false,
         autoNumber: false,
         fieldSize: 50,
@@ -1588,7 +1588,7 @@ export const constCV_Interests = "CV_Interests";
 export const constCV_Other = "CV_Other";
 export const constCV_PersonalInfo = "CV_PersonalInfo";
 export const constCV_Personality = "CV_Personality";
-export const constCV_Responsibilites = "CV_Responsibilites";
+export const constCV_Responsibilities = "CV_Responsibilites";
 export const constCV_Roles = "CV_Roles";
 export const constCV_Skills = "CV_Skills";
 export const constCV_Templates = "CV_Templates";

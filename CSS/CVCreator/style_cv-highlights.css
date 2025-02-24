@@ -1,0 +1,198 @@
+/*
+  table and table controls
+*/
+#divHighlightsDetails {
+    overflow-y                            : none;
+    overflow-x                            : none;
+    Height                                : 300px;
+    Width                                 : 979px;
+    top                                   : 1040px;
+    display                               : grid;
+    grid-template-columns                 : 460px 50px 470px;
+    grid-template-rows                    : 30px 90px 70px 70px 70px;
+}
+#divHighlightsDetailsHeader {
+    grid-column                           : 1;
+    grid-row                              : 1;
+}
+#divCVHighlightsDetailsHeader {
+    grid-column                           : 3;
+    grid-row                              : 1;
+}
+/* 
+   table contents
+*/
+#divTableHighlights {
+     grid-column                          : 1;
+     grid-row                             : 2;
+
+     border                               : solid;
+     border-color                         :green;
+     border-width                         : 1px;
+     width                                : 460px;
+     height                               : 200px;
+     display                              : block;
+     background-color                     : none;
+     scrollbar-color                      : yellow darkblue;
+     scroll-behavior                      : smooth;
+     scrollbar-width                      : 10px;
+     overflow-y                           : scroll;
+     overflow-x                           : scroll;
+     border-radius                        : 6px;
+
+
+ } 
+
+.clhCV_HighlightsDataRowContainer {
+    background-color                      :darkslategrey;
+    display                               : block;
+    width                                 : 1420px;
+    height                                : 30px;
+}
+/*
+ table elements
+*/
+.btnSelect {
+    width                                 : 6ch;
+    left                                  : 0;
+}
+.clhCV_HighlightsSelectCol1 {
+    margin-right                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+
+}
+.clhCV_HighlightsDataCol1 {
+    margin-right                          : 2px;
+    padding-top                           : 5px; 
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 80px;
+
+}
+.clhCV_HighlightsDataCol2 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 400px;
+
+}
+.clhCV_HighlightsDataCol3 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 500px;
+
+}
+.clhCV_HighlightsDataCol4 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 600px;
+
+}
+.clhCV_HighlightsDataCol5 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 780px;
+
+}
+
+/*
+   table with what to put on CV
+
+*/
+
+/* 
+   table contents
+*/
+#divTableCVHighlights {
+    grid-column                          : 3;
+    grid-row                             : 2;
+
+    border                               : solid;
+    border-color                         :green;
+    border-width                         : 1px;
+    width                                : 460px;
+    height                               : 200px;
+    display                              : block;
+    background-color                     : none;
+    scrollbar-color                      : yellow darkblue;
+    scroll-behavior                      : smooth;
+    scrollbar-width                      : 10px;
+    overflow-y                           : scroll;
+    overflow-x                           : scroll;
+    border-radius                        : 6px;
+   
+} 
+.clhCopyCV_HighlightsDataRowContainer
+{
+    background-color                      :darkslategrey;
+    display                               : block;
+    width                                 : 1420px;
+    height                                : 30px;
+}
+/*
+table elements
+*/
+.clhCopyCV_HighlightsSelectCol1 {
+    margin-right                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+
+}
+.clhCopyCV_HighlightsDataCol1 {
+    margin-right                          : 2px;
+    padding-top                           : 5px; 
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 80px;
+
+}
+.clhCopyCV_HighlightsDataCol2 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 400px;
+
+}
+.clhCopyCV_HighlightsDataCol3 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 500px;
+
+}
+.clhCopyCV_HighlightsDataCol4 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 600px;
+
+}
+.clhCopyCV_HighlightsDataCol5 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 780px;
+
+}

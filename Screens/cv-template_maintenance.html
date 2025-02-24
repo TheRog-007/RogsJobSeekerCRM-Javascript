@@ -5,76 +5,135 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link type="text/css" link rel="stylesheet" href="/CSS/style_screens.css"></link>
     <link type="text/css" link rel="stylesheet" href="/CSS/style_cv-template_maintenance.css"></link>
+
+    <!-- CSS fils for EACH CV attribute
+     
+   - contact
+   - currentfocus
+   - education
+   - experience
+   - highlights
+   - interests
+   - other
+   - personalinfo
+   - personality
+   - Responsibilities
+   - skills  
+    -->
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-contact.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-currentfocus.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-education.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-experience.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-highlights.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-interests.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-other.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-personalinfo.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-personality.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-Responsibilities.css"></link>
+    <link type="text/css" link rel="stylesheet" href="/CSS/CVCreator/style_cv-skills.css"></link>
+ 
+    <!-- messagebox CSS--> 
     <link type="text/css" link rel="stylesheet" href="/CSS/style_MsgBox.css"></link>
 </head>
 <body>
     <main>
-         <section id="secMain-JobsAppliedForListing">    
-            <label for="cmbID">Job ID:</label>    
-            <select id="cmbID" tabindex="1">
-               <option value="none" selected disabled hidden>Select ID
-               <option value="1">MailShot Summary Report</option>
-           </select>
-         <label for="chkAllJobID">All</label>  
-         <input type="checkbox" class="clhCheckBox" id="chkAllJobID"  tabindex="2" checked/>  
-         <label for="cmbJobTitle" id="lblJobTitle">Job Title:</label>
-         <select id="cmbJobTitle"  tabindex="3">
-            <option value="none" selected disabled hidden>Select Job Title
-            <option value="1">MailShot Summary Report</option>
-        </select>
-         <label for="chkAllJobTitle">All</label>  
-         <input type="checkbox" id="chkAllJobTitle" class="clhCheckBox"  tabindex="4" checked/>  
+        <div id="divHeader">
+           <label for="txtJobTitle" id="lblJobTitle">Preferred Job Tite:</label>  
+           <input type="text" id="txtJobTitle" tabindex="1" maxlength="50"/>  
+
+           <label for="txtCVTemplateName" id="lblCVTemplateName">Name of CV Template:</label>  
+           <input type="text" id="txtCVTemplateName" tabindex="2" maxlength="50"/>  
+           <label for="chkPrintAddress2" id="lblPrintAddress">Print Your Address On CV?:</label>  
+           <input type="checkbox" id="chkPrintAddress" checked="false" tabindex="3"> 
+           <div id="divLine" class="clhLine"></div>     
+        </div>
+
+        <div id="divBody">
+
+           <div id="divContactDetails">  
+                 <div id="divContactDetailsHeader">Contact Details</div>
+                 <div id="divCVContactDetailsHeader">CV Contact Details</div>
+                 <div id="divTableContact"></div>    
+                 <div id="divTableCVContact"></div> 
+           </div>
+       
+           <div id="divCurrentFocusDetails">  
+               <div id="divCurrentFocusDetailsHeader">Current Focus</div>
+               <div id="divCVCurrentFocusDetailsHeader">CV Current Focus</div>
+               <div id="divTableCurrentFocus"></div>     
+               <div id="divTableCVCurrentFocus"></div> 
+           </div>
+          
+           <div id="divEducationDetails">  
+               <div id="divEducationDetailsHeader">Education</div>
+               <div id="divCVEducationDetailsHeader">CV Education</div>
+               <div id="divTableEducation"></div>     
+               <div id="divTableCVEducation"></div> 
+           </div>
+ 
+          <div id="divExperienceDetails">  
+             <div id="divExperienceDetailsHeader">Experience</div>
+             <div id="divCVExperienceDetailsHeader">CV Experience</div>
+             <div id="divTableExperience"></div>     
+             <div id="divTableCVExperience"></div> 
+          </div>
+
+          <div id="divHighlightsDetails">  
+            <div id="divHighlightsDetailsHeader">Highlights</div>
+            <div id="divCVHighlightsDetailsHeader">CV Highlights</div>
+            <div id="divTableHighlights"></div>     
+            <div id="divTableCVHighlights"></div> 
+         </div>
+
+         <div id="divInterestsDetails">  
+          <div id="divInterestsDetailsHeader">Interests</div>
+          <div id="divCVInterestsDetailsHeader">CV Interests</div>
+          <div id="divTableInterests"></div>     
+          <div id="divTableCVInterests"></div> 
+       </div>
+
+       <div id="divOtherDetails">  
+           <div id="divOtherDetailsHeader">Other Information</div>
+           <div id="divCVOtherDetailsHeader">CV Other Information</div>
+           <div id="divTableOther"></div>     
+           <div id="divTableCVOther"></div> 
+       </div>       
+
+       <div id="divPersonalInfoDetails">  
+          <div id="divPersonalInfoDetailsHeader">Personal Information</div>
+          <div id="divCVPersonalInfoDetailsHeader">CV Personal Information</div>
+          <div id="divTablePersonalInfo"></div>     
+          <div id="divTableCVPersonalInfo"></div> 
+       </div>       
+
+       <div id="divPersonalityDetails">  
+          <div id="divPersonalityDetailsHeader">Personality</div>
+          <div id="divCVPersonalityDetailsHeader">CV Personality</div>
+          <div id="divTablePersonality"></div>     
+          <div id="divTableCVPersonality"></div> 
+       </div>  
+
+       <div id="divResponsibilitiesDetails">  
+          <div id="divResponsibilitiesDetailsHeader">Responsibilities</div>
+          <div id="divCVResponsibilitiesDetailsHeader">CV Responsibilities</div>
+          <div id="divTableResponsibilities"></div>     
+          <div id="divTableCVResponsibilites"></div> 
+       </div>  
+
+       <div id="divSkillsDetails">  
+          <div id="divSkillsDetailsHeader">Skills</div>
+          <div id="divCVSkillsDetailsHeader">CV Skills</div>
+          <div id="divTableSkills"></div>     
+          <div id="divTableCVSkills"></div> 
+       </div>   
+
+         <div id="divFooter">
+           <button id="btnPrint" class="clhFormbutton" tabindex="15">Create CV</button>
+           <button id="btnClearCV" class="clhFormbutton" tabindex="16">Clear CV</button>
+        </div>
+     </div>
   
-         <label for="cmbDateAppliedFrom" id="lblDateAppliedFrom">Date Applied From:</label>
-         <select id="cmbDateAppliedFrom" tabindex="5">
-            <option value="none" selected disabled hidden>Select Date
-            <option value="1">MailShot Summary Report</option>
-        </select>        
-        <label for="cmbDateAppliedTo" id="lblDateAppliedFrom">Date Applied To:</label>
-        <select id="cmbDateAppliedTo"  tabindex="6">
-           <option value="none" selected disabled hidden>Select Date
-           <option value="1">MailShot Summary Report</option>
-       </select>        
-       <label for="chkAllDateApplied">All</label>  
-       <input type="checkbox" id="chkAllDateApplied" class="clhCheckBox"  tabindex="7" checked/>  
-
-  
-       <label for="cmbDateExpiresFrom" id="lblDateExpiredFrom">Date Expired From:</label>
-       <select id="cmbDateExpiredFrom"  tabindex="8">
-          <option value="none" selected disabled hidden>Select Date
-          <option value="1">MailShot Summary Report</option>
-      </select>        
-      <label for="cmbDateExpiredTo" id="lblDateExpiredFrom">Date Expired To:</label>
-      <select id="cmbDateExpiredTo"  tabindex="9">
-         <option value="none" selected disabled hidden>Select Date
-         <option value="1">MailShot Summary Report</option>
-     </select>        
-     <label for="chkAllDateExpired">All</label>  
-     <input type="checkbox" id="chkAllDateExpired" class="clhCheckBox" tabindex="10" checked/>  
-
-     <label for="cmbStatus" id="lblStatus">Status:</label>
-     <select id="cmbStatus"  tabindex="11">
-        <option value="none" selected disabled hidden>Select Date
-        <option value="1">MailShot Summary Report</option>
-    </select>        
-    <label for="chkAllStatus">All</label>  
-    <input type="checkbox" id="chkAllStatus" class="clhCheckBox" tabindex="5" tabindex="12" checked/>  
-
-    <label for="cmbSector" id="lblStatus">Sector:</label>
-    <select id="cmbSector" tabindex="13">
-       <option value="none" selected disabled hidden>Select Date
-       <option value="1">MailShot Summary Report</option>
-   </select>        
-   <label for="chkSector">All</label>  
-   <input type="checkbox" id="chkSector" class="clhCheckBox" tabindex="14" checked/>  
-
-    </section>
-    <footer>
-        <button id="btnPrint" class="clhFormbutton" tabindex="15">Print</button>
-        <button id="btnPreview" class="clhFormbutton" tabindex="16">Preview</button>
-    </footer>
-
-    <section>
+        <section>
         <input type="text" id="txtHidden"/>
          <dialog id="dlgMessage">
             <div id="divMessage">
@@ -86,9 +145,9 @@
          </dialog>
     </section>
 
-    <script src="/modules/contracttypesmaintenance/controller.js" type="module" defer></script>
-    <script src="/modules/contracttypesmaintenance/model.js" type="module" defer></script>
-    <script src="/modules/contracttypesmaintenance/view.js" type="module" defer></script>
+    <script src="/modules/cvtemplatemaintenance/controller.js" type="module" defer></script>
+    <script src="/modules/cvtemplatemaintenance/model.js" type="module" defer></script>
+    <script src="/modules/cvtemplatemaintenance/view.js" type="module" defer></script>
     <script src="/modules/messageBox.js" type="module" defer></script> 
     <script src="/modules/schema.js" type="module" defer></script>
 

@@ -3,6 +3,8 @@
 import * as modModel from "./model.js";
 import * as modSchema from "../schema.js";
 import * as modMessageBox from "../messageBox.js";
+import * as modGlobalView from "../GlobalView.js";
+
 /*
   Created 08/01/2025 By Roger Williams
 
@@ -66,6 +68,7 @@ export function funcInitView() {
       document.getElementById("lbl" + strName).style.color = "red";
     }
   }
+  modGlobalView.funcDisableForm(document);
 }
 
 export const funcLoadData = () => {
@@ -93,6 +96,7 @@ export const funcLoadData = () => {
     modModel.dteCVE_YearEnded.value = objFound.CVE_YearEnded;
     modModel.txtCVE_Where.value = objFound.CVE_Where;
     modModel.txtCVE_Role.value = objFound.CVE_Role;
+    modModel.txtCVE_Achievements.value = objFound.CVE_Achievements;
 
     //store in objTable in order they are in schema
     modModel.objTable.aryFields[0].fieldValue = modModel.cmbID.value;
@@ -100,8 +104,11 @@ export const funcLoadData = () => {
     modModel.objTable.aryFields[2].fieldValue = objFound.CVE_YearEnded;
     modModel.objTable.aryFields[3].fieldValue = objFound.CVE_Where;
     modModel.objTable.aryFields[4].fieldValue = objFound.CVE_Role;
+    modModel.objTable.aryFields[5].fieldValue = objFound.CVE_Achievements;
     //reset new indicator
     modModel.funcResetblnNew(false);
+
+    modGlobalView.funcEnableForm(document);
   };
 
   objData.onerror = (error) => {

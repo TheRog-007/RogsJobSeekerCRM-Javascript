@@ -23,31 +23,39 @@
 }
 #lblCVE_YearEnded {
     left                             : 10px; 
-    top                              : 80px;
+    top                              : 90px;
 }
 #dteCVE_YearEnded {
     left                             : 280px;
-    top                              : 90px;
+    top                              : 100px;
 }
 #lblCVE_Where {
     left                             : 10px;
-    top                              : 120px; 
+    top                              : 140px; 
 }
 #txtCVE_Where {
     left                             : 280px;
-    top                              : 130px;
+    top                              : 150px;
     width                            : 75ch;
 }
 #lblCVE_Role {
     left                             : 10px;
-    top                              : 160px;
+    top                              : 180px;
 }
 #txtCVE_Role {
     left                             : 280px;
-    top                              : 170px;
+    top                              : 190px;
     width                            : 75ch;
 }
-
-#btnSave, #btnUndo, #btnDelete {
+#lblCVE_Achievements {
+    left                             : 10px;
     top                              : 220px;
+}
+#txtCVE_Achievements {
+    left                             : 280px;
+    top                              : 230px;
+    width                            : 75ch;
+}
+#btnSave, #btnUndo, #btnDelete {
+    top                              : 300px;
 }

@@ -2,6 +2,7 @@
 
 import * as modModel from "./model.js";
 import * as modSchema from "../schema.js";
+import * as modGlobalView from "../GlobalView.js";
 
 /*
   Created 08/01/2025 By Roger Williams
@@ -67,6 +68,7 @@ export function funcInitView() {
     }
   }
 
+  modGlobalView.funcDisableForm(document);
   modModel.funcResetForm();
 }
 export const funcClearCombobox = (cmbWhat) => {
@@ -144,6 +146,7 @@ export const funcLoadData = () => {
     modModel.funcResetblnNew(false);
     //populate data bound combos
     modModel.funcInitComboboxes();
+    modGlobalView.funcEnableForm(document);
   };
 
   objData.onerror = (error) => {

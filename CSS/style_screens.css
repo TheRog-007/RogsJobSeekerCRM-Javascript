@@ -66,6 +66,13 @@ input, textarea {
     border-radius                       : 4px;
     border                              : solid;
     border-color                        :rgb(1, 110, 20);
+
+    
+}
+/*Change text in autofill textbox*/
+input:-webkit-autofill:focus {
+  -webkit-text-fill-color: rgb(253, 253, 5) !important;
+  transition: background-color darkslategrey ease-in 2s;
 }
 input:hover {
   border: 2px solid;

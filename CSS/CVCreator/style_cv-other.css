@@ -1,0 +1,163 @@
+/*
+  table and table controls
+*/
+#divOtherDetails {
+    overflow-y                            : none;
+    overflow-x                            : none;
+    Height                                : 300px;
+    Width                                 : 979px;
+    top                                   : 1520px;
+    display                               : grid;
+    grid-template-columns                 : 460px 50px 470px;
+    grid-template-rows                    : 30px 90px 70px 70px 70px;
+}
+#divOtherDetailsHeader {
+    grid-column                           : 1;
+    grid-row                              : 1;
+}
+#divCVOtherDetailsHeader {
+    grid-column                           : 3;
+    grid-row                              : 1;
+}
+/* 
+   table contents
+*/
+#divTableOther {
+     grid-column                          : 1;
+     grid-row                             : 2;
+
+     border                               : solid;
+     border-color                         :green;
+     border-width                         : 1px;
+     width                                : 460px;
+     height                               : 200px;
+     display                              : block;
+     background-color                     : none;
+     scrollbar-color                      : yellow darkblue;
+     scroll-behavior                      : smooth;
+     scrollbar-width                      : 10px;
+     overflow-y                           : scroll;
+     overflow-x                           : scroll;
+     border-radius                        : 6px;
+
+
+ } 
+
+.clhCV_OtherDataRowContainer {
+    background-color                      :darkslategrey;
+    display                               : block;
+    width                                 : 1420px;
+    height                                : 30px;
+}
+/*
+ table elements
+*/
+.btnSelect {
+    width                                 : 6ch;
+    left                                  : 0;
+}
+.clhCV_OtherSelectCol1 {
+    margin-right                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+
+}
+.clhCV_OtherDataCol1 {
+    margin-right                          : 2px;
+    padding-top                           : 5px; 
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 80px;
+
+}
+.clhCV_OtherDataCol2 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 400px;
+
+}
+.clhCV_OtherDataCol3 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 1000px;
+
+}
+
+
+/*
+   table with what to put on CV
+
+*/
+
+/* 
+   table contents
+*/
+#divTableCVOther {
+    grid-column                          : 3;
+    grid-row                             : 2;
+
+    border                               : solid;
+    border-color                         :green;
+    border-width                         : 1px;
+    width                                : 460px;
+    height                               : 200px;
+    display                              : block;
+    background-color                     : none;
+    scrollbar-color                      : yellow darkblue;
+    scroll-behavior                      : smooth;
+    scrollbar-width                      : 10px;
+    overflow-y                           : scroll;
+    overflow-x                           : scroll;
+    border-radius                        : 6px;
+   
+} 
+.clhCopyCV_OtherDataRowContainer
+{
+    background-color                      :darkslategrey;
+    display                               : block;
+    width                                 : 920px;
+    height                                : 30px;
+}
+/*
+table elements
+*/
+.clhCopyCV_OtherSelectCol1 {
+    margin-right                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+
+}
+.clhCopyCV_OtherDataCol1 {
+    margin-right                          : 2px;
+    padding-top                           : 5px; 
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 80px;
+
+}
+.clhCopyCV_OtherDataCol2 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 400px;
+
+}
+.clhCopyCV_OtherDataCol3 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 1000px;
+
+}

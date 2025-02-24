@@ -3,13 +3,13 @@ What Is It?
 
 This is the JavaScript version of my JobseekersCRM using IndexedDB!
 
-Yes this the conversion of a MSAccess database into JavaScript
+Yes this the conversion of a MSAccess database into JavaScript plus reports!
 
 
 Strategy and Construction
 -------------------------
 
-- IndexedDB used for portability
+- IndexedDB used for portability (and the nightmare of asynchronus transactions) 
 - Uses same table structure as the MS Access original
 - MVC structure in EACH form
 - global schema module which has the table layouts for every table which also includes:
@@ -25,12 +25,15 @@ Strategy and Construction
 *Required fields have red labels on forms this is done from the schema table in the modView
  PER form
 
+
+Features:
 - Uses my RogTab control to show the forms (web pages) in iFrames
 - Uses global and local CSS files
 - Uses RogMessageBox to show Windows style messageboxes
 - Each form has its own CSS used absolute position INITIALLY as this is a desktop only
-  application (currently around 1180x800) and I was more focused on getting it to work
-  properly behind the scenes than spending time making it look aesthetically pretty!
+  application (currently around 1180x800)
+- some screens use RogTable my custom table control
+- experimental report generator
 
 Schema module provides:
 
@@ -80,3 +83,5 @@ funcValidateForm - validates INPUT elements against the schema e.g. check if req
                    and if so do they have any data?
 
 Currently viewport is 1024x1366
+
+

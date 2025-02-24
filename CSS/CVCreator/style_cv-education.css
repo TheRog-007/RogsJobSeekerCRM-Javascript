@@ -1,0 +1,198 @@
+/*
+  table and table controls
+*/
+#divEducationDetails {
+    overflow-y                            : none;
+    overflow-x                            : none;
+    Height                                : 300px;
+    Width                                 : 979px;
+    top                                   : 560px;
+    display                               : grid;
+    grid-template-columns                 : 460px 50px 470px;
+    grid-template-rows                    : 30px 90px 70px 70px 70px;
+}
+#divEducationDetailsHeader {
+    grid-column                           : 1;
+    grid-row                              : 1;
+}
+#divCVEducationDetailsHeader {
+    grid-column                           : 3;
+    grid-row                              : 1;
+}
+/* 
+   table contents
+*/
+#divTableEducation {
+     grid-column                          : 1;
+     grid-row                             : 2;
+
+     border                               : solid;
+     border-color                         :green;
+     border-width                         : 1px;
+     width                                : 460px;
+     height                               : 200px;
+     display                              : block;
+     background-color                     : none;
+     scrollbar-color                      : yellow darkblue;
+     scroll-behavior                      : smooth;
+     scrollbar-width                      : 10px;
+     overflow-y                           : scroll;
+     overflow-x                           : scroll;
+     border-radius                        : 6px;
+
+
+ } 
+
+.clhCV_EducationDataRowContainer {
+    background-color                      :darkslategrey;
+    display                               : block;
+    width                                 : 920px;
+    height                                : 30px;
+}
+/*
+ table elements
+*/
+.btnSelect {
+    width                                 : 6ch;
+    left                                  : 0;
+}
+.clhCV_EducationSelectCol1 {
+    margin-right                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+
+}
+.clhCV_EducationDataCol1 {
+    margin-right                          : 2px;
+    padding-top                           : 5px; 
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 80px;
+
+}
+.clhCV_EducationDataCol2 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 400px;
+
+}
+.clhCV_EducationDataCol3 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 500px;
+
+}
+.clhCV_EducationDataCol4 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 600px;
+
+}
+.clhCV_EducationDataCol5 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 780px;
+
+}
+
+/*
+   table with what to put on CV
+
+*/
+
+/* 
+   table contents
+*/
+#divTableCVEducation {
+    grid-column                          : 3;
+    grid-row                             : 2;
+
+    border                               : solid;
+    border-color                         :green;
+    border-width                         : 1px;
+    width                                : 460px;
+    height                               : 200px;
+    display                              : block;
+    background-color                     : none;
+    scrollbar-color                      : yellow darkblue;
+    scroll-behavior                      : smooth;
+    scrollbar-width                      : 10px;
+    overflow-y                           : scroll;
+    overflow-x                           : scroll;
+    border-radius                        : 6px;
+   
+} 
+.clhCopyCV_EducationDataRowContainer
+{
+    background-color                      :darkslategrey;
+    display                               : block;
+    width                                 : 920px;
+    height                                : 30px;
+}
+/*
+table elements
+*/
+.clhCopyCV_EducationSelectCol1 {
+    margin-right                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+
+}
+.clhCopyCV_EducationDataCol1 {
+    margin-right                          : 2px;
+    padding-top                           : 5px; 
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 80px;
+
+}
+.clhCopyCV_EducationDataCol2 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 400px;
+
+}
+.clhCopyCV_EducationDataCol3 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 500px;
+
+}
+.clhCopyCV_EducationDataCol4 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 600px;
+
+}
+.clhCopyCV_EducationDataCol5 {
+    margin-right                          : 2px;
+    padding-top                           : 5px;
+    padding-left                          : 2px;
+    color                                 : yellow;
+    height                                : 30px;
+    left                                  : 780px;
+
+}

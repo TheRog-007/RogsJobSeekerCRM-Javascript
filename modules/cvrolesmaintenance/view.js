@@ -3,6 +3,8 @@
 import * as modModel from "./model.js";
 import * as modSchema from "../schema.js";
 import * as modMessageBox from "../messageBox.js";
+import * as modGlobalView from "../GlobalView.js";
+
 /*
   Created 08/01/2025 By Roger Williams
 
@@ -223,6 +225,7 @@ export function funcInitView() {
   }
 
   funcInitTable();
+  modGlobalView.funcDisableForm(document);
 }
 
 export const funcLoadData = () => {
@@ -299,6 +302,7 @@ export const funcLoadData = () => {
       modModel.funcbtnClearResponsibilityClick();
       //reset new indicator
       modModel.funcResetblnNew(false);
+      modGlobalView.funcEnableForm(document);
     }
   };
 };

@@ -3,6 +3,8 @@
 import * as modModel from "./model.js";
 import * as modSchema from "../schema.js";
 import * as modMessageBox from "../messageBox.js";
+import * as modGlobalView from "../GlobalView.js";
+
 /*
   Created 08/01/2025 By Roger Williams
 
@@ -66,6 +68,7 @@ export function funcInitView() {
       document.getElementById("lbl" + strName).style.color = "red";
     }
   }
+  modGlobalView.funcDisableForm(document);
 }
 
 export const funcLoadData = () => {
@@ -104,6 +107,7 @@ export const funcLoadData = () => {
     modModel.objTable.aryFields[5].fieldValue = objFound.CVED_Grade;
     //reset new indicator
     modModel.funcResetblnNew(false);
+    modGlobalView.funcEnableForm(document);
   };
 
   objData.onerror = (error) => {

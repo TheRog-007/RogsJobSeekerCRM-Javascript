@@ -3,6 +3,7 @@
 import * as modModel from "./model.js";
 import * as modSchema from "../schema.js";
 import * as modMessageBox from "../messageBox.js";
+import * as modGlobalView from "../GlobalView.js";
 
 let intDivNumber = 1;
 export let intNewRowTop = 0;
@@ -142,6 +143,7 @@ export function funcInitView() {
       document.getElementById("lbl" + strName).style.color = "red";
     }
   }
+  modGlobalView.funcDisableForm(document);
 }
 export function funcRenumberRowsResetPositions() {
   /*
@@ -152,29 +154,70 @@ export function funcRenumberRowsResetPositions() {
   if row deleted
 
   */
+  // let elTemp;
+  // let intNum = 0;
+  // let intRowNbr = 1;
+  // let btnTemp;
+  // let aryTemp = [];
+
+  // aryTemp = document.getElementsByClassName("clhAddressRowContainer");
+
+  // for (intNum = 0; intNum < aryTemp.length; intNum++) {
+  //   elTemp = aryTemp[intNum];
+  //   //reset top
+  //   elTemp.style.top = intRowHeight * intNum + "px";
+  //   btnTemp = elTemp.childNodes[0].nextSibling;
+  //   //reset "row" number
+  //   btnTemp.id = "btnSelect" + intRowNbr;
+  //   //reset DIV id
+  //   elTemp.id = "divAddressRowContainer" + intRowNbr;
+  //   intRowNbr++;
+  // }
+
+  // intNewRowTop = intRowHeight * intNum;
+  // //resetintRows
+  // intRows = intNum;
+
   let elTemp;
-  let intNum = 0;
+  let intNum1 = 0;
+  let intNum2 = 0;
   let intRowNbr = 1;
   let btnTemp;
-  let aryTemp = [];
 
-  aryTemp = document.getElementsByClassName("clhAddressRowContainer");
+  let aryTableRows = [];
+  let aryInternal = [];
+  let elTable;
+  let strTemp = "";
 
-  for (intNum = 0; intNum < aryTemp.length; intNum++) {
-    elTemp = aryTemp[intNum];
+  //get table
+  elTable = document.getElementById(strDivTable);
+  aryTableRows = elTable.getElementsByClassName("clhAddressRowContainer");
+
+  for (intNum1 = 0; intNum1 < aryTableRows.length; intNum1++) {
+    elTemp = aryTableRows[intNum1];
     //reset top
-    elTemp.style.top = intRowHeight * intNum + "px";
+    elTemp.style.top = intRowHeight * intNum1 + "px";
     btnTemp = elTemp.childNodes[0].nextSibling;
-    //reset "row" number
+    //reset "row" number use intrownbr as set to start from 1 intnum 0!
     btnTemp.id = "btnSelect" + intRowNbr;
     //reset DIV id
     elTemp.id = "divAddressRowContainer" + intRowNbr;
+
+    //renumber internal DIVs
+    aryInternal = elTable.getElementsByTagName("div");
+
+    for (intNum2 = 0; intNum2 < aryInternal.length; intNum2++) {
+      //remove row number
+      strTemp = aryInternal[intNum2].id.replace(/[^A-Z, a-z]/g, "") + intRowNbr;
+      //reset row number
+      aryInternal[intNum2].id = strTemp;
+    }
     intRowNbr++;
   }
 
-  intNewRowTop = intRowHeight * intNum;
-  //resetintRows
-  intRows = intNum;
+  intRowNbr++;
+  intDivNumber = intRowNbr;
+  intNewRowTop = intRowHeight * intNum1;
 }
 
 export function funcUpdateTableRow(intWhat = 0) {
@@ -453,5 +496,6 @@ export function funcLoadData() {
     }
     //reset new indicator
     modModel.funcResetblnNew(false);
+    modGlobalView.funcEnableForm(document);
   };
 }

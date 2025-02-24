@@ -1,0 +1,437 @@
+@media print{
+    @page {
+        margin-top                             : 0; 
+        margin-bottom                          : 0;
+    }
+    .page, .page-break { break-after: page; }
+}    
+
+/*
+  page width (A4) 730 pixels
+*/
+.clhLine {
+    background-color                        : black;
+    width                                   : 730px;
+    height                                  : 1px;
+}
+/*  first section */
+#divName {
+    font-size                               : 48px;
+    font-weight                             : 800;
+    padding-bottom                          : 10px;
+    width                                   : 730px;
+    text-align                              : center;
+}
+#divHeaderWEB {
+     display                                : flex;
+     height                                 : 140px;
+     width                                  : 730px; 
+    }
+#divPreferredRoleTitle
+{
+   font-size                                : 30px;
+   font-weight                              : 800;
+   color                                    : black;
+   width                                    : 590px;
+   padding-top                              : 30px;
+   padding-left                             : 60px;
+}
+#imgImageWEB {
+    height                                  : 140px;
+    width                                   : 140px;
+}
+#divLine1 {
+    margin-top                              : 10px;
+    margin-bottom                           : 10px;
+}
+/*  second section */
+#divCVContactWEB {
+     display                                : grid;
+
+}
+#divAddresContainer {
+    border                                  : solid;
+    border-width                            : 1px;
+    width                                   : 500px;
+    padding-left                            : 10px;
+}
+#divPhoneContainer {
+    border                                  : solid;
+    border-width                            : 1px;
+    width                                   : 190px;
+    padding-left                            : 10px;
+}
+/* third section */
+#divLine2 {
+    margin-bottom                           : 10px;
+}
+#divDOBSalaryRange {
+    width                                   : 730px;
+    height                                  : 40px;
+    display                                 : inline-flex;
+    flex-direction                          : row;
+    justify-content                         : space-between;
+    justify-items                           : stretch;
+    padding-top                             : 8px;
+
+}
+#divDOB {
+    width                                   : 530px;
+}
+
+#divSalaryRange {
+    width                                   : 200px;
+}    
+#divLine3 {
+    margin-top                              : 0px;
+    margin-bottom                           : 10px;
+}
+
+/* fourth section */
+#divEducationHeader {
+    font-size                               : 20px;
+    margin-bottom                           : 5px;}
+#divCVEducationWEB {
+    font-size                               : 18px;
+    font-weight                             : 800;
+}
+
+.clhEducationRow {
+    display                                 : flex;
+    flex-direction                          : row;
+    gap                                     : 10px;
+    margin-bottom                           : 10px;
+    margin-top                              : 5px;
+    font-size                               : 16px;
+    font-weight                             : 400;
+    width                                   : 730px;
+}
+.clhEducationIndent {
+    width                                   : 40px;
+}
+.clhEducationStart {
+    left                                    : 40px;
+}
+
+/* .clhEducationTo {
+
+}
+.clhEducationEnd {
+    
+}
+.clhEducationWhat {
+    
+}
+.clhEducationWhere {
+    
+} */
+
+/*  fifth section  */
+#divExperienceHeader {
+    font-size                               : 20px;
+    margin-bottom                           : 5px;
+}
+#divCVExperienceWEB {
+    font-size                               : 18px;
+    font-weight                             : 800;
+}
+
+.clhExperienceRow {
+    display                                 : flex;
+    flex-direction                          : row;
+    gap                                     : 10px;
+    margin-bottom                           : 10px;
+    margin-top                              : 5px;
+    font-size                               : 16px;
+    width                                   : 730px;
+    font-weight                             : 400;
+}
+.clhExperienceIndent {
+    width                                   : 40px;
+}
+.clhExperienceStart {
+    left                                    : 40px;
+}
+
+/* .clhExperienceTo {
+    
+}
+.clhExperienceEnd {
+    
+}
+.clhExperienceWhat {
+    
+}
+.clhExperienceWhere {
+    
+} */
+
+
+/*  sixth section  */
+#divResponsibilitesHeader {
+    font-size                               : 20px;
+    margin-bottom                           : 5px;
+}
+#divCVResponsibilitesWEB {
+    font-size                               : 18px;
+    font-weight                             : 800;
+}
+
+.clhResponsibilitesRow {
+    display                                 : flex;
+    flex-direction                          : row;
+    gap                                     : 10px;
+    margin-bottom                           : 10px;
+    margin-top                              : 5px;
+    font-size                               : 16px;
+    width                                   : 730px;
+    font-weight                             : 400;
+
+}
+.clhResponsibilitesIndent {
+    width                                   : 40px; 
+}
+.clhResponsibilitesRole {
+    width: 245px;
+} 
+.clhResponsibilitesDetails {
+   width: 445px;
+}
+/* seventh section  */
+#divHighlightsHeader {
+    font-size                               : 20px;
+    margin-bottom                           : 5px;
+}
+#divCVHighlightsWEB {
+    font-size                               : 18px;
+    font-weight                             : 800;
+}
+
+.clhHighlightsRow {
+    display                                 : flex;
+    flex-direction                          : row;
+    gap                                     : 10px;
+    margin-bottom                           : 10px;
+    margin-top                              : 5px;
+    font-size                               : 16px;
+    width                                   : 730px;
+    font-weight                             : 400;
+}
+.clhHighlightsIndent {
+    width                                   : 40px;
+}
+.clhHighlightsStart {
+    left                                    : 40px;
+}
+
+/* .clhHighlightsTo {
+    
+}
+.clhHighlightsEnd {
+    
+}
+.clhHighlightsWhat {
+    
+}
+.clhHighlightsWhere {
+    
+} */
+
+
+/* eighth section  */
+#divSkillsHeader {
+    font-size                               : 20px;
+}
+#divCVSkillsWEB {
+    font-size                               : 18px;
+    margin-bottom                           : 5px;
+    font-weight                             : 800;
+}
+
+.clhSkillsRow {
+    display                                 : flex;
+    flex-direction                          : row;
+    gap                                     : 10px;
+    margin-bottom                           : 10px;
+    margin-top                              : 5px;
+    font-size                               : 16px;
+    width                                   : 730px;
+    font-weight                             : 400;
+}
+.clhSkillsIndent {
+    width                                   : 40px;
+}
+.clhSkillsStart {
+    left                                    : 40px;
+}
+
+/* .clhSkillsTo {
+    
+}
+.clhSkillsEnd {
+    
+}
+.clhSkillsWhat {
+    
+}
+.clhSkillsWhere {
+    
+} */
+
+/* ninth section */
+#divCurrentFocusHeader {
+    font-size                               : 20px;
+    font-weight                             : 800;
+}
+#divCVCurrentFocusWEB {
+    font-size                               : 18px;
+    margin-bottom                           : 5px;
+}
+.clhCurrentFocusRow {
+    display                                 : flex;
+    flex-direction                          : row;
+    gap                                     : 10px;
+    margin-bottom                           : 10px;
+    margin-top                              : 5px;
+    font-size                               : 16px;
+    width                                   : 730px;
+    font-weight                             : 400;
+}
+.clhCurrentFocusIndent {
+    width                                   : 40px;
+}
+.clhCurrentFocusStart {
+    left                                    : 40px;
+}
+
+/* .clhCurrentFocusTo {
+    
+}
+.clhCurrentFocusEnd {
+    
+}
+.clhCurrentFocusWhat {
+    
+}
+.clhCurrentFocusWhere {
+    
+} */
+
+
+/* tenth section  */
+#divOtherHeader {
+    font-size                               : 20px;
+}
+#divCVOtherWEB {
+    font-size                               : 18px;
+    margin-bottom                           : 5px;
+    font-weight                             : 800;
+}
+
+.clhOtherRow {
+    display                                 : flex;
+    flex-direction                          : row;
+    gap                                     : 10px;
+    margin-bottom                           : 10px;
+    margin-top                              : 5px;
+    font-size                               : 18px;
+    width                                   : 730px;
+}
+.clhOtherIndent {
+    width                                   : 40px;
+}
+.clhOtherStart {
+    left                                    : 40px;
+}
+
+/* .clhOtherTo {
+    
+}
+.clhOtherEnd {
+    
+}
+.clhOtherWhat {
+    
+}
+.clhOtherWhere {
+    
+} */
+
+/* eleventh section */
+#divInterestsHeader {
+    font-size                               : 20px;
+}
+#divCVInterestsWEB {
+    font-size                               : 18px;
+    margin-bottom                           : 5px;
+    font-weight                             : 800;
+}
+
+.clhInterestsRow {
+    display                                 : flex;
+    flex-direction                          : row;
+    gap                                     : 10px;
+    margin-bottom                           : 10px;
+    margin-top                              : 5px;
+    font-size                               : 16px;
+    width                                   : 730px;
+    font-weight                             : 400;
+}
+.clhInterestsIndent {
+    width                                   : 40px;
+
+}
+.clhInterestsStart {
+    left                                    : 40px;
+}
+
+/* .clhInterestsTo {
+    
+}
+.clhInterestsEnd {
+    
+}
+.clhInterestsWhat {
+    
+}
+.clhInterestsWhere {
+    
+} */
+
+/* twelth section */
+#divPersonalityHeader {
+    font-size                               : 20px;
+    font-weight                             : 800;
+}
+#divCVPersonalityWEB {
+    font-size                               : 18px;
+}
+.clhPersonalityRow {
+    display                                 : flex;
+    flex-direction                          : row;
+    gap                                     : 10px;
+    margin-bottom                           : 10px;
+    margin-top                              : 5px;
+    font-size                               : 16px;
+    width                                   : 730px;
+    font-weight                             : 400;
+}
+.clhPersonalityIndent {
+    width                                   : 40px;
+}
+.clhPersonalityStart {
+    left                                    : 40px;
+}
+
+/* .clhPersonalityTo {
+    
+}
+.clhPersonalityEnd {
+    
+}
+.clhPersonalityWhat {
+    
+}
+.clhPersonalityWhere {
+    
+} */

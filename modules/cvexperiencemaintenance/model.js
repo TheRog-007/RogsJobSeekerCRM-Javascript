@@ -3,6 +3,7 @@
 import * as modSchema from "../schema.js";
 import * as modMessageBox from "../messageBox.js";
 import * as modView from "./view.js";
+import * as modGlobalView from "../GlobalView.js";
 
 /*
   Created 08/01/2025 By Roger Williams
@@ -26,6 +27,13 @@ export const txtCVE_Where = document.getElementById("txtCVE_Where");
 export const lblCVE_Where = document.getElementById("lblCVE_Where");
 export const txtCVE_Role = document.getElementById("txtCVE_Role");
 export const lblCVE_Role = document.getElementById("lblCVE_Role");
+export const txtCVE_Achievements = document.getElementById(
+  "txtCVE_Achievements"
+);
+export const lblCVE_Achievements = document.getElementById(
+  "lblCVE_Achievements"
+);
+
 export const txtHidden = document.getElementById("txtHidden");
 
 //db var
@@ -209,6 +217,7 @@ const funcSaveData = () => {
       CVE_YearEnded: dteCVE_YearEnded.value,
       CVE_Where: txtCVE_Where.value,
       CVE_Role: txtCVE_Role.value,
+      CVE_Achievements: txtCVE_Achievements.value,
     });
 
     dbUpdate.onsuccess = (event) => {
@@ -257,6 +266,7 @@ const funcSaveData = () => {
       dbData.CVE_YearEnded = dteCVE_YearEnded.value;
       dbData.CVE_Where = txtCVE_Where.value;
       dbData.CVE_Role = txtCVE_Role.value;
+      dbData.CVE_Achievements = txtCVE_Achievements.value;
       //update
       const dbUpdate = objTemp.put(dbData);
 
@@ -356,6 +366,7 @@ export function funcUndoChanges() {
     dteCVE_YearEnded.value = objTable.aryFields[2].fieldValue;
     txtCVE_Where.value = objTable.aryFields[3].fieldValue;
     txtCVE_Role.value = objTable.aryFields[4].fieldValue;
+    txtCVE_Achievements.value = objTable.aryFields[5].fieldValue;
   }
 }
 const funcbtnUndoClick = (event) => {
@@ -449,6 +460,7 @@ const funcResetForm = () => {
   dteCVE_YearEnded.value = "";
   txtCVE_Where.value = "";
   txtCVE_Role.value = "";
+  txtCVE_Achievements.value = "";
   dteCVE_YearStarted.focus();
 };
 const funcbtnNewClick = () => {
@@ -473,6 +485,7 @@ const funcbtnNewClick = () => {
     );
   } else {
     blnNew = true;
+    modGlobalView.funcEnableForm(document);
     funcResetForm();
   }
 };
@@ -628,6 +641,7 @@ export function funcInitHandlers() {
 
   cmbID.addEventListener("change", funccmbIDSelect);
   txtCVE_Role.addEventListener("keydown", functextboxKeyDown);
+  txtCVE_Achievements.addEventListener("keydown", functextboxKeyDown);
   txtCVE_Where.addEventListener("keydown", functextboxKeyDown);
   dteCVE_YearEnded.addEventListener("keydown", functextboxKeyDown);
   dteCVE_YearStarted.addEventListener("keydown", functextboxKeyDown);
